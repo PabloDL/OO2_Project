@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<! DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd" >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Trabajo practico - Sube</title>
+</head>
+<body>
+	<%@ include file="/cabecera.jsp"%>
+	<BR>
+	<BR> Listado utilizando JSTL
+	<table border="1">
+		<tr>
+			<th>Persona</th>
+			<th>DNI</th>
+		</tr>
+		<c:forEach items="${personas}" var="persona">
+			<tr>
+				<td>${persona.apellido} , ${persona.nombre},</td>
+				<td>${persona.dni}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<BR>
+	<A href="/SUBE/index.jsp"> Volver... </A>
+</body>
+</html>

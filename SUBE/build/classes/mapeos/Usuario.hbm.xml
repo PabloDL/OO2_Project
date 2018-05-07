@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name = "datos.Usuario" table = "usuario">
+<id name = "idUsuario" column = "idUsuario">
+<generator class = "foreign">
+<param name = "property">persona</param>
+</generator>
+</id>
+<property column = "nombreUsuario" name = "nombreUsuario" type="string"/>
+<property column = "password" name = "password" type="string"/>
+<one-to-one name = "persona" class = "datos.Persona"></one-to-one>
+</class>
+</hibernate-mapping>
