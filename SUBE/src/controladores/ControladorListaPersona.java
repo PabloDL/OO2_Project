@@ -14,7 +14,6 @@ public class ControladorListaPersona extends HttpServlet {
 			throws ServletException, IOException {
 		procesarPeticion(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		procesarPeticion(request, response);

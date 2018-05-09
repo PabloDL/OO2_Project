@@ -37,4 +37,12 @@
 		<servlet-name>ControladorMostrarPersona</servlet-name>
 		<url-pattern>/MostrarPersona</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ControladorAgregarPersonaJSP</servlet-name>
+		<url-pattern>/AgregarPersonaJSP</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorAgregarPersonaJSP</servlet-name>
+		<servlet-class>controladores.ControladorAgregarPersonaJSP</servlet-class>
+	</servlet>
 </web-app>

@@ -24,8 +24,8 @@ public class ControladorMostrarPersonaJSP extends HttpServlet {
 			int dni = Integer. parseInt ( request .getParameter( "dni" ));
 			PersonaABM personaabm = new PersonaABM();
 			Persona persona = personaabm.traerPersona( dni );
-			request .setAttribute( "persona" , persona );
-			request .getRequestDispatcher( "/vistapersona.jsp" ).forward( request ,
+			request.setAttribute( "persona" , persona );
+			request.getRequestDispatcher( "/vistapersona.jsp" ).forward( request ,
 			response );
 		}
 		catch (Exception e ) {

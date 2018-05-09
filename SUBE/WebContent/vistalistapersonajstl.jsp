@@ -16,11 +16,17 @@
 		<tr>
 			<th>Persona</th>
 			<th>DNI</th>
+			<th>tarifa social</th>
+			<th>boleto estudiantil</th>
+			<th>Nombre de Usuario</th>
 		</tr>
 		<c:forEach items="${personas}" var="persona">
 			<tr>
-				<td>${persona.apellido} , ${persona.nombre},</td>
+				<td>${persona.apellido} , ${persona.nombre}</td>
 				<td>${persona.dni}</td>
+				<td>${persona.esTarifaSocial}</td>
+				<td>${persona.esTarifaEstudiantil}</td>
+				<td>${persona.usuario.nombreUsuario}</td>
 			</tr>
 		</c:forEach>
 	</table>

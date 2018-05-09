@@ -52,4 +52,16 @@
 <BR>
 <BR>
 <BR>
+<FORM method="POST" action="/SUBE/vistaagregarpersona.jsp">
+<input type="hidden" name="jstl" value="1" />
+	<TABLE border="0">
+		<TR>
+			<TD><INPUT type="submit" value="Agregar Personas"></TD>
+		</TR>
+	</TABLE>
+</FORM>
+<BR>
+<BR>
+<BR>
+<BR>
 </HTML>
