@@ -20,4 +20,6 @@
 			<item value="org.eclipse.jst.ws.ui.new"/>
 		</list>
 	</section>
+	<section name="ImportExportAction">
+	</section>
 </section>

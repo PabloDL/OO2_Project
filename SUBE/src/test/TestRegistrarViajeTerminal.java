@@ -46,6 +46,7 @@ public class TestRegistrarViajeTerminal {
 		}
 		
 		System. out .println( s.toString());
+		
 		Viaje v5 = tt1.cobrar(s,1);
 		
 		if (v5 != null) {
