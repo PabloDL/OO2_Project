@@ -20,7 +20,7 @@ public class Subte extends Transporte {
 		this.letra = letra;
 	}
 
-	public float calcularMonto() {
+	public double calcularMonto() {
 			DatosGenerales datosGenerales = new DatosGenerales();
 			return datosGenerales.getMontoSubte();
 	}

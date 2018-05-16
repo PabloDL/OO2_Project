@@ -20,7 +20,7 @@ public class Tren extends Transporte {
 		this.setEstacionOrigen(estacionOrigen);
 	}
 
-	public float calcularMonto() {
+	public double calcularMonto() {
 			DatosGenerales datosGenerales = new DatosGenerales();
 			return datosGenerales.getMontoTren1();
 	}

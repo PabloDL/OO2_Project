@@ -33,6 +33,12 @@ public class Colectivo extends Transporte {
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
 	}
+
+	@Override
+	public double calcularMonto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }
