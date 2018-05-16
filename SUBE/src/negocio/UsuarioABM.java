@@ -14,6 +14,12 @@ public class UsuarioABM {
 		Usuario u = dao.traerUsuario(idUsuario);
 		return u;
 	}
+	
+	public Usuario traerUsuario(String nombreUsuario) {
+		// Implementar : si el no existe el prestamo lanzar la excepción
+		Usuario u = dao.traerUsuario(nombreUsuario);
+		return u;
+	}
 
 	public List<Usuario> traerUsuario(Persona p) {
 		return dao.traerUsuario(p);
@@ -58,5 +64,7 @@ public class UsuarioABM {
 		}
 		dao.eliminar(c);
 	}
+	
+	
 	
 }

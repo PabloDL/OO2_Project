@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-	<display-name>Sube</display-name>
+	<display-name>SUBE</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -44,5 +44,13 @@
 	<servlet>
 		<servlet-name>ControladorAgregarPersonaJSP</servlet-name>
 		<servlet-class>controladores.ControladorAgregarPersonaJSP</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorSimularViaje</servlet-name>
+		<url-pattern>/SimularViajeJsp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorSimularViaje</servlet-name>
+		<servlet-class>controladores.ControladorSimularViaje</servlet-class>
 	</servlet>
 </web-app>

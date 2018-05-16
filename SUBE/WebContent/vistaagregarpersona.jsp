@@ -12,6 +12,9 @@
 		Agregar Persona <BR> <BR>
 		<TABLE border="0">
 			<TR>
+				<TD><INPUT name="msjError"></TD>
+			<TR>
+			<TR>
 				<TD>Nombre:</TD>
 				<TD><INPUT name="nombre"></TD>
 			<TR>

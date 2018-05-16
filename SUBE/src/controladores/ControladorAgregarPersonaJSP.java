@@ -32,19 +32,22 @@ public class ControladorAgregarPersonaJSP extends HttpServlet {
 			int dni = Integer.parseInt(request.getParameter("dni"));
 			boolean esTarifaSocial = request.getParameter("esTarifaSocial") != null;
 			boolean esTarifaEstudiantil = request.getParameter("esTarifaEstudiantil") != null;
-
-			long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil);
-			
 			String nombreUsuario = request.getParameter("nombreUsuario");
 			String password = request.getParameter("password");
 			
-			long ultimoIdUsuario = usuarioabm.agregar(nombreUsuario, password, ultimoIdCliente);
-				
-			//SI LA AGREGUE OK, LO MUESTRO POR PANTALLA
-			Persona persona = personaabm.traerPersona(dni );
-			request.setAttribute( "persona" , persona );
-			request.getRequestDispatcher( "/vistapersona.jsp" ).forward( request ,
-			response );
+			//if (usuarioabm.traerUsuario(nombreUsuario) == null && personaabm.traerPersona(dni) == null) {
+					
+					long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil);
+					long ultimoIdUsuario = usuarioabm.agregar(nombreUsuario, password, ultimoIdCliente);				
+					//SI LA AGREGUE OK, LO MUESTRO POR PANTALLA
+					Persona persona = personaabm.traerPersona(dni );
+					request.setAttribute( "persona" , persona );
+					request.getRequestDispatcher( "/vistapersona.jsp" ).forward( request ,
+					response );
+//			}
+	//		else {
+			//	request.setAttribute("msjError", "ERROR");
+		//	}
 			
 		} catch (Exception e) {
 			response.sendError(500, "Hubo un problema al agregar al clientes.");

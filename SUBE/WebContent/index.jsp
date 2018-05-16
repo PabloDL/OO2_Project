@@ -60,8 +60,13 @@
 		</TR>
 	</TABLE>
 </FORM>
-<BR>
-<BR>
-<BR>
+<FORM method="POST" action="/SUBE/vistasimularviaje.jsp">
+<input type="hidden" name="jstl" value="1" />
+	<TABLE border="0">
+		<TR>
+			<TD><INPUT type="submit" value="simular viaje"></TD>
+		</TR>
+	</TABLE>
+</FORM><BR>
 <BR>
 </HTML>
