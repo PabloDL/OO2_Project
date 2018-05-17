@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Viaje {
 	private long idViaje;
-	private float tarifa;
+	private double tarifa;
 	Transporte transporte;
 	private LocalDateTime fechaHoraInicio;
 	
@@ -17,7 +17,7 @@ public class Viaje {
 		super();
 	}
 	
-	public Viaje(float tarifa, Transporte transporte) {
+	public Viaje(double tarifa, Transporte transporte) {
 		super();
 		this.tarifa = tarifa;
 		this.transporte = transporte;
@@ -29,10 +29,10 @@ public class Viaje {
 	public void setIdViaje(long idViaje) {
 		this.idViaje = idViaje;
 	}
-	public float getTarifa() {
+	public double getTarifa() {
 		return tarifa;
 	}
-	public void setTarifa(float tarifa) {
+	public void setTarifa(double tarifa) {
 		this.tarifa = tarifa;
 	}
 	public Transporte getTransporte() {
@@ -50,8 +50,8 @@ public class Viaje {
 	
 	@Override
 	public String toString() {
-		return "Viaje [idViaje=" + idViaje + ", tarifa=" + tarifa + ", transporte=" + transporte
-				+ ", fechaHoraInicio=" + fechaHoraInicio + "]";
+		return "\n Viaje [idViaje=" + idViaje + ", tarifa=" + tarifa + ", transporte=" + transporte
+				+ ", fechaHoraInicio=" + fechaHoraInicio + "] \n";
 	}
 		
 	public float calcular() {
@@ -61,6 +61,17 @@ public class Viaje {
 	public float calcularMonto(float descuentoAAplicar) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public void agregarDestinoAViaje(Viaje viaje) {
+		// SOLO tren admite setear salida, si quiero agregar los otros deberia definirlo
+		String estacionDestino  = ((Tren)this.getTransporte()).getEstacionOrigen();
+		LocalDateTime fechaHoraSalida = ((Tren)this.getTransporte()).getFechaHoraSalida();
+		double tarifaFinal  = -viaje.getTarifa();
+		//SETEO LOS VALORES EN EL TRANSPORTE
+		((Tren)this.getTransporte()).setEstacionDestino(estacionDestino);
+		((Tren)this.getTransporte()).setFechaHoraSalida(fechaHoraSalida);
+		this.setTarifa(tarifaFinal);
 	}
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Seccion" table="seccion">
+
+		<id column="idSeccion" name="idSeccion">
+			<generator class="identity" />
+		</id>
+
+		<property column="precio" name="precio" type="float" />
+
+		<set table="estacionseccion" name="estaciones1" outer-join="true">
+			<key column="idSeccion" />
+			<many-to-many column="idEstacion1" class="datos.Estacion" />
+		</set>
+
+		<set table="estacionseccion" name="estaciones2" outer-join="true">
+			<key column="idSeccion" />
+			<many-to-many column="idEstacion2" class="datos.Estacion" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -10,8 +10,10 @@ public abstract class Terminal {
 
 	public abstract boolean informarViajes();
 
-	public abstract boolean cobrar(int tramoAcobrar, Sube sube) ;
+	public abstract Viaje cobrar(Sube sube, int tramoAcobrar) ;
 	
-	public abstract float calcularPrecio(Sube sube);
+	public abstract double calcularPrecio(Sube sube, int tramoACobrar);
+	
+	public abstract boolean verificarSaldoSuficiente(Sube sube, double precioBoleto);
 	
 }

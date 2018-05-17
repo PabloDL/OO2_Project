@@ -1,10 +1,51 @@
 package datos;
 
 public class DatosGenerales {
+	private static DatosGenerales instanciaDatosGenerales;
+
 	private float montoSubte = 10;
 	private float montoTren1 = 3;
+	private float montoTren2 = 4;
+	private float montoTren3 = 5;
+	private float montoColectivo1 = 10;
+	private float montoColectivo2 = 20;
+	private float montoColectivo3 = 30;
+	private float montoColectivo4 = 40;
+	private float montoColectivo5 = 50;
+	// NO TIENE private float tarifaSocialSubte = 7.5;
+	private double tarifaEstudiantilSubte = 7.5;
+	private double tarifaEstudiantilTren ;//DEFINIR
+	private double tarifaEstudiantilColectivo = 0.5;
+	private double tarifaSocialColectivo = 0.55;
+	private double tarifaSocialTren ;  //DEFINIR 
+	public float SaldoMinimo = -20;
+		
+	protected DatosGenerales(){
+		this.inicializar();
+	}
+
+	public static DatosGenerales getInstanciaDatosGenerales(){
+		if (instanciaDatosGenerales == null) {
+			instanciaDatosGenerales =	new DatosGenerales();
+		}
+			return instanciaDatosGenerales;
+	}
+		
+	public double traerTarifaTren(String estacionOrigen, String estacionDestino) {
+		return 4;
+	}
+	
 	public float getMontoSubte() {
 		return montoSubte;
+	}
+	public float getSaldoMinimo() {
+		return SaldoMinimo;
+	}
+	public void setSaldoMinimo(float saldoMinimo) {
+		SaldoMinimo = saldoMinimo;
+	}
+	public void setTarifaEstudiantilSubte(float tarifaEstudiantilSubte) {
+		this.tarifaEstudiantilSubte = tarifaEstudiantilSubte;
 	}
 	public void setMontoSubte(float montoSubte) {
 		this.montoSubte = montoSubte;
@@ -57,22 +98,43 @@ public class DatosGenerales {
 	public void setMontoColectivo5(float montoColectivo5) {
 		this.montoColectivo5 = montoColectivo5;
 	}
-	private float montoTren2 = 4;
-	private float montoTren3 = 5;
-	private float montoColectivo1 = 10;
-	private float montoColectivo2 = 20;
-	private float montoColectivo3 = 30;
-	private float montoColectivo4 = 40;
-	private float montoColectivo5 = 50;
-	// NO TIENE private float tarifaSocialSubte = 7.5;
-	private float tarifaEstudiantilSubte = (float) 7.5;
 	
 	public void getTarifaSocialSubte() {
 		// TODO Auto-generated method stub
 		
 	}
-	public float getTarifaEstudiantilSubte() {
+	public double getTarifaEstudiantilSubte() {
 		return tarifaEstudiantilSubte;
 		
 	}
+	public double getTarifaSocialColectivo() {
+		return tarifaSocialColectivo;
+	}
+	public double getTarifaEstudiantilTren() {
+		return tarifaEstudiantilTren;
+	}
+	public void setTarifaEstudiantilTren(float tarifaEstudiantilTren) {
+		this.tarifaEstudiantilTren = tarifaEstudiantilTren;
+	}
+	public double getTarifaEstudiantilColectivo() {
+		return tarifaEstudiantilColectivo;
+	}
+	public void setTarifaEstudiantilColectivo(float tarifaEstudiantilColectivo) {
+		this.tarifaEstudiantilColectivo = tarifaEstudiantilColectivo;
+	}
+	public void setTarifaSocialColectivo(float tarifaSocialColectivo) {
+		this.tarifaSocialColectivo = tarifaSocialColectivo;
+	}
+	public double getTarifaSocialTren() {
+		return tarifaSocialTren;
+	}
+	public void setTarifaSocialTren(float tarifaSocialTren) {
+		this.tarifaSocialTren = tarifaSocialTren;
+	}
+	
+	private void inicializar(){ //pueden leer la instancia de un archivo xml
+		//this​.setNombre("Soft Argentina");
+		//this​.setEmail("softargentina@unla.edu.ar");
+	}
+
 }

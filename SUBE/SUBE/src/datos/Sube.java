@@ -1,5 +1,6 @@
 package datos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sube {
@@ -7,18 +8,18 @@ public class Sube {
 	private long numero;
 	private Persona persona;
 	private List<Viaje> ultimosViajes;
-	private float saldo;
+	private double saldo;
 
 	public Sube() {
 		
 	}
 	
-	public Sube(int idSube, long numero, Persona persona, List<Viaje> ultimosViajes, float saldo) {
+	public Sube(int idSube, long numero, Persona persona, float saldo) {
 		super();
 		this.idSube = idSube;
 		this.numero = numero;
 		this.persona = persona;
-		this.ultimosViajes = ultimosViajes;
+		this.ultimosViajes = new ArrayList<Viaje>();
 		this.saldo = saldo;
 	}
 	
@@ -46,13 +47,33 @@ public class Sube {
 	public void setUltimosViajes(List<Viaje> ultimosViajes) {
 		this.ultimosViajes = ultimosViajes;
 	}
-	public float getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
 	
+	public void agregarViaje(Viaje viaje) {
+		if(viaje.getTarifa() >= 0) {
+			this.ultimosViajes.add(viaje);
+			this.saldo = this.saldo - viaje.getTarifa();
+		}
+		else {
+			double tarifaOriginal = this.ultimosViajes.get(this.ultimosViajes.size()-1).getTarifa();
+			//La tarifa de la nueva tarifa la suma porque es negativa entonces queda +x- y se termina restando como se debe.
+			//Es decir le devuelvo el precio maximo sacado al ppio y le resto lo que salio el boleto en realidad
+			this.saldo = this.saldo + tarifaOriginal + viaje.getTarifa();
+			//En este caso no tengo que agregar el viaje a la lista sino modificar el ultimo viaje
+			this.ultimosViajes.get(this.ultimosViajes.size()-1).agregarDestinoAViaje(viaje);			
+		}
+	}
 	
-	
+
+	@Override
+	public String toString() {
+		return "Sube [idSube=" + idSube + ", numero=" + numero + ", persona=" + persona + ", ultimosViajes="
+				+ ultimosViajes + ", saldo=" + saldo + "]";
+	}
+		
 }

@@ -12,5 +12,10 @@
 		<!-- Mapeo Entidades -->
 		<mapping resource="mapeos/Persona.hbm.xml"/>
 		<mapping resource="mapeos/Usuario.hbm.xml"/>
+		<mapping resource="mapeos/Estacion.hbm.xml" />
+		<mapping resource="mapeos/Seccion.hbm.xml" />
+		<mapping resource="mapeos/TerminalSubte.hbm.xml" />
+		<mapping resource="mapeos/TerminalTren.hbm.xml" />  
+		<mapping resource="mapeos/TerminalColectivo.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -15,9 +15,9 @@ public class TerminalRecarga extends Terminal {
 	}
 
 	@Override
-	public boolean cobrar(int tramo, Sube sube) {
+	public Viaje cobrar(Sube sube, int tramo) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	public boolean registrarRecarga(long idSube) {
@@ -42,8 +42,14 @@ public class TerminalRecarga extends Terminal {
 	}
 
 	@Override
-	public float calcularPrecio(Sube sube) {
+	public double calcularPrecio(Sube sube, int tramo) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public boolean verificarSaldoSuficiente(Sube sube, double precioBoleto) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

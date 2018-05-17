@@ -45,4 +45,12 @@
 		<servlet-name>ControladorAgregarPersonaJSP</servlet-name>
 		<servlet-class>controladores.ControladorAgregarPersonaJSP</servlet-class>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorSimularViaje</servlet-name>
+		<url-pattern>/SimularViajeJsp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorSimularViaje</servlet-name>
+		<servlet-class>controladores.ControladorSimularViaje</servlet-class>
+	</servlet>
 </web-app>
