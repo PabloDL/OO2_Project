@@ -1,6 +1,8 @@
 package datos;
 
 public class DatosGenerales {
+	private static DatosGenerales instanciaDatosGenerales;
+
 	private float montoSubte = 10;
 	private float montoTren1 = 3;
 	private float montoTren2 = 4;
@@ -11,13 +13,24 @@ public class DatosGenerales {
 	private float montoColectivo4 = 40;
 	private float montoColectivo5 = 50;
 	// NO TIENE private float tarifaSocialSubte = 7.5;
-	private float tarifaEstudiantilSubte = (float) 7.5;
+	private double tarifaEstudiantilSubte = 7.5;
 	private double tarifaEstudiantilTren ;//DEFINIR
 	private double tarifaEstudiantilColectivo = 0.5;
 	private double tarifaSocialColectivo = 0.55;
 	private double tarifaSocialTren ;  //DEFINIR 
 	public float SaldoMinimo = -20;
-	
+		
+	protected DatosGenerales(){
+		this.inicializar();
+	}
+
+	public static DatosGenerales getInstanciaDatosGenerales(){
+		if (instanciaDatosGenerales == null) {
+			instanciaDatosGenerales =	new DatosGenerales();
+		}
+			return instanciaDatosGenerales;
+	}
+		
 	public double traerTarifaTren(String estacionOrigen, String estacionDestino) {
 		return 4;
 	}
@@ -90,7 +103,7 @@ public class DatosGenerales {
 		// TODO Auto-generated method stub
 		
 	}
-	public float getTarifaEstudiantilSubte() {
+	public double getTarifaEstudiantilSubte() {
 		return tarifaEstudiantilSubte;
 		
 	}
@@ -118,4 +131,10 @@ public class DatosGenerales {
 	public void setTarifaSocialTren(float tarifaSocialTren) {
 		this.tarifaSocialTren = tarifaSocialTren;
 	}
+	
+	private void inicializar(){ //pueden leer la instancia de un archivo xml
+		//this​.setNombre("Soft Argentina");
+		//this​.setEmail("softargentina@unla.edu.ar");
+	}
+
 }

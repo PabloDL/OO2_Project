@@ -70,4 +70,9 @@ public class Tren extends Transporte {
 		this.fechaHoraSalida = fechaHoraSalida;
 	}
 
+	public double getMontoEntreEstaciones(String estacion) {
+	//	Seccion seccion = 
+		return 0;
+	}
+
 }

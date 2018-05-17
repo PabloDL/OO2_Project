@@ -6,11 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TerminalSubte extends Terminal {
-	String letra;
+	private long idTerminalSubte; 
+	private String letra;
+	
+	public TerminalSubte() {}
 	
 	public TerminalSubte(String letra) {
 		super();
 		this.letra = letra;
+		this.viajes = new ArrayList<Viaje>();
+	}
+	
+	public void inicializarListaViajes() { //BORRAR CUANDO SE LEVANTEN LA LISTA DE VIAJESSSS
 		this.viajes = new ArrayList<Viaje>();
 	}
 
@@ -112,6 +119,14 @@ public class TerminalSubte extends Terminal {
 			return true;
 			
 		return false;
+	}
+
+	public long getIdTerminalSubte() {
+		return idTerminalSubte;
+	}
+
+	public void setIdTerminalSubte(long idTerminalSubte) {
+		this.idTerminalSubte = idTerminalSubte;
 	}
 
 }

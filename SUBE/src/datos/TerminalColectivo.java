@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TerminalColectivo extends Terminal {
+	private long idTerminalColectivo;
 	private String linea;
 	private String ramal;
 	private int numero;
@@ -164,6 +165,14 @@ public class TerminalColectivo extends Terminal {
 
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
+	}
+
+	protected long getIdTerminalColectivo() {
+		return idTerminalColectivo;
+	}
+
+	protected void setIdTerminalColectivo(long idTerminalColectivo) {
+		this.idTerminalColectivo = idTerminalColectivo;
 	}
 
 }

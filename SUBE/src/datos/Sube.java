@@ -3,7 +3,7 @@ package datos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sube extends Transporte{
+public class Sube {
 	private int idSube;
 	private long numero;
 	private Persona persona;

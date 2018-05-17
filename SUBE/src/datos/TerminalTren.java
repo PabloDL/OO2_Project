@@ -4,9 +4,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class TerminalTren extends Terminal {
+	private long  idTerminalTren;
 	private String linea;
 	private String ramal;
 	private String estacion;
+
+	public TerminalTren() {}
 
 	public TerminalTren(String linea, String ramal, String estacion) {
 		super();
@@ -76,8 +79,12 @@ public class TerminalTren extends Terminal {
 		// contructor detallo el tramo o estacion
 		// UNA VEZ CREADO EL VIAJE LO AGREGO A LOS VIAJES PARA LUEGO PERSISTIRLO LLAMANDO A INFORMAR VIAJES
 			this.viajes.add(nuevoViaje); //---> TENGO Q VER COMO VOY A HACER Q EN LA TABLA DE VIAJES INFORMADOS SE GUARDEN LA ACTUALIZACION
-			//DEL PRECIO, ES NECESARIO ? SE PUEDEN GUARDAR UN PRECIO NEGATIVO Y LISTO, total la actualizacion de saldo ya se hizo en la
+			/***
+			// ___>> OJOO ACTUALIZAR ESTO >>//DEL PRECIO, ES NECESARIO ? SE PUEDEN GUARDAR UN PRECIO NEGATIVO Y LISTO, total la actualizacion de saldo ya se hizo en la
 			//SUBE
+			 * 
+			 * 
+			 */
 		}
 		else {
 			nuevoViaje = null;
@@ -120,6 +127,7 @@ public class TerminalTren extends Terminal {
 			else { //SI ESTO ACA, ME ENCUENTRO MARCANDO UNA SALIDA
 				//ACA LLAMO A LA CLASE CON LAS TARIFAS DEL TREN Y LE PASO LA ESTACION DE SALIDA
 				tarifa = datosGenerales.traerTarifaTren(((Tren)(ultimoViaje.getTransporte())).getEstacionOrigen(), this.estacion);
+				//tarifa = (((Tren)(ultimoViaje.getTransporte())).getMontoEntreEstaciones(this.estacion);
 // SI ES SALIDA NO TENGO Q SUMAR AL BOLETO,SINO RESTAR LO Q CORRESPONDA, QUEDA NGATIVO
 //POR EJEMPLO, SI EL BOLETO MAXIMO SALIO 6 Y EN REALIDAD EN LA SALIDA DEBERIA HABER SIDO $3, LO Q HAGO ES RESTAR, EL TEMA ES SI APLICARON DESCUENTOS...
 				tarifa = -tarifa; //- datosGenerales.getMontoTren3(); // getMontoTren3() --> iria tarifa maxima tren 
@@ -176,6 +184,17 @@ public class TerminalTren extends Terminal {
 	}
 	public void setEstacion(String estacion) {
 		this.estacion = estacion;
+	}
+	
+	protected long getIdTerminalTren() {
+		return idTerminalTren;
+	}
+	public void setLinea(String linea) {
+		this.linea = linea;
+	}
+
+	protected void setIdTerminalTren(long idTerminalTren) {
+		this.idTerminalTren = idTerminalTren;
 	}
 
 }
