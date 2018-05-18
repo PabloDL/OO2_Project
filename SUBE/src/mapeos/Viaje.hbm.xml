@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Viaje" table="viaje">
+		<id name="idViaje" column="idViaje" />
+		<property column="tarifa" name="tarifa" type="" />
+		<property column="fechaYHora" name="fechaYHora" />
+
+		<one-to-one name="transporte" class="datos.Transporte"></one-to-one>
+	</class>
+</hibernate-mapping>

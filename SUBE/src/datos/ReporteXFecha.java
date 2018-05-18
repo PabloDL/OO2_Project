@@ -1,8 +1,8 @@
-package negocio;
+package datos;
 
 import java.util.GregorianCalendar;
 
-import negocio.Reporte;
+import datos.Reporte;
 
 public class ReporteXFecha extends Reporte {
 	private GregorianCalendar inicio;

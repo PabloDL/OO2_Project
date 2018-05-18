@@ -1,9 +1,9 @@
-package negocio;
+package datos;
 
 import java.util.Set;
 import java.util.HashSet;
 
-import negocio.Reporte;
+import datos.Reporte;
 
 public class ReporteCompuesto extends Reporte{
 	private Set<Reporte> reportes;
