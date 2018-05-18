@@ -1,15 +1,27 @@
-package negocio;
+package datos;
 
-import negocio.Reporte;
+import datos.Reporte;
 
 public class ReporteXTramo extends Reporte{
-	
 	private int tramo;
 	
-	public boolean generar() {
-		boolean generado = false;
-		
-		return generado;
+	public ReporteXTramo(int tramo) {
+		super();
+		this.tramo = tramo;
+	}
+
+	public int getTramo() {
+		return tramo;
+	}
+
+	public void setTramo(int tramo) {
+		this.tramo = tramo;
+	}
+
+
+
+	public String generar() {
+		return null;
 	}
 
 }

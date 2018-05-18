@@ -3,20 +3,14 @@ package dao;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
-
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import datos.Persona;
-import negocio.Viaje;
-import funciones.Funciones;
+import datos.Viaje;
 
 public class ViajeDao {
-	//tuve que crear un dao porque se usa para poder traer las tablas de viaje para el composite
 	
 	private static Session session;
 	private Transaction tx;
@@ -30,21 +24,20 @@ public class ViajeDao {
 		tx.rollback();
 		throw new HibernateException("ERROR en la capa de acceso a datos");
 	}
-	
-	public List<Viaje> traerViajeXfecha() throws HibernateException {
-		ArrayList<Viaje> lista = null ;
+		
+	public List<Viaje> traerReporte(String hql) throws HibernateException{
+		ArrayList<Viaje> resultadoReporte = null;
 		try {
 			iniciaOperacion();
-			lista= (ArrayList<Viaje>) session .createQuery( "from Viaje v order by v.fechaYHora asc " ).list();
+			resultadoReporte = (ArrayList) session.createQuery(hql).list();			
 		}
-		catch(HibernateException he){
+		catch(HibernateException he) {
 			manejaExcepcion(he);
-			throw (he);			
-		}	
-		finally {
-			session .close();
+			throw (he);
 		}
-		return lista;
+		finally {
+			session.close();
+		}
+		return resultadoReporte;		
 	}
-	
 }
