@@ -7,7 +7,10 @@ import dao.SubeDao;
 //import dao.subeDao
 
 import dao.TerminalSubteDao;
+import dao.ViajeDao;
+import datos.DatosGenerales;
 import datos.Sube;
+import datos.Subte;
 //import dao.TerminalSubteDao
 import datos.TerminalSubte;
 import datos.Viaje;
@@ -18,15 +21,6 @@ public class TerminalSubteABM {
 	public TerminalSubte traerTerminalSubte(long idTerminalSubte) throws Exception {
 		TerminalSubte c = dao.traerTerminalSubte(idTerminalSubte);
 		// implementar si c es null lanzar Exception ->!
-		if (c == null) {
-			throw new Exception("ERROR: NO EXISTE CLIENTE");
-		}
-		return c;
-	}
-
-	public TerminalSubte traerTerminalSubte(int dni) throws Exception {
-		TerminalSubte c = dao.traerTerminalSubte(dni);
-		// implementar si c es null lanzar Exception
 		if (c == null) {
 			throw new Exception("ERROR: NO EXISTE CLIENTE");
 		}
@@ -56,26 +50,20 @@ public class TerminalSubteABM {
 	public void agregarViaje(int numeroSube, long idTerminalSubte /* o id de terminal*/) throws Exception {
 		//aca iria algo asi como el test , tengo q traer la terminal y hacer el proceso de cobro
 		TerminalSubte ts = dao.traerTerminalSubte(idTerminalSubte);
-		ts.inicializarListaViajes(); //ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA BASE LA LISTA
-		SubeDao daoSube = new SubeDao();
-		Sube s = daoSube.traerSube(numeroSube);
-		
 		if (ts == null) {
 			throw new Exception("ERROR: NO EXITE TERMINAL SUBTE");
 		}
-		
-		Viaje v = ts.cobrar(s, 0); //EL SEGUNDO PARAMETRO SOLO CORRESPONDE CUANDO ES UN COLECTIVO Y TIENE VARIOS TRAMOS
-		if (v == null) {
-			throw new Exception("ERROR: IMPOSIBLE AGREGAR VIAJE, SALDO INSUFICIENTE?");
-		}
-		s.agregarViaje(v); // EN REALIDAD LLAMA AL DAO DE LA SUBE Y LA MODIFICA si pudo agregar el viaje lo agrego a la sube
-		//daoSube.actualizar(s); ESTA LINEA VA UNA VEZ HECHO EL DER DE SUBE
-		
-		//ViajeDao daoViaje = new ViajeDao();
-		//daoViaje.agregarViaje(v);   //SOLO EN TREN ME INTERESA SI ES VIAJE DE VUELTA; EN TAL CASO TENGO Q HACER UN MODIFICAR VIAJE
-		
-		System. out .println( s.toString());
-		
+
+		ts.inicializarListaViajes(); // ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA BASE LA LISTA
+		SubeDao daoSube = new SubeDao();
+		Sube sube = daoSube.traerSube(numeroSube);
+
+		ViajeABM viajeAbm = new ViajeABM();
+		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		Subte subte = new Subte(ts.getLetra());
+		Viaje v = new Viaje(dG.getMontoSubte(), subte, sube);
+
+		viajeAbm.agregarViaje(v);
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import datos.DatosGenerales;
 
 public class Tren extends Transporte {
+	private long idTren;
 	private String linea;
 	private String ramal;
 	private String estacionOrigen;
@@ -18,16 +19,17 @@ public class Tren extends Transporte {
 		this.linea = linea;
 		this.ramal = ramal;
 		this.setEstacionOrigen(estacionOrigen);
+		this.estacionDestino = "";
 	}
 
 	public float calcularMonto() {
 			DatosGenerales datosGenerales = new DatosGenerales();
-			return datosGenerales.getMontoTren1();
+			return datosGenerales.getPrecioMaximoTren();
 	}
 	
 	public double getMontoMaximo() {
 		DatosGenerales datosGenerales = new DatosGenerales();
-		return datosGenerales.getMontoTren1();  //ACA VA EL MONTO MAXIMO
+		return datosGenerales.getPrecioMaximoTren();
 	}
 
 	public String getLinea() {
@@ -73,6 +75,14 @@ public class Tren extends Transporte {
 	public double getMontoEntreEstaciones(String estacion) {
 	//	Seccion seccion = 
 		return 0;
+	}
+
+	public long getIdTren() {
+		return idTren;
+	}
+
+	public void setIdTren(long idTren) {
+		this.idTren = idTren;
 	}
 
 }

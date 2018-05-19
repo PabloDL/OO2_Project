@@ -1,8 +1,14 @@
 package negocio;
 
 import java.util.List;
+
+import dao.SubeDao;
 import dao.TerminalTrenDao;
+import datos.DatosGenerales;
+import datos.Sube;
 import datos.TerminalTren;
+import datos.Tren;
+import datos.Viaje;
 
 public class TerminalTrenABM {
 	TerminalTrenDao dao = new TerminalTrenDao();
@@ -10,15 +16,6 @@ public class TerminalTrenABM {
 	public TerminalTren traerTerminalTren(long idTerminalTren) throws Exception {
 		TerminalTren c = dao.traerTerminalTren(idTerminalTren);
 		// implementar si c es null lanzar Exception ->!
-		if (c == null) {
-			throw new Exception("ERROR: NO EXISTE CLIENTE");
-		}
-		return c;
-	}
-
-	public TerminalTren traerTerminalTren(int dni) throws Exception {
-		TerminalTren c = dao.traerTerminalTren(dni);
-		// implementar si c es null lanzar Exception
 		if (c == null) {
 			throw new Exception("ERROR: NO EXISTE CLIENTE");
 		}
@@ -33,10 +30,6 @@ public class TerminalTrenABM {
 	}
 
 	public void eliminar(long idTerminalTren) throws Exception {
-		
-		// * en este caso es física en gral. no se se aplicaría este caso de uso, si se
-		 // hiciera habría que validar que el cliente no tenga dependencias
-		 //
 		TerminalTren c = dao.traerTerminalTren(idTerminalTren);
 		if (c == null) {
 			throw new Exception("ERROR: NO EXISTE CLIENTE");
@@ -44,4 +37,22 @@ public class TerminalTrenABM {
 		dao.eliminar(c);
 	}
 	
+	public void agregarViaje(int numeroSube, long idTerminalTren /* o id de terminal*/) throws Exception {
+		//aca iria algo asi como el test , tengo q traer la terminal y hacer el proceso de cobro
+		TerminalTren ts = dao.traerTerminalTren(idTerminalTren);
+		if (ts == null) {
+			throw new Exception("ERROR: NO EXITE TERMINAL Tren");
+		}
+
+		//ts.inicializarListaViajes(); // ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA BASE LA LISTA
+		SubeDao daoSube = new SubeDao();
+		Sube sube = daoSube.traerSube(numeroSube);
+
+		ViajeABM viajeAbm = new ViajeABM();
+		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		Tren Tren = new datos.Tren(ts.getLinea(),ts.getRamal(),ts.getEstacion());
+		Viaje v = new Viaje(dG.getPrecioMaximoTren(), Tren, sube);
+
+		viajeAbm.agregarViaje(v);
+	}
 }

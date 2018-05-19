@@ -8,8 +8,10 @@
 		<property column="nombre" name="nombre" type="string" />
 		<property column="apellido" name="apellido" type="string" />
 		<property column="dni" name="dni" type="int" />
-		<property column="esTarifaSocial" name="esTarifaSocial" type="boolean" />
-		<property column="esTarifaEstudiantil" name="esTarifaEstudiantil" type="boolean" />
+		<property column="esTarifaSocial" name="esTarifaSocial"
+			type="boolean" />
+		<property column="esTarifaEstudiantil"
+			name="esTarifaEstudiantil" type="boolean" />
 		<one-to-one name="usuario" class="datos.Usuario"></one-to-one>
 	</class>
 </hibernate-mapping>

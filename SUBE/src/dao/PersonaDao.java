@@ -22,7 +22,6 @@ public class PersonaDao {
 		tx .rollback();
 		throw new HibernateException( "ERROR en la capa de acceso a datos" , he);
 	}
-	
 	public int agregar(Persona objeto) {
 		int id = 0;
 		try {
@@ -65,7 +64,6 @@ public class PersonaDao {
 			session .close();
 		}
 	}
-	
 	public Persona traerPersona(long idPersona) throws HibernateException {
 		Persona objeto = null ;
 		try {
@@ -87,24 +85,17 @@ public class PersonaDao {
 		}
 		return objeto;
 	}
-	
 	@SuppressWarnings ( "unchecked" )
 	public List<Persona> traerPersona() throws HibernateException {
 		List<Persona> lista= null ;
 		try {
 			iniciaOperacion();
 			lista= session .createQuery( "from Persona p order by p.apellido asc p.nombre asc" ).list();
-		} 
-		catch(HibernateException he){
-			manejaExcepcion(he);
-			throw (he);			
-		}	
-		finally {
+		} finally {
 			session .close();
 		}
 		return lista;
 	}
-	
 	public Persona traerPersonaYUsuario( long idPersona) throws HibernateException {
 		Persona objeto = null ;
 		try {
@@ -113,10 +104,6 @@ public class PersonaDao {
 			objeto=(Persona) session .createQuery(hql).uniqueResult();
 			Hibernate.initialize(objeto.getUsuario());
 		}
-		catch(HibernateException he){
-			manejaExcepcion(he);
-			throw (he);			
-		}	
 		finally {
 			session .close();
 		}

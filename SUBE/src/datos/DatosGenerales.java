@@ -4,9 +4,7 @@ public class DatosGenerales {
 	private static DatosGenerales instanciaDatosGenerales;
 
 	private float montoSubte = 10;
-	private float montoTren1 = 3;
-	private float montoTren2 = 4;
-	private float montoTren3 = 5;
+	private float PrecioMaximoTren  = 5;
 	private float montoColectivo1 = 10;
 	private float montoColectivo2 = 20;
 	private float montoColectivo3 = 30;
@@ -49,24 +47,6 @@ public class DatosGenerales {
 	}
 	public void setMontoSubte(float montoSubte) {
 		this.montoSubte = montoSubte;
-	}
-	public float getMontoTren1() {
-		return montoTren1;
-	}
-	public void setMontoTren1(float montoTren1) {
-		this.montoTren1 = montoTren1;
-	}
-	public float getMontoTren2() {
-		return montoTren2;
-	}
-	public void setMontoTren2(float montoTren2) {
-		this.montoTren2 = montoTren2;
-	}
-	public float getMontoTren3() {
-		return montoTren3;
-	}
-	public void setMontoTren3(float montoTren3) {
-		this.montoTren3 = montoTren3;
 	}
 	public float getMontoColectivo1() {
 		return montoColectivo1;
@@ -135,6 +115,29 @@ public class DatosGenerales {
 	private void inicializar(){ //pueden leer la instancia de un archivo xml
 		//this​.setNombre("Soft Argentina");
 		//this​.setEmail("softargentina@unla.edu.ar");
+	}
+
+	public float getPrecioMaximoTren() {
+		return PrecioMaximoTren;
+	}
+
+	public void setPrecioMaximoTren(float precioMaximoTren) {
+		PrecioMaximoTren = precioMaximoTren;
+	}
+
+	public double determinarPrecioTramo(int tramo) {
+		if (tramo == 1 )
+			return this.getMontoColectivo1();
+		if (tramo == 2 )
+			return this.getMontoColectivo1();
+		if (tramo == 3 )
+			return this.getMontoColectivo1();
+		if (tramo == 4 )
+			return this.getMontoColectivo1();
+		if (tramo == 5 )
+			return this.getMontoColectivo1();
+			
+		return 0;
 	}
 
 }

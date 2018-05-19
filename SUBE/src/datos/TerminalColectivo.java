@@ -48,7 +48,7 @@ public class TerminalColectivo extends Terminal {
 		// creo un viaje y cargo los datos necesarios,
 		if(this.verificarSaldoSuficiente(sube, precioBoleto)) {
 			colectivo = new Colectivo(this.linea, this.numero, this.ramal);
-			nuevoViaje = new Viaje(precioBoleto, colectivo); // GUARDO TARIFA VIAJE O MONTO REAL PAGADO?
+			nuevoViaje = new Viaje(precioBoleto, colectivo, sube); // GUARDO TARIFA VIAJE O MONTO REAL PAGADO?
 		// YA ESTA CALCULADO float monto = nuevoViaje.calcularMonto(descuentoAAplicar);
 		// //CALCULA A PARTIR DEL TRANSPORTE EL MONTO -> si fuera otro transporte en el
 		// contructor detallo el tramo o estacion
@@ -96,6 +96,7 @@ public class TerminalColectivo extends Terminal {
 		
 		double tarifa = this.determinarPrecioTramo(tramoACobrar);
 		//POR ACA
+		/*
 		if (sube.getUltimosViajes().size() > 0) {
 			Viaje ultimoViaje = sube.getUltimosViajes().get(sube.getUltimosViajes().size() - 1);
 			LocalDateTime tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
@@ -129,7 +130,7 @@ public class TerminalColectivo extends Terminal {
 		else if (sube.getPersona().isEsTarifaEstudiantil() == true) { //SI APLICA TARIFA SOCIAL NO APLICA TARIFA ESTUDIANTIL
 			tarifa = tarifa - (tarifa * datosGenerales.getTarifaEstudiantilColectivo());
 		}
-					
+			*/		
 		return (tarifa - (tarifa * descuentoRedSube));
 
 	}

@@ -73,7 +73,7 @@ public class TerminalTren extends Terminal {
 		// creo un viaje y cargo los datos necesarios,
 		if(this.verificarSaldoSuficiente(sube, precioBoleto)) {
 			tren = new Tren(this.linea, this.ramal, this.estacion);
-			nuevoViaje = new Viaje(precioBoleto, tren); // GUARDO TARIFA VIAJE O MONTO REAL PAGADO?
+			nuevoViaje = new Viaje(precioBoleto, tren, sube); // GUARDO TARIFA VIAJE O MONTO REAL PAGADO?
 		// YA ESTA CALCULADO float monto = nuevoViaje.calcularMonto(descuentoAAplicar);
 		// //CALCULA A PARTIR DEL TRANSPORTE EL MONTO -> si fuera otro transporte en el
 		// contructor detallo el tramo o estacion
@@ -99,8 +99,8 @@ public class TerminalTren extends Terminal {
 	public double calcularPrecio(Sube sube, int tramoACobrar) {
 		double descuentoRedSube = 0;
 		DatosGenerales datosGenerales = new DatosGenerales();
-		double tarifa = datosGenerales.getMontoTren3();// ELIJO EL MONTO MAXIMO DE TREN (SI NO ES SALIDA VA ESE)
-		
+		double tarifa = 0;// = datosGenerales.getMontoTren3();// ELIJO EL MONTO MAXIMO DE TREN (SI NO ES SALIDA VA ESE)
+		/*
 		if (sube.getUltimosViajes().size() > 0) {
 			Viaje ultimoViaje = sube.getUltimosViajes().get(sube.getUltimosViajes().size() - 1);
 			LocalDateTime tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
@@ -167,7 +167,7 @@ public class TerminalTren extends Terminal {
 		if (sube.getPersona().isEsTarifaEstudiantil() == true) {
 			tarifa = datosGenerales.getTarifaEstudiantilTren();
 		}
-					
+					*/
 		return (tarifa - (tarifa * descuentoRedSube)); // si la tarifa es - quiere decir que es una salida 
 	}
 

@@ -1,8 +1,16 @@
 package negocio;
 
 import java.util.List;
+
+import dao.SubeDao;
 import dao.TerminalColectivoDao;
+import datos.Colectivo;
+import datos.DatosGenerales;
+import datos.Sube;
+import datos.Subte;
 import datos.TerminalColectivo;
+import datos.TerminalSubte;
+import datos.Viaje;
 
 public class TerminalColectivoABM {
 	TerminalColectivoDao dao = new TerminalColectivoDao();
@@ -42,6 +50,25 @@ public class TerminalColectivoABM {
 			throw new Exception("ERROR: NO EXISTE CLIENTE");
 		}
 		dao.eliminar(c);
+	}
+	
+	public void agregarViaje(int numeroSube, long idTerminalColectivo, int tramo) throws Exception {
+		//aca iria algo asi como el test , tengo q traer la terminal y hacer el proceso de cobro
+		TerminalColectivo ts = dao.traerTerminalColectivo(idTerminalColectivo);
+		if (ts == null) {
+			throw new Exception("ERROR: NO EXITE TERMINAL Colectivo");
+		}
+
+		//ts.inicializarListaViajes(); // ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA BASE LA LISTA
+		SubeDao daoSube = new SubeDao();
+		Sube sube = daoSube.traerSube(numeroSube);
+
+		ViajeABM viajeAbm = new ViajeABM();
+		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		Colectivo Colectivo = new Colectivo(ts.getLinea(),ts.getNumero(), ts.getRamal());
+		Viaje v = new Viaje(dG.determinarPrecioTramo(tramo), Colectivo, sube);
+
+		viajeAbm.agregarViaje(v);
 	}
 	
 }

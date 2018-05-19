@@ -17,5 +17,8 @@
 		<mapping resource="mapeos/TerminalSubte.hbm.xml" />
 		<mapping resource="mapeos/TerminalTren.hbm.xml" />  
 		<mapping resource="mapeos/TerminalColectivo.hbm.xml" />
+		<mapping resource="mapeos/Sube.hbm.xml"/>
+		<mapping resource="mapeos/Viaje.hbm.xml"/>
+		<mapping resource="mapeos/Transporte.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

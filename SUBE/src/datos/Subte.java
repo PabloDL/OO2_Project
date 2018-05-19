@@ -2,9 +2,10 @@ package datos;
 
 import datos.DatosGenerales;
 
-public class Subte extends Transporte {
+public class Subte extends Transporte{
+	private long idSubte;
 	private String letra;
-
+	
 	public Subte() {}
 
 	public Subte(String letra) {
@@ -24,4 +25,5 @@ public class Subte extends Transporte {
 			DatosGenerales datosGenerales = new DatosGenerales();
 			return datosGenerales.getMontoSubte();
 	}
+
 }

@@ -1,30 +1,42 @@
 package datos;
 
 import java.time.LocalDateTime;
-import java.util.GregorianCalendar;
 
 public class Viaje {
 	private long idViaje;
 	private double tarifa;
-	Transporte transporte;
+	private Transporte transporte;
+	private Sube sube;
 	private LocalDateTime fechaHoraInicio;
-	
-	public long getIdViaje() {
-		return idViaje;
-	}
 	
 	public Viaje() {
 		super();
 	}
 	
-	public Viaje(double tarifa, Transporte transporte) {
+	public Viaje(double tarifa, Transporte transporte, Sube s) {
 		super();
 		this.tarifa = tarifa;
 		this.transporte = transporte;
 		this.fechaHoraInicio = LocalDateTime.now();
+		this.sube = s;
 		//GUARDAR LAS FECHA this.fechaHoraInicio = fechaHoraInicio;
 	}
-	
+
+	public Sube getSube() {
+		return sube;
+	}
+
+	public void setSube(Sube sube) {
+		this.sube = sube;
+	}
+
+	public void setTransporte(Transporte transporte) {
+		this.transporte = transporte;
+	}
+
+	public long getIdViaje() {
+		return idViaje;
+	}
 	
 	public void setIdViaje(long idViaje) {
 		this.idViaje = idViaje;
@@ -47,12 +59,6 @@ public class Viaje {
 	public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
 		this.fechaHoraInicio = fechaHoraInicio;
 	}
-	
-	@Override
-	public String toString() {
-		return "\n Viaje [idViaje=" + idViaje + ", tarifa=" + tarifa + ", transporte=" + transporte
-				+ ", fechaHoraInicio=" + fechaHoraInicio + "] \n";
-	}
 		
 	public float calcular() {
 		return 0;
@@ -72,6 +78,12 @@ public class Viaje {
 		((Tren)this.getTransporte()).setEstacionDestino(estacionDestino);
 		((Tren)this.getTransporte()).setFechaHoraSalida(fechaHoraSalida);
 		this.setTarifa(tarifaFinal);
+	}
+	
+	@Override
+	public String toString() {
+		return "\n Viaje [idViaje=" + idViaje + ", tarifa=" + tarifa + ", transporte=" + transporte
+				+ ", fechaHoraInicio=" + fechaHoraInicio + "] \n";
 	}
 
 }

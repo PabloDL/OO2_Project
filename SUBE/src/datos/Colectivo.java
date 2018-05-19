@@ -1,13 +1,12 @@
 package datos;
 
 public class Colectivo extends Transporte {
+	private long idColectivo;
 	private String linea;
 	private int numero;
 	private String ramal;
 	
-	public Colectivo() {
-		
-	}
+	public Colectivo() {}
 	
 	public Colectivo(String linea, int numero, String ramal) {
 		super();
@@ -32,6 +31,14 @@ public class Colectivo extends Transporte {
 	}
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
+	}
+
+	public long getIdColectivo() {
+		return idColectivo;
+	}
+
+	public void setIdColectivo(long idColectivo) {
+		this.idColectivo = idColectivo;
 	}
 	
 
