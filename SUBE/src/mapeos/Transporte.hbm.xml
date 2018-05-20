@@ -1,32 +1,29 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
+<hibernate-mapping>	
 	<class name="datos.Transporte" table="transporte">
-		<id column="idTransporte" name="idTransporte">
+		<id column="idtransporte" name="idTransporte">
 			<generator class="identity" />
 		</id>
 		<joined-subclass name="datos.Tren" table="tren">
-			<key column="idTransporte" />
+			<key column="idtren" />
 			<property column="linea" name="linea" type="string" />
 			<property column="ramal" name="ramal" type="string" />
 			<property column="estacionOrigen" name="estacionOrigen"
 				type="string" />
 			<property column="estacionDestino" name="estacionDestino"
 				type="string" />
-			<property column="fechaHoraSalida" name="fechaHoraSalida"
-				type="calendar" />
 		</joined-subclass>
 		<joined-subclass name="datos.Colectivo"
 			table="colectivo">
-			<key column="idTransporte" />
+			<key column="idcolectivo" />
 			<property column="linea" name="linea" type="string" />
 			<property column="ramal" name="ramal" type="string" />
 			<property column="numero" name="numero" type="int" />
 		</joined-subclass>
 		<joined-subclass name="datos.Subte" table="subte">
-			<key column="idTransporte" />
+			<key column="idsubte" />
 			<property column="linea" name="linea" type="string" />
-			<property column="estacion" name="estacion" type="string" />
 		</joined-subclass>
 	</class>
 </hibernate-mapping>

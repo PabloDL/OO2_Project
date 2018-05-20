@@ -14,6 +14,15 @@ public class Colectivo extends Transporte {
 		this.numero = numero;
 		this.ramal = ramal;
 	}
+	
+	public long getIdColectivo() {
+		return idColectivo;
+	}
+
+	protected void setIdColectivo(long idColectivo) {
+		this.idColectivo = idColectivo;
+	}
+	
 	public String getLinea() {
 		return linea;
 	}
@@ -32,14 +41,4 @@ public class Colectivo extends Transporte {
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
 	}
-
-	public long getIdColectivo() {
-		return idColectivo;
-	}
-
-	public void setIdColectivo(long idColectivo) {
-		this.idColectivo = idColectivo;
-	}
-	
-
 }

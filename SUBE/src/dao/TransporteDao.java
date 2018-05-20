@@ -30,12 +30,11 @@ public class TransporteDao {
 		throw new HibernateException("ERROR en la capa de acceso a datos", he);
 	}
 
-	public Transporte traer(int idTransporte) {
+	public Transporte traer(long idTransporte) {
 		Transporte objeto = null;
 		try {
 			iniciaOperacion();
-			objeto = (Transporte) session.createQuery("from Transporte c where c.idTransporte =" + idTransporte)
-					.uniqueResult();
+			objeto = (Transporte) session.createQuery("from Transporte c where c.idTransporte =" + idTransporte).uniqueResult();
 		} finally {
 			session.close();
 		}

@@ -7,7 +7,7 @@
 </id >
 <property column = "numeroSube" name = "numero" type = "string"/>
 <property column = "saldo" name = "saldo" type = "int"/>
-<set name = "viajes" table = "viaje" order-by = "fechaYHora asc" inverse = "true" lazy = "true" fetch = "select">
+<set name = "viajes" table = "viaje" order-by = "idViaje asc" inverse = "true" lazy = "true" fetch = "select">
 <key column = "idViaje" not-null = "true"/>
 <one-to-many class = "datos.Viaje"/>
 </set>

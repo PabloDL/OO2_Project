@@ -9,9 +9,7 @@ public class Viaje {
 	private Sube sube;
 	private LocalDateTime fechaHoraInicio;
 	
-	public Viaje() {
-		super();
-	}
+	public Viaje() {}
 	
 	public Viaje(double tarifa, Transporte transporte, Sube s) {
 		super();

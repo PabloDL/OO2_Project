@@ -19,18 +19,17 @@ public class Tren extends Transporte {
 		this.linea = linea;
 		this.ramal = ramal;
 		this.setEstacionOrigen(estacionOrigen);
-		this.estacionDestino = "";
-	}
-
-	public float calcularMonto() {
-			DatosGenerales datosGenerales = new DatosGenerales();
-			return datosGenerales.getPrecioMaximoTren();
+		this.estacionDestino = " ";
 	}
 	
-	public double getMontoMaximo() {
-		DatosGenerales datosGenerales = new DatosGenerales();
-		return datosGenerales.getPrecioMaximoTren();
+	public long getIdTren() {
+		return idTren;
 	}
+
+	protected void setIdTren(long idTren) {
+		this.idTren = idTren;
+	}
+
 
 	public String getLinea() {
 		return linea;
@@ -76,13 +75,16 @@ public class Tren extends Transporte {
 	//	Seccion seccion = 
 		return 0;
 	}
-
-	public long getIdTren() {
-		return idTren;
+	
+	public float calcularMonto() {
+		DatosGenerales datosGenerales = new DatosGenerales();
+		return datosGenerales.getPrecioMaximoTren();
 	}
 
-	public void setIdTren(long idTren) {
-		this.idTren = idTren;
+	public double getMontoMaximo() {
+		DatosGenerales datosGenerales = new DatosGenerales();
+		return datosGenerales.getPrecioMaximoTren();
 	}
+
 
 }

@@ -1,6 +1,6 @@
 package datos;
 
-public abstract class Transporte {
+public class Transporte {
 	private long idTransporte;
 	
 	public Transporte(){}
@@ -9,9 +9,12 @@ public abstract class Transporte {
 		return idTransporte;
 	}
 
-	public void setIdTransporte(long idTransporte) {
+	protected void setIdTransporte(long idTransporte) {
 		this.idTransporte = idTransporte;
 	}
-
-			
+	
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idTransporte + "]";
+	}		
 }
