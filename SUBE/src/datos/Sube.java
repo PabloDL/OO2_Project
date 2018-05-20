@@ -1,21 +1,17 @@
 package datos;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 public class Sube {
-	private int idSube;
+	private long idSube;
 	private long numero;
 	private Persona persona;
 	private Set<Viaje> ultimosViajes; //el ultimo viaje es el primero
 	private double saldo;
 
-	public Sube() {
-		
-	}
+	public Sube() {}
 	
 	public Sube(int idSube, long numero, Persona persona, float saldo) {
 		super();
@@ -26,33 +22,42 @@ public class Sube {
 		this.saldo = saldo;
 	}
 	
-	public int getIdSube() {
+	public long getIdSube() {
 		return idSube;
 	}
-	public void setIdSube(int idSube) {
+	
+	protected void setIdSube(long idSube) {
 		this.idSube = idSube;
 	}
+	
 	public long getNumero() {
 		return numero;
 	}
+	
 	public void setNumero(long numero) {
 		this.numero = numero;
 	}
+	
 	public Persona getPersona() {
 		return persona;
 	}
+	
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
+	
 	public Set<Viaje> getUltimosViajes() {
 		return ultimosViajes;
 	}
+	
 	public void setUltimosViajes(Set<Viaje> ultimosViajes) {
 		this.ultimosViajes = ultimosViajes;
 	}
+	
 	public double getSaldo() {
 		return saldo;
 	}
+	
 	public void setSaldo(double d) {
 		this.saldo = d;
 	}
@@ -76,7 +81,6 @@ public class Sube {
 		}
 	}
 	
-
 	@Override
 	public String toString() {
 		return "Sube [idSube=" + idSube + ", numero=" + numero + ", persona=" + persona + ", ultimosViajes="

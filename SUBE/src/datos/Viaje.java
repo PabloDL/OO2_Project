@@ -19,6 +19,14 @@ public class Viaje {
 		this.sube = s;
 		//GUARDAR LAS FECHA this.fechaHoraInicio = fechaHoraInicio;
 	}
+	
+	public Transporte getTransporte() {
+		return transporte;
+	}
+	
+	protected void setIdTransporte(Transporte idTransporte) {
+		this.transporte = idTransporte;
+	}
 
 	public Sube getSube() {
 		return sube;
@@ -45,12 +53,7 @@ public class Viaje {
 	public void setTarifa(double tarifa) {
 		this.tarifa = tarifa;
 	}
-	public Transporte getTransporte() {
-		return transporte;
-	}
-	public void setIdTransporte(Transporte idTransporte) {
-		this.transporte = idTransporte;
-	}
+
 	public LocalDateTime getFechaHoraInicio() {
 		return fechaHoraInicio;
 	}

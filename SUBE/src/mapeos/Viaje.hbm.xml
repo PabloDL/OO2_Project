@@ -5,9 +5,9 @@
 		<id column="idviaje" name="idViaje">
 			<generator class="identity" />
 		</id>
-		<property column="tarifa" name="linea" type="string" />
-		<property column="fechaYHora" name="ramal" type="calendar" />
+		<property column="tarifa" name="tarifa" type="float" />
+		<property column="fechaYHora" name="fechaHoraInicio" type="calendar" />
 		<many-to-one name = "sube" class = "datos.Sube" column = "idSube" not-null = "true"/>
-		<one-to-one name = "transporte" class = "datos.Transporte"></one-to-one>
+		<one-to-one name = "transporte" class = "datos.Transporte" ></one-to-one>
 	</class>
 </hibernate-mapping>
