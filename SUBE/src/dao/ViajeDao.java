@@ -82,7 +82,7 @@ public class ViajeDao {
 		List<Viaje> lista = null;
 		try {
 			iniciaOperacion();
-			String hQL = "from Viaje v inner join fetch v.idSube s order by FechaYHora desc where s.idSube=" + sube.getIdSube();
+			String hQL = "from Viaje v inner join fetch v.sube s order by FechaYHora desc where s.idSube=" + sube.getIdSube();
 			lista = session.createQuery(hQL).list();
 			
 		} finally {

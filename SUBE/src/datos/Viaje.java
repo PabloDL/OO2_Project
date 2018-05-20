@@ -1,13 +1,13 @@
 package datos;
 
-import java.time.LocalDateTime;
+import java.util.GregorianCalendar;
 
 public class Viaje {
 	private long idViaje;
 	private double tarifa;
 	private Transporte transporte;
 	private Sube sube;
-	private LocalDateTime fechaHoraInicio;
+	private GregorianCalendar fechaHoraInicio;
 	
 	public Viaje() {}
 	
@@ -15,7 +15,7 @@ public class Viaje {
 		super();
 		this.tarifa = tarifa;
 		this.transporte = transporte;
-		this.fechaHoraInicio = LocalDateTime.now();
+		this.fechaHoraInicio = new GregorianCalendar();
 		this.sube = s;
 		//GUARDAR LAS FECHA this.fechaHoraInicio = fechaHoraInicio;
 	}
@@ -54,10 +54,10 @@ public class Viaje {
 		this.tarifa = tarifa;
 	}
 
-	public LocalDateTime getFechaHoraInicio() {
+	public GregorianCalendar getFechaHoraInicio() {
 		return fechaHoraInicio;
 	}
-	public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
+	public void setFechaHoraInicio(GregorianCalendar fechaHoraInicio) {
 		this.fechaHoraInicio = fechaHoraInicio;
 	}
 		
@@ -73,7 +73,7 @@ public class Viaje {
 	public void agregarDestinoAViaje(Viaje viaje) {
 		// SOLO tren admite setear salida, si quiero agregar los otros deberia definirlo
 		String estacionDestino  = ((Tren)this.getTransporte()).getEstacionOrigen();
-		LocalDateTime fechaHoraSalida = ((Tren)this.getTransporte()).getFechaHoraSalida();
+		GregorianCalendar fechaHoraSalida = ((Tren)this.getTransporte()).getFechaHoraSalida();
 		double tarifaFinal  = -viaje.getTarifa();
 		//SETEO LOS VALORES EN EL TRANSPORTE
 		((Tren)this.getTransporte()).setEstacionDestino(estacionDestino);

@@ -1,7 +1,5 @@
 package datos;
 
-import java.util.ArrayList;
-
 public class TerminalSubte /*extends Terminal*/ {
 	private long idTerminalSubte; 
 	private String letra;

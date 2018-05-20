@@ -1,6 +1,6 @@
 package datos;
 
-import java.time.LocalDateTime;
+import java.util.GregorianCalendar;
 
 import datos.DatosGenerales;
 
@@ -10,7 +10,7 @@ public class Tren extends Transporte {
 	private String ramal;
 	private String estacionOrigen;
 	private String estacionDestino;
-	private LocalDateTime fechaHoraSalida;
+	private GregorianCalendar fechaHoraSalida;
 
 	public Tren() {}
 
@@ -63,11 +63,11 @@ public class Tren extends Transporte {
 		this.estacionDestino = estacionDestino;
 	}
 
-	public LocalDateTime getFechaHoraSalida() {
+	public GregorianCalendar getFechaHoraSalida() {
 		return fechaHoraSalida;
 	}
 
-	public void setFechaHoraSalida(LocalDateTime fechaHoraSalida) {
+	public void setFechaHoraSalida(GregorianCalendar fechaHoraSalida) {
 		this.fechaHoraSalida = fechaHoraSalida;
 	}
 

@@ -7,6 +7,7 @@ import dao.SubeDao;
 //import dao.subeDao
 
 import dao.TerminalSubteDao;
+import dao.TransporteDao;
 import dao.ViajeDao;
 import datos.DatosGenerales;
 import datos.Sube;
@@ -61,6 +62,8 @@ public class TerminalSubteABM {
 		ViajeABM viajeAbm = new ViajeABM();
 		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
 		Subte subte = new Subte(ts.getLetra());
+		TransporteABM.getInstance().agregar(subte);
+		
 		Viaje v = new Viaje(dG.getMontoSubte(), subte, sube);
 
 		viajeAbm.agregarViaje(v);

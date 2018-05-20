@@ -12,5 +12,6 @@
 			<key column="idViaje" not-null="true" />
 			<one-to-many class="datos.Viaje" />
 		</set>
+		<one-to-one name = "persona" class = "datos.Persona" ></one-to-one>
 	</class>
 </hibernate-mapping>

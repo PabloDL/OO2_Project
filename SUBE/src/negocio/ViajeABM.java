@@ -1,6 +1,6 @@
 package negocio;
 
-import java.time.LocalDateTime;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -116,20 +116,23 @@ public class ViajeABM {
 		Iterator<Viaje> it = ultimosNviajes.iterator();
 		if (it.hasNext()) {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
-			LocalDateTime tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			LocalDateTime tiempoFinal = tiempoInicial.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
+			
 			if (!(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Colectivo")) || 
 					((ultimoViaje.getTransporte().getClass().getSimpleName().equals("Colectivo")) && 
 							((Colectivo)ultimoViaje.getTransporte()).getLinea() != ((Colectivo)v.getTransporte()).getLinea() ||
 								((Colectivo)ultimoViaje.getTransporte()).getRamal() != ((Colectivo)v.getTransporte()).getRamal()) ){
 				
-				if (tiempoFinal.compareTo(LocalDateTime.now()) >= 0) {
+				if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
 						Viaje anteUltimoViaje = it.next();
-						LocalDateTime tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
-						LocalDateTime tiempoFinalAnteUltimoViaje = tiempoAnteUltimo.plusHours(2);
+						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
+						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
 							descuentoRedSube = 0.75;
 						}
@@ -162,20 +165,22 @@ public class ViajeABM {
 		Iterator<Viaje> it = ultimosNviajes.iterator();
 		if (it.hasNext()) {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
-			LocalDateTime tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			LocalDateTime tiempoFinal = tiempoInicial.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); 
 			if (!(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Tren")) || 
 					((ultimoViaje.getTransporte().getClass().getSimpleName().equals("Tren")) && 
 							((Tren)ultimoViaje.getTransporte()).getLinea() != ((Tren)v.getTransporte()).getLinea() 
 							|| ((Tren)ultimoViaje.getTransporte()).getEstacionDestino() != "")){ // VEO Q NO SEA UNA NUEVA ENTRADA
 				
-				if (tiempoFinal.compareTo(LocalDateTime.now()) >= 0) {
+				if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
 						Viaje anteUltimoViaje = it.next();
-						LocalDateTime tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
-						LocalDateTime tiempoFinalAnteUltimoViaje = tiempoAnteUltimo.plusHours(2);
+						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
+						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
 							descuentoRedSube = 0.75;
 						}
@@ -192,20 +197,22 @@ public class ViajeABM {
 				if (it.hasNext()) { //POR LO MENOS TIENE Q TENER UN VIAJE ANTES DEL TREN(EL TREN seria en posicion 1, en 0 otro)
 					ultimoViaje = it.next();
 					tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-					tiempoFinal = tiempoInicial.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+					tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+					tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
 
 					if (ultimoViaje.getTransporte().getClass().getSimpleName() != "Tren" || 
 							(ultimoViaje.getTransporte().getClass().getSimpleName() == "Tren" && 
 								((Tren)(ultimoViaje.getTransporte())).getLinea() != ((Tren)v.getTransporte()).getLinea() )) {// SI ES DISTINTO DE TREN, CALCULO LOS DESCUENTOS, SI ES TREN VEO SI ES SALIDA
 																							// OJOOO TENGO Q EVALUAR SI ES OTRA LINEA DE TREN
-						if (tiempoFinal.compareTo(LocalDateTime.now()) >= 0) {
+						if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
 							descuentoRedSube = 0.50;
 							// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 							if (it.hasNext()) {
 								Viaje anteUltimoViaje = it.next();
-								LocalDateTime tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
+								GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
 																										// A TIEMPO INICIAL
-								LocalDateTime tiempoFinalAnteUltimoViaje = tiempoAnteUltimo.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+								GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+								tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 	
 								if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
 									descuentoRedSube = 0.75;
@@ -244,17 +251,20 @@ public class ViajeABM {
 		Iterator<Viaje> it = ultimosNviajes.iterator();
 		if (it.hasNext()) {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
-			LocalDateTime tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			LocalDateTime tiempoFinal = tiempoInicial.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
+			
 			if (!(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Subte"))) {// EN este caso si es
 																							// otrosubte no aplica dt
-				if (tiempoFinal.compareTo(LocalDateTime.now()) >= 0) {
+				if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
 						Viaje anteUltimoViaje = it.next();
-						LocalDateTime tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
-						LocalDateTime tiempoFinalAnteUltimoViaje = tiempoAnteUltimo.plusHours(2);
+						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
+						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
 							descuentoRedSube = 0.75;
 						}

@@ -15,7 +15,7 @@ public class SubeABM {
 			Sube c = dao.traerSube(idSube);
 			// implementar si c es null lanzar Exception ->!
 			if (c == null) {
-				throw new Exception("ERROR: NO EXISTE CLIENTE");
+				throw new Exception("ERROR: NO EXISTE SUBE");
 			}
 			return c;
 		}
