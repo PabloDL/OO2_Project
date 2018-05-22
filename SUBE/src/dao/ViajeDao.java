@@ -85,9 +85,42 @@ public class ViajeDao {
 			String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
 			lista = session.createQuery(hQL).list();
 			
-		} finally {
+		}	
+		catch(HibernateException he){
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
 			session.close();
 		}
 		return lista;
 	}
+	
+	public List<Viaje> traerReporte(String hql) throws HibernateException {
+		ArrayList<Viaje> viajes = null ;
+		try {
+			iniciaOperacion();
+			viajes = (ArrayList<Viaje>) session.createQuery(hql).list();
+		}
+		catch(HibernateException he){
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
+			session .close();
+		}
+		return viajes;
+	}
+	
+	public void test() throws HibernateException {
+		try {
+			iniciaOperacion();
+		}
+		catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
+			session.close();
+		}
 }
