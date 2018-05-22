@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
@@ -83,7 +82,7 @@ public class ViajeDao {
 		List<Viaje> lista = null;
 		try {
 			iniciaOperacion();
-			String hQL = "from Viaje v inner join fetch v.sube s order by FechaYHora desc where s.idSube=" + sube.getIdSube();
+			String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
 			lista = session.createQuery(hQL).list();
 			
 		} finally {
@@ -91,16 +90,4 @@ public class ViajeDao {
 		}
 		return lista;
 	}
-	
-	public List<Viaje> traerReporte(String hql) throws HibernateException {
-		ArrayList<Viaje> viajes = null ;
-		try {
-			iniciaOperacion();
-			viajes = (ArrayList<Viaje>) session.createQuery(hql).list();
-		} finally {
-			session .close();
-		}
-		return viajes;
-	}
-	
 }

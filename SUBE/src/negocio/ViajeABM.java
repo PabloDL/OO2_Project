@@ -1,5 +1,6 @@
 package negocio;
 
+import java.awt.print.Printable;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
@@ -51,6 +52,7 @@ public class ViajeABM {
 		// Viaje s = dao.traerViaje(v.getIdViaje());
 		// s.inicializarListaViajes(); //ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA
 		//// BASE LA LISTA
+			
 		SubeABM subeABM = new SubeABM();
 		Sube s = subeABM.traerSube(v.getSube().getIdSube());
 		double precioBoleto = this.calcularPrecio(v); // si el precio es (-) quiere decir que es ua salida de tren
@@ -64,7 +66,7 @@ public class ViajeABM {
 			Iterator<Viaje> it = ultimosNviajes.iterator();
 			if (it.hasNext()) {
 				Viaje ultimoViaje = it.next();
-				ultimoViaje.agregarDestinoAViaje(v);
+				ultimoViaje = this.agregarDestinoAViaje(ultimoViaje, v);
 				s.setSaldo(s.getSaldo() + ultimoViaje.getTarifa() - v.getTarifa());
 				dao.actualizar(ultimoViaje);
 			}
@@ -125,7 +127,7 @@ public class ViajeABM {
 							((Colectivo)ultimoViaje.getTransporte()).getLinea() != ((Colectivo)v.getTransporte()).getLinea() ||
 								((Colectivo)ultimoViaje.getTransporte()).getRamal() != ((Colectivo)v.getTransporte()).getRamal()) ){
 				
-				if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
+				if ((new GregorianCalendar()).getTimeInMillis() < tiempoFinal.getTimeInMillis()){
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
@@ -133,7 +135,7 @@ public class ViajeABM {
 						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
 						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
-						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
+						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() > tiempoInicial.getTimeInMillis()){							
 							descuentoRedSube = 0.75;
 						}
 					}
@@ -151,6 +153,7 @@ public class ViajeABM {
 		double descuentoRedSube = 0;
 		double tarifa = v.getTarifa();
 		SubeABM subeABM = new SubeABM();
+		TransporteABM transporteABM = new TransporteABM();
 		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
 		
 		Sube sube = subeABM.traerSube(v.getSube().getIdSube());
@@ -158,6 +161,7 @@ public class ViajeABM {
 		if (sube == null) {
 			throw new Exception("ERROR: NO EXISTE SUBE");
 		}
+		
 		// Traigo ultimos 5 viajes de la sube para verificar redSube --> VER COMO HACER
 		// Q CADA 6 DEJE DE APLICAR RED SUBE
 		List<Viaje> ultimosNviajes = this.traerUltimosNViajes(sube);
@@ -167,13 +171,24 @@ public class ViajeABM {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
 			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
 			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
-			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); 
-			if (!(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Tren")) || 
-					((ultimoViaje.getTransporte().getClass().getSimpleName().equals("Tren")) && 
-							((Tren)ultimoViaje.getTransporte()).getLinea() != ((Tren)v.getTransporte()).getLinea() 
-							|| ((Tren)ultimoViaje.getTransporte()).getEstacionDestino() != "")){ // VEO Q NO SEA UNA NUEVA ENTRADA
-				
-				if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
+			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2);			
+			
+			Transporte ultimoTransporte = transporteABM.traer(ultimoViaje.getTransporte().getIdTransporte());
+			if (ultimoTransporte == null) {
+				throw new Exception("ERROR: NO EXISTE TRANSPORTE");
+			}
+
+			if ( (!(ultimoTransporte.getClass().getSimpleName().equals("Tren"))) || 
+					(ultimoTransporte.getClass().getSimpleName().equals("Tren")) && 
+							((Tren)ultimoTransporte).getLinea().compareTo(((Tren)v.getTransporte()).getLinea()) != 0 || ( 
+									((ultimoTransporte.getClass().getSimpleName().equals("Tren")) && 
+											(((Tren)ultimoTransporte).getLinea() == ((Tren)v.getTransporte()).getLinea())
+											&& ((Tren)ultimoTransporte).getEstacionDestino() != "-"))){ // VEO Q NO SEA UNA NUEVA ENTRADA
+				if (ultimoTransporte.getClass().getSimpleName().equals("Tren")) {  
+					String test = ((Tren)ultimoTransporte).getEstacionDestino();
+					System.out.println(test);
+				}
+				if ((new GregorianCalendar()).getTimeInMillis() < tiempoFinal.getTimeInMillis()){
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
@@ -181,14 +196,14 @@ public class ViajeABM {
 						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
 						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
-						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
+						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() > tiempoInicial.getTimeInMillis()){							
 							descuentoRedSube = 0.75;
 						}
 					}
 				}
 			}
 			else { //SI ES UN TREN Y LA MISMA LINEA, entonces es una salida
-				tarifa = dG.traerTarifaTren(((Tren)(ultimoViaje.getTransporte())).getEstacionOrigen(), ((Tren)(v.getTransporte())).getEstacionOrigen());
+				tarifa = dG.traerTarifaTren(((Tren)ultimoTransporte).getEstacionOrigen(), ((Tren)(v.getTransporte())).getEstacionOrigen());
 				//tarifa = (((Tren)(ultimoViaje.getTransporte())).getMontoEntreEstaciones(this.estacion);
 // SI ES SALIDA NO TENGO Q SUMAR AL BOLETO,SINO RESTAR LO Q CORRESPONDA, QUEDA NGATIVO
 //POR EJEMPLO, SI EL BOLETO MAXIMO SALIO 6 Y EN REALIDAD EN LA SALIDA DEBERIA HABER SIDO $3, LO Q HAGO ES RESTAR, EL TEMA ES SI APLICARON DESCUENTOS...
@@ -199,12 +214,18 @@ public class ViajeABM {
 					tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
 					tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
 					tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
+					
+					ultimoTransporte = transporteABM.traer(ultimoViaje.getTransporte().getIdTransporte());
+					if (ultimoTransporte == null) {
+						throw new Exception("ERROR: NO EXISTE TRANSPORTE");
+					}
 
-					if (ultimoViaje.getTransporte().getClass().getSimpleName() != "Tren" || 
-							(ultimoViaje.getTransporte().getClass().getSimpleName() == "Tren" && 
-								((Tren)(ultimoViaje.getTransporte())).getLinea() != ((Tren)v.getTransporte()).getLinea() )) {// SI ES DISTINTO DE TREN, CALCULO LOS DESCUENTOS, SI ES TREN VEO SI ES SALIDA
+
+					if (ultimoTransporte.getClass().getSimpleName() != "Tren" || 
+							(ultimoTransporte.getClass().getSimpleName() == "Tren" && 
+								((Tren)(ultimoTransporte)).getLinea() != ((Tren)v.getTransporte()).getLinea() )) {// SI ES DISTINTO DE TREN, CALCULO LOS DESCUENTOS, SI ES TREN VEO SI ES SALIDA
 																							// OJOOO TENGO Q EVALUAR SI ES OTRA LINEA DE TREN
-						if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
+						if ((new GregorianCalendar()).getTimeInMillis() < tiempoFinal.getTimeInMillis()){
 							descuentoRedSube = 0.50;
 							// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 							if (it.hasNext()) {
@@ -214,7 +235,7 @@ public class ViajeABM {
 								GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 								tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 	
-								if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
+								if (tiempoFinalAnteUltimoViaje.getTimeInMillis() > tiempoInicial.getTimeInMillis()){
 									descuentoRedSube = 0.75;
 								}
 							}
@@ -239,6 +260,7 @@ public class ViajeABM {
 		DatosGenerales datosGenerales = DatosGenerales.getInstanciaDatosGenerales();
 		double tarifa = v.getTarifa();
 		SubeABM subeABM = new SubeABM();
+		TransporteABM transporteABM = new TransporteABM();
 		Sube sube = subeABM.traerSube(v.getSube().getIdSube());
 
 		if (sube == null) {
@@ -255,9 +277,15 @@ public class ViajeABM {
 			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
 			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
 			
-			if (!(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Subte"))) {// EN este caso si es
+			Transporte ultimoTransporte = transporteABM.traer(ultimoViaje.getTransporte().getIdTransporte());
+			if (ultimoTransporte == null) {
+				throw new Exception("ERROR: NO EXISTE TRANSPORTE");
+			}
+			
+			if (!(ultimoTransporte.getClass().getSimpleName().equals("Subte"))) {// EN este caso si es
 																							// otrosubte no aplica dt
-				if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
+				if ((new GregorianCalendar()).getTimeInMillis() < tiempoFinal.getTimeInMillis()){
+										 
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
@@ -265,7 +293,7 @@ public class ViajeABM {
 						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
 						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
-						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
+						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() > tiempoInicial.getTimeInMillis()){							
 							descuentoRedSube = 0.75;
 						}
 					}
@@ -278,5 +306,24 @@ public class ViajeABM {
 		}
 		return (tarifa - (tarifa * descuentoRedSube));
 	}
-
+	
+	public Viaje agregarDestinoAViaje(Viaje viajeOrigen, Viaje viaje) throws Exception {
+		// SOLO tren admite setear salida, si quiero agregar los otros deberia definirlo
+		TransporteABM transporteABM = new TransporteABM();
+		Transporte transporte = transporteABM.traer(viajeOrigen.getTransporte().getIdTransporte());
+		if (transporte == null) {
+			throw new Exception("ERROR: NO EXISTE TRANSPORTE");
+		}
+		String estacionDestino  = ((Tren)viaje.getTransporte()).getEstacionOrigen();
+		GregorianCalendar fechaHoraSalida = ((Tren)transporte).getFechaHoraSalida();
+		double tarifaFinal  = -viaje.getTarifa();
+		//SETEO LOS VALORES EN EL TRANSPORTE
+		((Tren)transporte).setEstacionDestino(estacionDestino);
+		((Tren)transporte).setFechaHoraSalida(fechaHoraSalida);
+		
+		viajeOrigen.setTransporte(transporte);
+		viajeOrigen.setTarifa(tarifaFinal);
+		
+		return viajeOrigen;
+	}
 }

@@ -2,6 +2,8 @@ package datos;
 
 import java.util.GregorianCalendar;
 
+import negocio.TransporteABM;
+
 public class Viaje {
 	private long idViaje;
 	private double tarifa;
@@ -72,6 +74,7 @@ public class Viaje {
 
 	public void agregarDestinoAViaje(Viaje viaje) {
 		// SOLO tren admite setear salida, si quiero agregar los otros deberia definirlo
+		
 		String estacionDestino  = ((Tren)this.getTransporte()).getEstacionOrigen();
 		GregorianCalendar fechaHoraSalida = ((Tren)this.getTransporte()).getFechaHoraSalida();
 		double tarifaFinal  = -viaje.getTarifa();

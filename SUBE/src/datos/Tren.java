@@ -19,7 +19,7 @@ public class Tren extends Transporte {
 		this.linea = linea;
 		this.ramal = ramal;
 		this.setEstacionOrigen(estacionOrigen);
-		this.estacionDestino = " ";
+		this.estacionDestino = "-";
 	}
 	
 	public long getIdTren() {

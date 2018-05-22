@@ -17,7 +17,7 @@ public class TransporteABM {
 		return instancia;
 	}
 
-	public Transporte traer(int idTransporte) {
+	public Transporte traer(long idTransporte) {
 		return TransporteDao.getInstance().traer(idTransporte);
 	}
 
