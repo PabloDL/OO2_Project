@@ -6,9 +6,9 @@
 			<generator class="identity" />
 		</id>
 		<property column="numeroSube" name="numero" type="int" />
-		<property column="saldo" name="saldo" type="int" />
+		<property column="saldo" name="saldo" type="double" />
 		<set name="ultimosViajes" table="viaje" order-by="idViaje asc"
-			inverse="true" lazy="true" fetch="select">
+			inverse="true" lazy="true" fetch="select" cascade="all">
 			<key column="idViaje" not-null="true" />
 			<one-to-many class="datos.Viaje" />
 		</set>

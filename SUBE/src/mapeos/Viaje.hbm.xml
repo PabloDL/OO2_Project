@@ -6,8 +6,11 @@
 			<generator class="identity" />
 		</id>
 		<property column="tarifa" name="tarifa" type="double" />
-		<property column="fechaYHora" name="fechaHoraInicio" type="calendar" />
-		<many-to-one name = "sube" class = "datos.Sube" column = "idSube" not-null = "true"/>
-		<one-to-one name = "transporte" class = "datos.Transporte" cascade="all"></one-to-one>
+		<property column="fechaYHora" name="fechaHoraInicio"
+			type="calendar" />
+		<many-to-one name="sube" class="datos.Sube"
+			column="idSube" not-null="true" cascade="all" />
+		<many-to-one class="datos.Transporte" name="transporte"
+			column="idTransporte" unique="true" not-null="true" cascade="all" />
 	</class>
 </hibernate-mapping>

@@ -76,7 +76,7 @@ public class ViajeABM {
 		SubeDao subeDao = new SubeDao();
 		subeDao.actualizar(s);
 
-		System.out.println(s.toString());
+		//System.out.println(s.toString());
 
 	}
 

@@ -1,6 +1,9 @@
 package datos;
 
+import javax.persistence.GeneratedValue;
+
 public class Transporte {
+	@GeneratedValue
 	private long idTransporte;
 	
 	public Transporte(){}

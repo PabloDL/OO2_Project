@@ -6,14 +6,14 @@ import java.util.Set;
 
 public class Sube {
 	private long idSube;
-	private long numero;
+	private int numero;
 	private Persona persona;
 	private Set<Viaje> ultimosViajes; //el ultimo viaje es el primero
 	private double saldo;
 
 	public Sube() {}
 	
-	public Sube(int idSube, long numero, Persona persona, float saldo) {
+	public Sube(int idSube, int numero, Persona persona, double saldo) {
 		super();
 		this.idSube = idSube;
 		this.numero = numero;
@@ -30,11 +30,11 @@ public class Sube {
 		this.idSube = idSube;
 	}
 	
-	public long getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 	
-	public void setNumero(long numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 	
