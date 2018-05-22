@@ -25,7 +25,7 @@ public class SeccionDao {
 		throw new HibernateException("ERROR en la capa de acceso de datos", he);
 	}
 
-	public Seccion traerPrecioEntreEstaciones(Estacion e1, Estacion e2) throws HibernateException {
+	public Seccion traerSeccion(Estacion e1, Estacion e2) throws HibernateException {
 		Seccion seccion = null;
 		try {
 			iniciaOperacion();
@@ -37,7 +37,8 @@ public class SeccionDao {
 					+ "where e1.idEstacion=" + e1.getIdEstacion()
 					+ "and e2.idEstacion=" + e2.getIdEstacion();
 			seccion = (Seccion)session.createQuery(hql).uniqueResult();
-
+		
+		
 		} finally {
 			session.close();
 		}

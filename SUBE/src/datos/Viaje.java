@@ -75,13 +75,19 @@ public class Viaje {
 	public void agregarDestinoAViaje(Viaje viaje) {
 		// SOLO tren admite setear salida, si quiero agregar los otros deberia definirlo
 		
-		String estacionDestino  = ((Tren)this.getTransporte()).getEstacionOrigen();
-		GregorianCalendar fechaHoraSalida = ((Tren)this.getTransporte()).getFechaHoraSalida();
-		double tarifaFinal  = -viaje.getTarifa();
-		//SETEO LOS VALORES EN EL TRANSPORTE
-		((Tren)this.getTransporte()).setEstacionDestino(estacionDestino);
-		((Tren)this.getTransporte()).setFechaHoraSalida(fechaHoraSalida);
-		this.setTarifa(tarifaFinal);
+		if(this.getTransporte() instanceof Tren) //Si es objeto de tren entra.
+		{
+			Tren tren = (Tren) this.getTransporte();
+			double tarifaFinal  = -viaje.getTarifa();
+			String estacionDestino  = tren.getEstacionOrigen();
+			GregorianCalendar fechaHoraSalida = tren.getFechaHoraSalida();			
+			
+			//SETEO LOS VALORES EN EL TRANSPORTE
+			tren.setEstacionDestino(estacionDestino);
+			tren.setFechaHoraSalida(fechaHoraSalida);
+			this.setTarifa(tarifaFinal);
+		}
+		
 	}
 	
 	@Override

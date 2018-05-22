@@ -1,14 +1,15 @@
 package test;
-import datos.*;
 import dao.*;
+import negocio.SeccionABM;
 public class TestTarifas {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		SeccionDao seccionDao = new SeccionDao();
+		SeccionABM seccionABM = new SeccionABM();
 		EstacionDao estacionDao = new EstacionDao();
 		
-		System.out.println(seccionDao.traerPrecioEntreEstaciones(estacionDao.traerEstacion("Llavallol"), estacionDao.traerEstacion("Temperley")));
+		System.out.println(seccionABM.traerSeccion(estacionDao.traerEstacion("Constitucion"),
+				estacionDao.traerEstacion("Llavallol")));
 		}
 
 }
