@@ -1,7 +1,6 @@
 package dao;
 
-import java.util.List;
-import org.hibernate.Hibernate;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,7 +24,7 @@ public class SeccionDao {
 		throw new HibernateException("ERROR en la capa de acceso de datos", he);
 	}
 
-	public Seccion traerSeccion(Estacion e1, Estacion e2) throws HibernateException {
+	public Seccion traerPrecioEntreEstaciones(Estacion e1, Estacion e2) throws HibernateException {
 		Seccion seccion = null;
 		try {
 			iniciaOperacion();
@@ -37,9 +36,13 @@ public class SeccionDao {
 					+ "where e1.idEstacion=" + e1.getIdEstacion()
 					+ "and e2.idEstacion=" + e2.getIdEstacion();
 			seccion = (Seccion)session.createQuery(hql).uniqueResult();
-		
-		
-		} finally {
+
+		}
+		catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
 			session.close();
 		}
 		return seccion;

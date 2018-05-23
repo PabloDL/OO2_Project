@@ -1,6 +1,5 @@
 package dao;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,6 +19,7 @@ public class TerminalColectivoDao {
 		tx .rollback();
 		throw new HibernateException( "ERROR en la capa de acceso a datos" , he);
 	}
+	
 	public int agregar(TerminalColectivo objeto) {
 		int id = 0;
 		try {
@@ -27,7 +27,6 @@ public class TerminalColectivoDao {
 			id = Integer. parseInt ( session .save(objeto).toString());
 			tx .commit();
 		} catch (HibernateException he) {
-	
 			manejaExcepcion(he);
 			throw he;
 		} finally {
@@ -42,7 +41,6 @@ public class TerminalColectivoDao {
 			session .update(objeto);
 			tx .commit();
 		} catch (HibernateException he) {
-	
 			manejaExcepcion(he);
 			throw he;
 		} finally {
@@ -62,11 +60,15 @@ public class TerminalColectivoDao {
 			session .close();
 		}
 	}
+	
 	public TerminalColectivo traerTerminalColectivo(long idTerminalColectivo) throws HibernateException {
 		TerminalColectivo objeto = null ;
 		try {
 			iniciaOperacion();
 			objeto = (TerminalColectivo) session .get(TerminalColectivo.class, idTerminalColectivo);
+		} catch(HibernateException he){
+			manejaExcepcion(he);
+			throw he;
 		} finally {
 			session .close();
 		}

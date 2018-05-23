@@ -59,9 +59,12 @@ public class TerminalTren extends Terminal {
 
 	@Override
 	public Viaje cobrar(Sube sube, int tarifaViaje) { // tarifaViaje es el tramo que tiene q cobrar
-		// FALTA LEVANTAR DE APPTABLE En este caso el monto es fijo, lo levanto de la tabla de parametros
-		// Convierto el tramo que indica el colectivero o el molinete en un valor en pesos
-		// DE LA SUBE SACO EL ULTIMO VIAJE Y VEO SI TRANSCURRE EN LAS PRIMERAS DOS HORAS-> EL METODO
+		// FALTA LEVANTAR DE APPTABLE En este caso el monto es fijo, lo levanto de la
+		// tabla de parametros
+		// Convierto el tramo que indica el colectivero o el molinete en un valor en
+		// pesos
+		// DE LA SUBE SACO EL ULTIMO VIAJE Y VEO SI TRANSCURRE EN LAS PRIMERAS DOS
+		// HORAS-> EL METODO
 		// DEVUELVE EL DESCUENTO QUE TENGO QUE HACER EN EL PRECIO, ACA ANALIZA SI ES
 		// BOLETO ESTUDIANTIL, SI TARIFA SOCIAL
 		double precioBoleto = this.calcularPrecio(sube, 0);

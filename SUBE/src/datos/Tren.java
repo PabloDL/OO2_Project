@@ -3,8 +3,6 @@ package datos;
 import java.util.GregorianCalendar;
 
 import datos.DatosGenerales;
-import negocio.EstacionABM;
-import negocio.SeccionABM;
 
 public class Tren extends Transporte {
 	private long idTren;
@@ -73,15 +71,9 @@ public class Tren extends Transporte {
 		this.fechaHoraSalida = fechaHoraSalida;
 	}
 
-	public float getMontoEntreEstaciones() {	
-		//Traigo las estaciones por nombre y traigo 
-		//el monto de la seccion por las estaciones.
-		SeccionABM sec = new SeccionABM();
-		EstacionABM est = new EstacionABM();
-		Estacion origen = est.traerEstacion(this.estacionOrigen);
-		Estacion destino = est.traerEstacion(this.estacionOrigen);
-		
-		return(sec.traerSeccion(origen, destino).getPrecio());
+	public double getMontoEntreEstaciones(String estacion) {
+	//	Seccion seccion = 
+		return 0;
 	}
 	
 	public float calcularMonto() {
@@ -93,5 +85,6 @@ public class Tren extends Transporte {
 		DatosGenerales datosGenerales = new DatosGenerales();
 		return datosGenerales.getPrecioMaximoTren();
 	}
+
 
 }

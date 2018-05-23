@@ -2,9 +2,6 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,6 +23,7 @@ public class ViajeDao {
 		tx .rollback();
 		throw new HibernateException( "ERROR en la capa de acceso a datos" , he);
 	}
+	
 	public int agregar(Viaje objeto) {
 		int id = 0;
 		try {
@@ -68,46 +66,65 @@ public class ViajeDao {
 			session .close();
 		}
 	}
+	
 	public Viaje traerViaje(long idViaje) throws HibernateException {
 		Viaje objeto = null ;
 		try {
 			iniciaOperacion();
 			objeto = (Viaje) session .get(Viaje.class, idViaje);
-		} finally {
+		}catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he; 
+		}finally {
 			session .close();
 		}
 		return objeto;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Viaje> traerViajes(Sube sube) {
 		List<Viaje> lista = null;
 		try {
 			iniciaOperacion();
 			String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
 			lista = session.createQuery(hQL).list();
-			
-		}	
-		catch(HibernateException he){
+
+		}catch(HibernateException he) {
 			manejaExcepcion(he);
 			throw he;
+		}finally {
+			session.close();
 		}
-		finally {
+		return lista;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Viaje> traerNUltimosViajes(Sube sube) {
+		List<Viaje> lista = null;
+		try {
+			iniciaOperacion();
+			String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
+			lista = session.createQuery(hQL).setFirstResult(0).setMaxResults(6).list();
+
+		}catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}finally {
 			session.close();
 		}
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Viaje> traerReporte(String hql) throws HibernateException {
 		ArrayList<Viaje> viajes = null ;
 		try {
 			iniciaOperacion();
 			viajes = (ArrayList<Viaje>) session.createQuery(hql).list();
-		}
-		catch(HibernateException he){
+		} catch(HibernateException he){
 			manejaExcepcion(he);
 			throw he;
-		}
-		finally {
+		}finally {
 			session .close();
 		}
 		return viajes;
@@ -124,5 +141,6 @@ public class ViajeDao {
 		finally {
 			session.close();
 		}
-}
+	}
+	
 }

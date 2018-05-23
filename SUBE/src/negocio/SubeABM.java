@@ -20,8 +20,8 @@ public class SubeABM {
 			return c;
 		}
 
-		public Sube traerSube(int dni) throws Exception {
-			Sube c = dao.traerSube(dni);
+		public Sube traerSube(int numero) throws Exception {
+			Sube c = dao.traerSube(numero);
 			// implementar si c es null lanzar Exception
 			if (c == null) {
 				throw new Exception("ERROR: NO EXISTE CLIENTE");

@@ -3,6 +3,7 @@ package negocio;
 import java.util.List;
 import dao.PersonaDao;
 import datos.Persona;
+import datos.Sube;
 
 public class PersonaABM {
 	PersonaDao dao = new PersonaDao();
@@ -26,9 +27,9 @@ public class PersonaABM {
 	}
 
 	public int agregar(String apellido, String nombre, int dni,
-			boolean esTarifaSocial, boolean esTarifaEstudiantil) throws Exception{
+			boolean esTarifaSocial, boolean esTarifaEstudiantil, Sube s) throws Exception{
 		
-		Persona c= new Persona(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil);
+		Persona c= new Persona(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil, s);
 		// consultar si existe un cliente con el mismo dni , si existe arrojar la Excepcion		
 		Persona buscarPersona = dao.traerPersona(dni);
 		if (buscarPersona != null) {

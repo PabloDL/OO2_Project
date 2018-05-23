@@ -1,15 +1,12 @@
 package dao;
 
-import java.util.List;
-import org.hibernate.Hibernate;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Persona;
 import datos.Sube;
-import datos.TerminalSubte;
-import datos.Viaje;
 
 public class SubeDao {
 	private static Session session;
@@ -31,7 +28,12 @@ public class SubeDao {
 		try {
 			iniciaOperacion();
 			objeto = (Sube) session .get(Sube.class, idSube);
-		} finally {
+		} 
+		catch(HibernateException he){
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
 			session .close();
 		}
 		return objeto;
@@ -39,18 +41,27 @@ public class SubeDao {
 
 	@SuppressWarnings("unused")
 	public Sube traerSube(int numeroSube) {
-		Persona p1 = new Persona("Perez","juan",33412412, false, false);
-		//implementar
-		Sube s = new Sube(1, 1234, p1,  50);
-		return s;
+		Sube objeto = null ;
+		try {
+			iniciaOperacion();
+			objeto = (Sube) session .createQuery( "from Sube s where s.numero=" +numeroSube).uniqueResult();
+		} 
+		catch(HibernateException he){
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
+			session .close();
+		}
+		return objeto;
 	}
+	
 	public void actualizar(Sube objeto) throws HibernateException {
 		try {
 			iniciaOperacion();
 			session .update(objeto);
 			tx .commit();
 		} catch (HibernateException he) {
-	
 			manejaExcepcion(he);
 			throw he;
 		} finally {
@@ -65,7 +76,6 @@ public class SubeDao {
 				id = Integer. parseInt ( session .save(objeto).toString());
 				tx .commit();
 			} catch (HibernateException he) {
-		
 				manejaExcepcion(he);
 				throw he;
 			} finally {

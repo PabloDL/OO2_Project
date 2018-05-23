@@ -1,6 +1,5 @@
 package dao;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -67,7 +66,10 @@ public class TerminalTrenDao {
 		try {
 			iniciaOperacion();
 			objeto = (TerminalTren) session .get(TerminalTren.class, idTerminalTren);
-		} finally {
+		}catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}finally {
 			session .close();
 		}
 		return objeto;

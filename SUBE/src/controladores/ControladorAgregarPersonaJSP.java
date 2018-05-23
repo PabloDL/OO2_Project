@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import negocio.PersonaABM;
 import negocio.UsuarioABM;
 import datos.Persona;
+import datos.Sube;
 
 public class ControladorAgregarPersonaJSP extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,8 +37,8 @@ public class ControladorAgregarPersonaJSP extends HttpServlet {
 			String password = request.getParameter("password");
 			
 			//if (usuarioabm.traerUsuario(nombreUsuario) == null && personaabm.traerPersona(dni) == null) {
-					
-					long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil);
+					Sube s = new Sube();
+					long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil, s);
 					long ultimoIdUsuario = usuarioabm.agregar(nombreUsuario, password, ultimoIdCliente);				
 					//SI LA AGREGUE OK, LO MUESTRO POR PANTALLA
 					Persona persona = personaabm.traerPersona(dni );

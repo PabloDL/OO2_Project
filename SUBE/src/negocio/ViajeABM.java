@@ -83,7 +83,7 @@ public class ViajeABM {
 	}
 
 	private List<Viaje> traerUltimosNViajes(Sube sube) {
-		return dao.traerViajes(sube);
+		return dao.traerNUltimosViajes(sube);
 	}
 	
 	private double calcularPrecio(Viaje viaje) throws Exception {

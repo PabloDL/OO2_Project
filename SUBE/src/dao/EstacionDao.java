@@ -1,5 +1,6 @@
 package dao;
 
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -44,7 +45,12 @@ public class EstacionDao {
 			String hql = "from Estacion e where e.nombre= :nombre";
 			objeto = (Estacion) session.createQuery(hql).setParameter("nombre", nombre).uniqueResult();
 			
-		}finally{			
+		}
+		catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally{
 			session.close();			
 		}
 		return objeto;		

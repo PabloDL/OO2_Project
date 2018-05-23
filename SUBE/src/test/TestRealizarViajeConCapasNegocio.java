@@ -9,15 +9,15 @@ public class TestRealizarViajeConCapasNegocio {
 	public static void main(String[] args) {
 		try {
 			TerminalSubteABM tsAbm = new TerminalSubteABM();
-			tsAbm.agregarViaje(1,13);
+			tsAbm.agregarViaje(1234,13);
 			
 			TerminalTrenABM ttAbm = new TerminalTrenABM();
-			ttAbm.agregarViaje(1, 5);
+			ttAbm.agregarViaje(1234, 5);
 			
-			ttAbm.agregarViaje(1, 6);
+			ttAbm.agregarViaje(1234, 6);
 			
 			TerminalColectivoABM tcAbm = new TerminalColectivoABM();
-			tcAbm.agregarViaje(1,13,1);
+			tcAbm.agregarViaje(1234,13,1);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

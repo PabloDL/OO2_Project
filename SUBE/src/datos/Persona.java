@@ -1,9 +1,8 @@
 package datos;
 
-import java.util.GregorianCalendar;
-
 public class Persona {
 	long idPersona;
+	private Sube sube;
 	private String nombre;
 	private String apellido;
 	private int dni;
@@ -14,14 +13,15 @@ public class Persona {
 	public Persona(){} //siempre hay que implementar el contructor vacio
 	
 	public Persona(String apellido, String nombre, int dni,
-			boolean esTarifaSocial, boolean esTarifaEstudiantil) { //nunca va el id en el constructor por ser autoincrementable
-				super ();
-				this . apellido = apellido;
-				this . nombre = nombre;
-				this . dni = dni;
-				this. esTarifaSocial  = esTarifaSocial;
-				this.esTarifaEstudiantil  = esTarifaEstudiantil;
-			}
+		boolean esTarifaSocial, boolean esTarifaEstudiantil, Sube s) { //nunca va el id en el constructor por ser autoincrementable
+		super ();
+		this . apellido = apellido;
+		this . nombre = nombre;
+		this . dni = dni;
+		this. esTarifaSocial  = esTarifaSocial;
+		this.esTarifaEstudiantil  = esTarifaEstudiantil;
+		this.sube = s;
+	}
 
 	public long getIdPersona(){
 		return idPersona;
@@ -79,6 +79,14 @@ public class Persona {
 		if (this.esTarifaEstudiantil == true)
 			return "SI";
 		else return "NO";
+	}
+
+	public Sube getSube() {
+		return sube;
+	}
+
+	public void setSube(Sube sube) {
+		this.sube = sube;
 	}
 	
 }

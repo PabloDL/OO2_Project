@@ -18,8 +18,6 @@ public class ReporteXTramo extends Reporte{
 		this.tramo = tramo;
 	}
 
-
-
 	public String generar() {
 		return null;
 	}
