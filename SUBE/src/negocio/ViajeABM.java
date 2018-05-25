@@ -8,7 +8,7 @@ import java.util.List;
 import dao.SubeDao;
 import dao.ViajeDao;
 import datos.Colectivo;
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 import datos.Sube;
 import datos.Transporte;
 import datos.Tren;
@@ -56,7 +56,7 @@ public class ViajeABM {
 		SubeABM subeABM = new SubeABM();
 		Sube s = subeABM.traerSube(v.getSube().getIdSube());
 		double precioBoleto = this.calcularPrecio(v); // si el precio es (-) quiere decir que es ua salida de tren
-
+		v.setTarifa(precioBoleto);
 		if (!(subeABM.verificarSaldoSuficiente(v.getSube().getIdSube(), precioBoleto))) {
 			throw new Exception("ERROR: SALDO INSUFIECIENTE");
 		}
@@ -104,7 +104,7 @@ public class ViajeABM {
 		double descuentoRedSube = 0;
 		double tarifa = v.getTarifa();
 		SubeABM subeABM = new SubeABM();
-		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
 		
 		Sube sube = subeABM.traerSube(v.getSube().getIdSube());
 
@@ -144,7 +144,7 @@ public class ViajeABM {
 
 		}
 		if (sube.getPersona().isEsTarifaEstudiantil() == true) {
-			tarifa = dG.getTarifaEstudiantilSubte();
+			tarifa = dG.getPrecioEstudiantilColectivo();
 		}
 		return (tarifa - (tarifa * descuentoRedSube));
 	}
@@ -154,7 +154,7 @@ public class ViajeABM {
 		double tarifa = v.getTarifa();
 		SubeABM subeABM = new SubeABM();
 		TransporteABM transporteABM = new TransporteABM();
-		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
 		
 		Sube sube = subeABM.traerSube(v.getSube().getIdSube());
 
@@ -245,11 +245,11 @@ public class ViajeABM {
 			}
 		}
 		if (sube.getPersona().isEsTarifaSocial() == true) {
-				tarifa = tarifa - (tarifa * dG.getTarifaEstudiantilSubte());
+				tarifa = tarifa - (tarifa * dG.getPrecioEstudiantilSubte());
 		}
 				
 		if (sube.getPersona().isEsTarifaEstudiantil() == true) {
-			tarifa = tarifa - (tarifa *dG.getTarifaEstudiantilSubte());
+			tarifa = tarifa - (tarifa *dG.getPrecioEstudiantilSubte());
 		}
 		return (tarifa - (tarifa * descuentoRedSube));
 		
@@ -257,7 +257,7 @@ public class ViajeABM {
 
 	private double calcularPrecioSubte(Viaje v) throws Exception {
 		double descuentoRedSube = 0;
-		DatosGenerales datosGenerales = DatosGenerales.getInstanciaDatosGenerales();
+		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
 		double tarifa = v.getTarifa();
 		SubeABM subeABM = new SubeABM();
 		TransporteABM transporteABM = new TransporteABM();
@@ -302,7 +302,7 @@ public class ViajeABM {
 
 		}
 		if (sube.getPersona().isEsTarifaEstudiantil() == true) {
-			tarifa = tarifa - (tarifa * datosGenerales.getTarifaEstudiantilSubte());
+			tarifa = tarifa - (tarifa * dG.getPrecioEstudiantilSubte());
 		}
 		return (tarifa - (tarifa * descuentoRedSube));
 	}

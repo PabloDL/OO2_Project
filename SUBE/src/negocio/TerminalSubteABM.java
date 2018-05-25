@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.List;
 
+import dao.DatosFuncionalesDao;
 import dao.SubeDao;
 
 //import dao.subeDao
@@ -9,7 +10,7 @@ import dao.SubeDao;
 import dao.TerminalSubteDao;
 import dao.TransporteDao;
 import dao.ViajeDao;
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 import datos.Sube;
 import datos.Subte;
 //import dao.TerminalSubteDao
@@ -60,11 +61,13 @@ public class TerminalSubteABM {
 		Sube sube = daoSube.traerSube(numeroSube);
 
 		ViajeABM viajeAbm = new ViajeABM();
-		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+
+		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
+		
 		Subte subte = new Subte(ts.getLetra());
 		TransporteABM.getInstance().agregar(subte);
 		
-		Viaje v = new Viaje(dG.getMontoSubte(), subte, sube);
+		Viaje v = new Viaje(dG.getPrecioMinimoSubte(), subte, sube);
 
 		viajeAbm.agregarViaje(v);
 	}

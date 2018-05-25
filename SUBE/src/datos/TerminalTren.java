@@ -98,7 +98,6 @@ public class TerminalTren extends Terminal {
 	@Override
 	public double calcularPrecio(Sube sube, int tramoACobrar) {
 		double descuentoRedSube = 0;
-		DatosGenerales datosGenerales = new DatosGenerales();
 		double tarifa = 0;// = datosGenerales.getMontoTren3();// ELIJO EL MONTO MAXIMO DE TREN (SI NO ES SALIDA VA ESE)
 		/*
 		if (sube.getUltimosViajes().size() > 0) {
@@ -173,8 +172,8 @@ public class TerminalTren extends Terminal {
 
 	@Override
 	public boolean verificarSaldoSuficiente(Sube sube, double precioBoleto) {
-		DatosGenerales datosGenerales = new DatosGenerales();
-		if (sube.getSaldo() - precioBoleto > datosGenerales.getSaldoMinimo())
+		DatosFuncionales datosGenerales = DatosFuncionales.getInstanciaDatosGenerales();
+		if (sube.getSaldo() - precioBoleto > datosGenerales.getSaldoMaximoNegativo())
 			return true;
 
 		return false;

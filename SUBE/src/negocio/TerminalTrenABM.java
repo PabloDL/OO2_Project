@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.SubeDao;
 import dao.TerminalTrenDao;
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 import datos.Sube;
 import datos.TerminalTren;
 import datos.Tren;
@@ -49,7 +49,7 @@ public class TerminalTrenABM {
 		Sube sube = daoSube.traerSube(numeroSube);
 
 		ViajeABM viajeAbm = new ViajeABM();
-		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
 		Tren Tren = new datos.Tren(ts.getLinea(),ts.getRamal(),ts.getEstacion());
 		Viaje v = new Viaje(dG.getPrecioMaximoTren(), Tren, sube);
 

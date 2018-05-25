@@ -20,5 +20,6 @@
 		<mapping resource="mapeos/Sube.hbm.xml"/>
 		<mapping resource="mapeos/Viaje.hbm.xml"/>
 		<mapping resource="mapeos/Transporte.hbm.xml"/>
+		<mapping resource="mapeos/DatosFuncionales.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

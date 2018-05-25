@@ -1,8 +1,6 @@
 package datos;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TerminalColectivo extends Terminal {
 	private long idTerminalColectivo;
@@ -68,23 +66,23 @@ public class TerminalColectivo extends Terminal {
 		return 0;
 	}
 
-	public float determinarPrecioTramo(int tramoACobrar) {
-		float precioTramo = 0;
-		DatosGenerales d = new DatosGenerales();
+	public double determinarPrecioTramo(int tramoACobrar) {
+		double precioTramo = 0;
+		DatosFuncionales df = DatosFuncionales.getInstanciaDatosGenerales();
 		if (tramoACobrar==1) {
-			precioTramo = d.getMontoColectivo1();
+			precioTramo = df.getPrecioTramo1Colectivo();
 		}
 		else if (tramoACobrar==2) {
-			precioTramo = d.getMontoColectivo2();
+			precioTramo = df.getPrecioTramo2Colectivo();
 		}
 		else if (tramoACobrar==3) {
-			precioTramo = d.getMontoColectivo3();
+			precioTramo = df.getPrecioTramo3Colectivo();
 		}
 		else if (tramoACobrar==4) {
-			precioTramo = d.getMontoColectivo4();
+			precioTramo = df.getPrecioTramo4Colectivo();
 		}
 		else if (tramoACobrar==5) {
-			precioTramo = d.getMontoColectivo5();
+			precioTramo = df.getPrecioTramo5Colectivo();
 		}
 		
 		return precioTramo;
@@ -92,7 +90,7 @@ public class TerminalColectivo extends Terminal {
 
 	public double calcularPrecio(Sube sube, int tramoACobrar) {
 		double descuentoRedSube = 0;
-		DatosGenerales datosGenerales = new DatosGenerales();
+		DatosFuncionales datosGenerales = new DatosFuncionales();
 		
 		double tarifa = this.determinarPrecioTramo(tramoACobrar);
 		//POR ACA
@@ -137,8 +135,8 @@ public class TerminalColectivo extends Terminal {
 
 	@Override
 	public boolean verificarSaldoSuficiente(Sube sube, double precioBoleto) {
-		DatosGenerales datosGenerales = new DatosGenerales();
-		if (sube.getSaldo() - precioBoleto > datosGenerales.getSaldoMinimo())
+		DatosFuncionales datosGenerales = DatosFuncionales.getInstanciaDatosGenerales();
+		if (sube.getSaldo() - precioBoleto > datosGenerales.getSaldoMaximoNegativo())
 			return true;
 
 		return false;

@@ -5,7 +5,7 @@ import java.util.List;
 import dao.SubeDao;
 import dao.TerminalColectivoDao;
 import datos.Colectivo;
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 import datos.Sube;
 import datos.Subte;
 import datos.TerminalColectivo;
@@ -64,7 +64,7 @@ public class TerminalColectivoABM {
 		Sube sube = daoSube.traerSube(numeroSube);
 
 		ViajeABM viajeAbm = new ViajeABM();
-		DatosGenerales dG = DatosGenerales.getInstanciaDatosGenerales();
+		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
 		Colectivo Colectivo = new Colectivo(ts.getLinea(),ts.getNumero(), ts.getRamal());
 		Viaje v = new Viaje(dG.determinarPrecioTramo(tramo), Colectivo, sube);
 

@@ -2,7 +2,7 @@ package datos;
 
 import java.util.GregorianCalendar;
 
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 
 public class Tren extends Transporte {
 	private long idTren;
@@ -76,13 +76,14 @@ public class Tren extends Transporte {
 		return 0;
 	}
 	
-	public float calcularMonto() {
-		DatosGenerales datosGenerales = new DatosGenerales();
-		return datosGenerales.getPrecioMaximoTren();
+	public double calcularMonto() {
+		DatosFuncionales df = DatosFuncionales.getInstanciaDatosGenerales();
+		return df.getPrecioMaximoTren();
 	}
 
+
 	public double getMontoMaximo() {
-		DatosGenerales datosGenerales = new DatosGenerales();
+		DatosFuncionales datosGenerales = new DatosFuncionales();
 		return datosGenerales.getPrecioMaximoTren();
 	}
 

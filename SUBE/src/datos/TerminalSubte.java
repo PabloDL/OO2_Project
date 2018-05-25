@@ -1,10 +1,12 @@
 package datos;
 
+import dao.DatosFuncionalesDao;
+
 public class TerminalSubte /*extends Terminal*/ {
 	private long idTerminalSubte; 
 	private String letra;
 	
-	public TerminalSubte() {}
+	public TerminalSubte() {	}
 	
 	public TerminalSubte(String letra) {
 		super();

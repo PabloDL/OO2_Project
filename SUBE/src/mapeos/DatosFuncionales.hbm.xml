@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.DatosFuncionales" table="datosfuncionales">
+		<id column="idDatosFuncionales" name="idDatosFuncionales">
+			<generator class="identity"/>
+		</id>
+		<property column="precioMinimoColectivo" name="precioMinimoColectivo" type="double"/>
+		<property column="precioMinimoTren" name="precioMinimoTren" type="double"/>
+		<property column="precioMinimoSubte" name="precioMinimoSubte" type="double"/>
+		<property column="precioMaximoColectivo" name="precioMaximoColectivo" type="double"/>
+		<property column="precioMaximoTren" name="precioMaximoTren" type="double"/>
+		<property column="precioTramo1Colectivo" name="precioTramo1Colectivo" type="double"/>
+		<property column="precioTramo2Colectivo" name="precioTramo2Colectivo" type="double"/>
+		<property column="precioTramo3Colectivo" name="precioTramo3Colectivo" type="double"/>
+		<property column="precioTramo4Colectivo" name="precioTramo4Colectivo" type="double"/>
+		<property column="precioTramo5Colectivo" name="precioTramo5Colectivo" type="double"/>
+		<property column="saldoMaximo" name="saldoMaximo" type="double"/>
+		<property column="saldoMaximoNegativo" name="saldoMaximoNegativo" type="double"/>
+		<property column="tiempoRedSube" name="tiempoRedSube" type="double"/>
+		<property column="precioEstudiantilColectivo" name="precioEstudiantilColectivo" type="double"/>
+		<property column="precioEstudiantilTren" name="precioEstudiantilTren" type="double"/>
+		<property column="precioEstudiantilSubte" name="precioEstudiantilSubte" type="double"/>
+		<property column="precioAsignacionColectivo" name="precioAsignacionColectivo" type="double"/>
+		<property column="precioAsignacionTren" name="precioAsignacionTren" type="double"/>
+		<property column="precioAsignacionSubte" name="precioAsignacionSubte" type="double"/>
+		<property column="porcentajeDescuentoEtapa1" name="porcentajeDescuentoEtapa1" type="double"/>
+		<property column="porcentajeDescuentoEtapa2" name="porcentajeDescuentoEtapa2" type="double"/>
+	</class>
+</hibernate-mapping>

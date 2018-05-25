@@ -3,7 +3,7 @@ package negocio;
 import java.util.List;
 import dao.SubeDao;
 import dao.ViajeDao;
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 import datos.Persona;
 import datos.Sube;
 import datos.Viaje;
@@ -80,9 +80,9 @@ public class SubeABM {
 		}
 		
 		public boolean verificarSaldoSuficiente(long idSube, double precioBoleto) {
-			DatosGenerales datosGenerales = DatosGenerales.getInstanciaDatosGenerales();
+			DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
 			Sube sube = dao.traerSube(idSube);
-			if (sube.getSaldo() - precioBoleto  > datosGenerales.getSaldoMinimo() )
+			if (sube.getSaldo() - precioBoleto  > dG.getSaldoMaximoNegativo())
 				return true;
 				
 			return false;

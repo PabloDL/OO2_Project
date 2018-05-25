@@ -1,6 +1,6 @@
 package datos;
 
-import datos.DatosGenerales;
+import datos.DatosFuncionales;
 
 public class Subte extends Transporte{
 	private long idSubte;
@@ -21,9 +21,9 @@ public class Subte extends Transporte{
 		this.linea = linea;
 	}
 
-	public float calcularMonto() {
-			DatosGenerales datosGenerales = new DatosGenerales();
-			return datosGenerales.getMontoSubte();
+	public double calcularMonto() {
+			DatosFuncionales df = DatosFuncionales.getInstanciaDatosGenerales();
+			return df.getPrecioMinimoSubte();
 	}
 
 	public long getIdSubte() {

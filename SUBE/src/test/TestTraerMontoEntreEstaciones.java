@@ -13,7 +13,7 @@ public class TestTraerMontoEntreEstaciones {
 		tren.setEstacionOrigen("Lanus");
 		tren.setEstacionDestino("Constitucion");
 		
-		System.out.println(tren.getMontoEntreEstaciones());
+	//	System.out.println(tren.getMontoEntreEstaciones());
 		
 	}
 
