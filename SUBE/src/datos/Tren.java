@@ -1,7 +1,6 @@
 package datos;
 
 import java.util.GregorianCalendar;
-
 import datos.DatosFuncionales;
 
 public class Tren extends Transporte {
@@ -71,11 +70,6 @@ public class Tren extends Transporte {
 		this.fechaHoraSalida = fechaHoraSalida;
 	}
 
-	public double getMontoEntreEstaciones(String estacion) {
-	//	Seccion seccion = 
-		return 0;
-	}
-	
 	public double calcularMonto() {
 		DatosFuncionales df = DatosFuncionales.getInstanciaDatosGenerales();
 		return df.getPrecioMaximoTren();

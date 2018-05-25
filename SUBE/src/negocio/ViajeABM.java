@@ -47,12 +47,6 @@ public class ViajeABM {
 
 	// ACA VAN METODOS
 	public void agregarViaje(Viaje v) throws Exception {
-		//// EN TEORIA LO UNICO Q TENGO Q HACER ES ACTUALIZAR EL SALDO; EL VIAJE YA LO
-		//// GUARDE
-		// Viaje s = dao.traerViaje(v.getIdViaje());
-		// s.inicializarListaViajes(); //ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA
-		//// BASE LA LISTA
-			
 		SubeABM subeABM = new SubeABM();
 		Sube s = subeABM.traerSube(v.getSube().getIdSube());
 		double precioBoleto = this.calcularPrecio(v); // si el precio es (-) quiere decir que es ua salida de tren
@@ -315,7 +309,7 @@ public class ViajeABM {
 			throw new Exception("ERROR: NO EXISTE TRANSPORTE");
 		}
 		String estacionDestino  = ((Tren)viaje.getTransporte()).getEstacionOrigen();
-		GregorianCalendar fechaHoraSalida = ((Tren)transporte).getFechaHoraSalida();
+		GregorianCalendar fechaHoraSalida = new GregorianCalendar();
 		double tarifaFinal  = -viaje.getTarifa();
 		//SETEO LOS VALORES EN EL TRANSPORTE
 		((Tren)transporte).setEstacionDestino(estacionDestino);

@@ -15,7 +15,7 @@ public class TestRealizarViajeConCapasNegocio {
 			DatosFuncionales df = datosFuncionalesABM.traer();
 			
 			TerminalSubteABM tsAbm = new TerminalSubteABM();
-			tsAbm.agregarViaje(1234,13);
+			tsAbm.agregarViaje(1234,16);
 			
 			TerminalTrenABM ttAbm = new TerminalTrenABM();
 			ttAbm.agregarViaje(1234, 5);
@@ -23,7 +23,7 @@ public class TestRealizarViajeConCapasNegocio {
 			ttAbm.agregarViaje(1234, 6);
 			
 			TerminalColectivoABM tcAbm = new TerminalColectivoABM();
-			tcAbm.agregarViaje(1234,13,1);
+			tcAbm.agregarViaje(1234,22,1);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
