@@ -32,7 +32,7 @@
 //			
 //			String estacionT1 = request.getParameter("estacionE1");
 //			String estacionT2 = request.getParameter("estacionE2");
-//			String estacionT3 = request.getParameter("estacionE3");
+//|			String estacionT3 = request.getParameter("estacionE3");
 //			String lineaT1 = request.getParameter("lineaE1");
 //			String lineaT2 = request.getParameter("lineaE2");
 //			String lineaT3 = request.getParameter("lineaE3");
@@ -96,5 +96,61 @@
 //		} catch (Exception e) {
 //			response.sendError(500, "Problema al generar viaje.");
 //		}
+//	}
+//}
+
+//
+//package controladores;
+//
+//import java.io.IOException;
+//import java.util.List;
+//import javax.servlet.ServletException;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//import datos.Persona;
+//import datos.Sube;
+//import datos.Terminal;
+//import datos.TerminalColectivo;
+//import datos.TerminalSubte;
+//import datos.TerminalTren;
+//import datos.Viaje;
+//import negocio.SubeABM;
+//
+//public class ControladorSimularViaje  extends HttpServlet {
+//
+//	protected void doGet(HttpServletRequest request , HttpServletResponse response )
+//				throws ServletException, IOException {
+//		procesarPeticion( request , response );
+//	}
+//	
+//	protected void doPost(HttpServletRequest request , HttpServletResponse response )
+//				throws ServletException, IOException {
+//		procesarPeticion( request , response );
+//	}
+//	
+//	private void procesarPeticion(HttpServletRequest request , HttpServletResponse response ) 
+//				throws ServletException, IOException {
+//		try { 
+//			SubeABM subeABM = new SubeABM();
+//			int numeroSube = Integer.parseInt(request.getParameter("numeroSube"));
+//			Sube sube = subeABM.traerSube(numeroSube);
+//			
+//			PrestamoABM prestamoAbm = new​ PrestamoABM();
+//			List<Prestamo> lstPrestamos =
+//			prestamoAbm.traerListaPrestamos(cliente);
+//
+//			request.setAttribute("cliente", cliente);
+//			request.setAttribute("lstPrestamo", lstPrestamos);
+//
+//			request.getRequestDispatcher("/ajaxvistacliente.jsp").forward(request , response);
+//
+//			}
+//			catch​ (Exception e) {
+//			response.sendError(500, "El DNI Ingresado no existe en la base
+//
+//			de datos.");
+//			}
 //	}
 //}

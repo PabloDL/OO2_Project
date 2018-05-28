@@ -56,7 +56,7 @@ public class TerminalColectivoABM {
 		//aca iria algo asi como el test , tengo q traer la terminal y hacer el proceso de cobro
 		TerminalColectivo ts = dao.traerTerminalColectivo(idTerminalColectivo);
 		if (ts == null) {
-			throw new Exception("ERROR: NO EXITE TERMINAL Colectivo");
+			throw new Exception("ERROR: NO EXISTE TERMINAL Colectivo");
 		}
 
 		//ts.inicializarListaViajes(); // ESTO HAY Q BORRARLO CUANDO SE LEVANTE DE LA BASE LA LISTA

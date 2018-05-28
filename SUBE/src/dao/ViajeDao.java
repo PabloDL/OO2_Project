@@ -103,7 +103,9 @@ public class ViajeDao {
 		List<Viaje> lista = null;
 		try {
 			iniciaOperacion();
-			String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
+			//String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
+			String hQL = "from Viaje v inner join fetch v.sube s  where s.idSube=" + sube.getIdSube() 
+								+ " order by v.idViaje desc";
 			lista = session.createQuery(hQL).setFirstResult(0).setMaxResults(6).list();
 
 		}catch(HibernateException he) {

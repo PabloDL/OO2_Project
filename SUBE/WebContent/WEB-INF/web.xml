@@ -47,7 +47,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ControladorSimularViaje</servlet-name>
-		<url-pattern>/SimularViajeJsp</url-pattern>
+		<url-pattern>/agregarViaje</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ControladorSimularViaje</servlet-name>
