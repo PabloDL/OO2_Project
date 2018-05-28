@@ -86,8 +86,8 @@ public class Viaje {
 	
 	@Override
 	public String toString() {
-		return "\n Viaje [idViaje=" + idViaje + ", tarifa=" + tarifa + ", transporte=" + transporte
-				+ ", fechaHoraInicio=" + fechaHoraInicio + "] \n";
+		return "\n Viaje \nidViaje= " + idViaje + ", tarifa= " + tarifa + ", transporte= " + transporte
+				+ ", fechaHoraInicio= " + fechaHoraInicio + "\n";
 	}
 
 }

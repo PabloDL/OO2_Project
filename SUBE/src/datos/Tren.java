@@ -80,6 +80,8 @@ public class Tren extends Transporte {
 		DatosFuncionales datosGenerales = new DatosFuncionales();
 		return datosGenerales.getPrecioMaximoTren();
 	}
+	
+	
 
 
 }

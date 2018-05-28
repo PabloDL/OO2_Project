@@ -1,5 +1,4 @@
 package test;
-import datos.*;
 import dao.*;
 public class TestTarifas {
 
@@ -8,7 +7,7 @@ public class TestTarifas {
 		SeccionDao seccionDao = new SeccionDao();
 		EstacionDao estacionDao = new EstacionDao();
 		
-		System.out.println(seccionDao.traerPrecioEntreEstaciones(estacionDao.traerEstacion("Llavallol"), estacionDao.traerEstacion("Temperley")));
+		System.out.println(seccionDao.traerSeccionEntreEstaciones(estacionDao.traerEstacion("Llavallol"), estacionDao.traerEstacion("Constitucion")));
 		}
 
 }

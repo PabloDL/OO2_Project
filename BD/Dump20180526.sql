@@ -106,7 +106,7 @@ CREATE TABLE `estacion` (
 
 LOCK TABLES `estacion` WRITE;
 /*!40000 ALTER TABLE `estacion` DISABLE KEYS */;
-INSERT INTO `estacion` VALUES (1,'Llavallol'),(2,'Temperley'),(3,'Lanus'),(4,'Constitucion');
+INSERT INTO `estacion` VALUES (1,'Ezeiza'),(2,'Llavallol'),(3,'Temperley'),(4,'Lanus'),(5,'Constitucion');
 /*!40000 ALTER TABLE `estacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +137,7 @@ CREATE TABLE `estacionseccion` (
 
 LOCK TABLES `estacionseccion` WRITE;
 /*!40000 ALTER TABLE `estacionseccion` DISABLE KEYS */;
-INSERT INTO `estacionseccion` VALUES (1,2,1),(1,3,2),(1,4,3);
+INSERT INTO `estacionseccion` VALUES (1,2,1),(1,3,2),(1,4,3),(2,3,1),(2,4,2),(3,4,1);
 /*!40000 ALTER TABLE `estacionseccion` ENABLE KEYS */;
 UNLOCK TABLES;
 

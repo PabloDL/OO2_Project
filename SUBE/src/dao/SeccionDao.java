@@ -24,7 +24,7 @@ public class SeccionDao {
 		throw new HibernateException("ERROR en la capa de acceso de datos", he);
 	}
 
-	public Seccion traerPrecioEntreEstaciones(Estacion e1, Estacion e2) throws HibernateException {
+	public Seccion traerSeccionEntreEstaciones(Estacion e1, Estacion e2) throws HibernateException {
 		Seccion seccion = null;
 		try {
 			iniciaOperacion();

@@ -1,7 +1,5 @@
 package negocio;
 
-import java.util.List;
-
 import dao.SubeDao;
 import dao.TerminalTrenDao;
 import datos.DatosFuncionales;
@@ -37,8 +35,7 @@ public class TerminalTrenABM {
 		dao.eliminar(c);
 	}
 	
-	public void agregarViaje(int numeroSube, long idTerminalTren /* o id de terminal*/) throws Exception {
-		//aca iria algo asi como el test , tengo q traer la terminal y hacer el proceso de cobro
+	public void agregarViaje(int numeroSube, long idTerminalTren) throws Exception {
 		TerminalTren ts = dao.traerTerminalTren(idTerminalTren);
 		if (ts == null) {
 			throw new Exception("ERROR: NO EXITE TERMINAL Tren");
@@ -49,10 +46,11 @@ public class TerminalTrenABM {
 		Sube sube = daoSube.traerSube(numeroSube);
 
 		ViajeABM viajeAbm = new ViajeABM();
-		DatosFuncionales dG = DatosFuncionalesABM.getInstance().traer();
-		Tren Tren = new datos.Tren(ts.getLinea(),ts.getRamal(),ts.getEstacion());
-		Viaje v = new Viaje(dG.getPrecioMaximoTren(), Tren, sube);
+		DatosFuncionales dF = DatosFuncionalesABM.getInstance().traer();
+		Tren tren = new datos.Tren(ts.getLinea(),ts.getRamal(),ts.getEstacion());
+		Viaje v = new Viaje(dF.getPrecioMaximoTren(), tren, sube);
 
 		viajeAbm.agregarViaje(v);
 	}
+	
 }

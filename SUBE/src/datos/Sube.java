@@ -13,7 +13,7 @@ public class Sube {
 
 	public Sube() {}
 	
-	public Sube(int idSube, int numero, Persona persona, double saldo) {
+	public Sube(long idSube, int numero, Persona persona, double saldo) {
 		super();
 		this.idSube = idSube;
 		this.numero = numero;
@@ -81,10 +81,25 @@ public class Sube {
 		}
 	}
 	
+
+	public Viaje traerViaje(int indice)
+	{
+		Viaje viaje = null;
+		Iterator<Viaje> it = ultimosViajes.iterator();
+		
+		if(indice < ultimosViajes.size())
+		{
+			for(int i=0;i<indice;i++){it.next();}
+			viaje = (Viaje) it;			
+		}
+		
+		return viaje;
+	}
+	
 	@Override
 	public String toString() {
-		return "Sube [idSube=" + idSube + ", numero=" + numero + ", persona=" + persona + ", ultimosViajes="
-				+ ultimosViajes + ", saldo=" + saldo + "]";
+		return "Sube \nidSube= " + idSube + ", numero= " + numero + ", persona= " + persona + ", ultimosViajes= "
+				+ ultimosViajes + ", saldo= " + saldo;
 	}
 		
 }

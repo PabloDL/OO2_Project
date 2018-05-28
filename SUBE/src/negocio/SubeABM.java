@@ -1,6 +1,5 @@
 package negocio;
 
-import java.util.List;
 import dao.SubeDao;
 import dao.ViajeDao;
 import datos.DatosFuncionales;
@@ -87,6 +86,6 @@ public class SubeABM {
 				
 			return false;
 		}
-
+		
 		
 	}

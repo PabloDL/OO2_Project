@@ -1,7 +1,9 @@
 package datos;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
+import negocio.SeccionABM;
 
 public class TerminalTren extends Terminal {
 	private long  idTerminalTren;
@@ -75,7 +77,7 @@ public class TerminalTren extends Terminal {
 			tren = new Tren(this.linea, this.ramal, this.estacion);
 			nuevoViaje = new Viaje(precioBoleto, tren, sube); // GUARDO TARIFA VIAJE O MONTO REAL PAGADO?
 		// YA ESTA CALCULADO float monto = nuevoViaje.calcularMonto(descuentoAAplicar);
-		// //CALCULA A PARTIR DEL TRANSPORTE EL MONTO -> si fuera otro transporte en el
+		// CALCULA A PARTIR DEL TRANSPORTE EL MONTO -> si fuera otro transporte en el
 		// contructor detallo el tramo o estacion
 		// UNA VEZ CREADO EL VIAJE LO AGREGO A LOS VIAJES PARA LUEGO PERSISTIRLO LLAMANDO A INFORMAR VIAJES
 			this.viajes.add(nuevoViaje); //---> TENGO Q VER COMO VOY A HACER Q EN LA TABLA DE VIAJES INFORMADOS SE GUARDEN LA ACTUALIZACION
@@ -98,25 +100,29 @@ public class TerminalTren extends Terminal {
 	@Override
 	public double calcularPrecio(Sube sube, int tramoACobrar) {
 		double descuentoRedSube = 0;
-		double tarifa = 0;// = datosGenerales.getMontoTren3();// ELIJO EL MONTO MAXIMO DE TREN (SI NO ES SALIDA VA ESE)
-		/*
+		double tarifa = DatosFuncionales.getInstanciaDatosGenerales().getPrecioMaximoTren();
+		SeccionABM secABM = new SeccionABM();
+		// ELIJO EL MONTO MAXIMO DE TREN (SI NO ES SALIDA VA ESE)
+		
 		if (sube.getUltimosViajes().size() > 0) {
-			Viaje ultimoViaje = sube.getUltimosViajes().get(sube.getUltimosViajes().size() - 1);
-			LocalDateTime tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			LocalDateTime tiempoFinal = tiempoInicial.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+			Viaje ultimoViaje = sube.traerViaje(sube.getUltimosViajes().size() - 1);
+			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = new GregorianCalendar(); 
+			tiempoFinal.setTimeInMillis((tiempoInicial.getTimeInMillis() + 7200000));// SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
 			
 			if ( !(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Tren")) || (ultimoViaje.getTransporte().getClass().getSimpleName().equals("Tren")
 					  		&& ((Tren)(ultimoViaje.getTransporte())).getLinea() != this.linea && ((Tren)(ultimoViaje.getTransporte())).getRamal() != this.ramal)) {// SI ES DISTINTO DE TREN, CALCULO LOS DESCUENTOS, SI ES TREN VEO SI ES SALIDA
 																					// OJOOO TENGO Q EVALUAR SI ES OTRA LINEA DE TREN
-				if (tiempoFinal.compareTo(LocalDateTime.now()) >= 0) {
+				if ((tiempoFinal.compareTo(new GregorianCalendar())) >= 0) {
 					descuentoRedSube = 0.50;
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (sube.getUltimosViajes().size() > 1) {
-						Viaje anteUltimoViaje = sube.getUltimosViajes().get(sube.getUltimosViajes().size() - 2);
-						LocalDateTime tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
+						Viaje anteUltimoViaje = sube.traerViaje(sube.getUltimosViajes().size() - 2);
+						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
 																								// A TIEMPO INICIAL
-						LocalDateTime tiempoFinalAnteUltimoViaje = tiempoAnteUltimo.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
-	
+						GregorianCalendar tiempoFinalAnteUltimoViaje = new GregorianCalendar(); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+						tiempoFinalAnteUltimoViaje.setTimeInMillis(tiempoAnteUltimo.getTimeInMillis() + 7200000);
+						
 						if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
 							descuentoRedSube = 0.75;
 						}
@@ -125,28 +131,30 @@ public class TerminalTren extends Terminal {
 			}
 			else { //SI ESTO ACA, ME ENCUENTRO MARCANDO UNA SALIDA
 				//ACA LLAMO A LA CLASE CON LAS TARIFAS DEL TREN Y LE PASO LA ESTACION DE SALIDA
-				tarifa = datosGenerales.traerTarifaTren(((Tren)(ultimoViaje.getTransporte())).getEstacionOrigen(), this.estacion);
+				tarifa = secABM.getMontoEntreEstaciones(this.estacion, ((Tren) ultimoViaje.getTransporte()).getEstacionOrigen());
+				//tarifa = DatosFuncionales.getInstanciaDatosGenerales().traerTarifaTren(((Tren)(ultimoViaje.getTransporte())).getEstacionOrigen(), this.estacion);
 				//tarifa = (((Tren)(ultimoViaje.getTransporte())).getMontoEntreEstaciones(this.estacion);
-// SI ES SALIDA NO TENGO Q SUMAR AL BOLETO,SINO RESTAR LO Q CORRESPONDA, QUEDA NGATIVO
-//POR EJEMPLO, SI EL BOLETO MAXIMO SALIO 6 Y EN REALIDAD EN LA SALIDA DEBERIA HABER SIDO $3, LO Q HAGO ES RESTAR, EL TEMA ES SI APLICARON DESCUENTOS...
+				// SI ES SALIDA NO TENGO Q SUMAR AL BOLETO,SINO RESTAR LO Q CORRESPONDA, QUEDA NGATIVO
+				//POR EJEMPLO, SI EL BOLETO MAXIMO SALIO 6 Y EN REALIDAD EN LA SALIDA DEBERIA HABER SIDO $3, LO Q HAGO ES RESTAR, EL TEMA ES SI APLICARON DESCUENTOS...
 				tarifa = -tarifa; //- datosGenerales.getMontoTren3(); // getMontoTren3() --> iria tarifa maxima tren 
-//TENGO QUE RECALCULAR A PARTIR DE LOS ULTIMOS 3 VIAJES, EN LUGAR D LOS ULTIMOS 2, TENGO Q AGARRAR Y VER PARA EL PRIMER VIAJE DE TREN QUE DESCUENTOS
+				//TENGO QUE RECALCULAR A PARTIR DE LOS ULTIMOS 3 VIAJES, EN LUGAR D LOS ULTIMOS 2, TENGO Q AGARRAR Y VER PARA EL PRIMER VIAJE DE TREN QUE DESCUENTOS
 				if (sube.getUltimosViajes().size() > 1) { //POR LO MENOS TIENE Q TENER UN VIAJE ANTES DEL TREN(EL TREN seria en posicion 1, en 0 otro)
-					ultimoViaje = sube.getUltimosViajes().get(sube.getUltimosViajes().size() - 2);
+					ultimoViaje = sube.traerViaje(sube.getUltimosViajes().size() - 2);
 					tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-					tiempoFinal = tiempoInicial.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+					tiempoFinal.setTimeInMillis((tiempoInicial.getTimeInMillis() + 7200000)); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
 
 					if (ultimoViaje.getTransporte().getClass().getSimpleName() != "Tren" || (ultimoViaje.getTransporte().getClass().getSimpleName() == "Tren"
 							  		&& ((Tren)(ultimoViaje.getTransporte())).getLinea() != this.linea && ((Tren)(ultimoViaje.getTransporte())).getRamal() != this.ramal)) {// SI ES DISTINTO DE TREN, CALCULO LOS DESCUENTOS, SI ES TREN VEO SI ES SALIDA
 																							// OJOOO TENGO Q EVALUAR SI ES OTRA LINEA DE TREN
-						if (tiempoFinal.compareTo(LocalDateTime.now()) >= 0) {
+						if (tiempoFinal.compareTo(new GregorianCalendar()) >= 0) {
 							descuentoRedSube = 0.50;
 							// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 							if (sube.getUltimosViajes().size() > 2) {
-								Viaje anteUltimoViaje = sube.getUltimosViajes().get(sube.getUltimosViajes().size() - 3);
-								LocalDateTime tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
-																										// A TIEMPO INICIAL
-								LocalDateTime tiempoFinalAnteUltimoViaje = tiempoAnteUltimo.plusHours(2); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+								Viaje anteUltimoViaje = sube.traerViaje(sube.getUltimosViajes().size() - 3);
+								GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
+								// A TIEMPO INICIAL
+								GregorianCalendar tiempoFinalAnteUltimoViaje = new GregorianCalendar(); // SE SUPONE Q SUMA DOS HORAS A TIEMPO INICIAL
+								tiempoFinalAnteUltimoViaje.setTimeInMillis(tiempoAnteUltimo.getTimeInMillis() + 7200000);
 	
 								if (tiempoFinalAnteUltimoViaje.compareTo(tiempoInicial) >= 0) {
 									descuentoRedSube = 0.75;
@@ -161,12 +169,12 @@ public class TerminalTren extends Terminal {
 		}
 		
 		if (sube.getPersona().isEsTarifaSocial() == true) {
-			tarifa = datosGenerales.getTarifaSocialTren();
+			tarifa = DatosFuncionales.getInstanciaDatosGenerales().getPrecioAsignacionTren();
 		}
 		if (sube.getPersona().isEsTarifaEstudiantil() == true) {
-			tarifa = datosGenerales.getTarifaEstudiantilTren();
+			tarifa = DatosFuncionales.getInstanciaDatosGenerales().getPrecioEstudiantilTren();
 		}
-					*/
+					
 		return (tarifa - (tarifa * descuentoRedSube)); // si la tarifa es - quiere decir que es una salida 
 	}
 

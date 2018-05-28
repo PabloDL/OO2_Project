@@ -219,15 +219,15 @@ public class DatosFuncionales {
 
 	@Override
 	public String toString() {
-		return "PrecioMinimoColectivo" + precioMinimoColectivo + "precioMinimoTren" + precioMinimoTren +
-				"precioMinimoSubte" + precioMinimoSubte + "precioMaximoColectivo " + precioMaximoColectivo +
-				"precioMaximoTren" + precioMaximoTren + "precioTramo1Colectivo" + precioTramo1Colectivo  +
-				"precioTramo2Colectivo" + precioTramo2Colectivo + "precioTramo3Colectivo" + precioTramo3Colectivo + 
-				"precioTramo4Colectivo" + precioTramo4Colectivo + "precioTramo5Colectivo" + precioTramo5Colectivo +
-				"saldoMaximo" + saldoMaximo + "saldoMaximoNegativo" + saldoMaximoNegativo + "tiempoRedSube" +
-				tiempoRedSube + "precioEstudiantilColectivo" + precioEstudiantilColectivo + "precioEstudiantilSubte" +
-				"precioAsignacionColectivo" + precioAsignacionColectivo + "precioEstudiantilTren" + precioEstudiantilTren +
-				"porcentajeDescuentoEtapa1" + porcentajeDescuentoEtapa1 + "porcentajeDescuentoEtapa2" + porcentajeDescuentoEtapa2;
+		return "PrecioMinimoColectivo " + precioMinimoColectivo + "\nprecioMinimoTren " + precioMinimoTren +
+				"\nprecioMinimoSubte " + precioMinimoSubte + "\nprecioMaximoColectivo " + precioMaximoColectivo +
+				"\nprecioMaximoTren " + precioMaximoTren + "\nprecioTramo1Colectivo " + precioTramo1Colectivo  +
+				"\nprecioTramo2Colectivo " + precioTramo2Colectivo + "\nprecioTramo3Colectivo " + precioTramo3Colectivo + 
+				"\nprecioTramo4Colectivo " + precioTramo4Colectivo + "\nprecioTramo5Colectivo " + precioTramo5Colectivo +
+				"\nsaldoMaximo " + saldoMaximo + "\nsaldoMaximoNegativo " + saldoMaximoNegativo + "\ntiempoRedSube " +
+				tiempoRedSube + "\nprecioEstudiantilColectivo " + precioEstudiantilColectivo + "\nprecioEstudiantilSubte " +
+				"\nprecioAsignacionColectivo " + precioAsignacionColectivo + "\nprecioEstudiantilTren " + precioEstudiantilTren +
+				"\nporcentajeDescuentoEtapa1 " + porcentajeDescuentoEtapa1 + "\nporcentajeDescuentoEtapa2 " + porcentajeDescuentoEtapa2;
 
 	}
 
