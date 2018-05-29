@@ -34,7 +34,7 @@ public class SeccionDao {
 					+ "inner join fetch s.estaciones1 e1 "
 					+ "inner join fetch s.estaciones2 e2 "
 					+ "where e1.idEstacion=" + e1.getIdEstacion()
-					+ "and e2.idEstacion=" + e2.getIdEstacion();
+					+ " and e2.idEstacion=" + e2.getIdEstacion();
 			seccion = (Seccion)session.createQuery(hql).uniqueResult();
 
 		}

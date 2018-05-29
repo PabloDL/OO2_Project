@@ -19,9 +19,9 @@ public class TestRealizarViajeConCapasNegocio {
 			tsAbm.agregarViaje(1234,16);
 			
 			TerminalTrenABM ttAbm = new TerminalTrenABM();
-			ttAbm.agregarViaje(1234, 5);
+			ttAbm.agregarViaje(1234, 13); //tmperley
 			
-			ttAbm.agregarViaje(1234, 6);
+			ttAbm.agregarViaje(1234, 14); //LLAVALLOL
 			
 			TerminalColectivoABM tcAbm = new TerminalColectivoABM();
 			tcAbm.agregarViaje(1234,22,2);
@@ -30,9 +30,9 @@ public class TestRealizarViajeConCapasNegocio {
 			
 			tsAbm.agregarViaje(1235,16);
 			
-			ttAbm.agregarViaje(1235, 5);
+			ttAbm.agregarViaje(1235, 13); 
 			
-			ttAbm.agregarViaje(1235, 6);
+			ttAbm.agregarViaje(1235, 14);
 			
 			
 			tcAbm.agregarViaje(1235,22,2);
@@ -42,9 +42,9 @@ public class TestRealizarViajeConCapasNegocio {
 			tsAbm.agregarViaje(1236,16);
 			
 			
-			ttAbm.agregarViaje(1236, 5);
+			ttAbm.agregarViaje(1236, 14);
 			
-			ttAbm.agregarViaje(1236, 6);
+			ttAbm.agregarViaje(1236, 13);
 			
 			tcAbm.agregarViaje(1236,22,2);
 

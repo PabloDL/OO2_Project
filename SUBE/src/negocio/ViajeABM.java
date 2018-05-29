@@ -202,7 +202,9 @@ public class ViajeABM {
 				}
 			}
 			else { //SI ES UN TREN Y LA MISMA LINEA, entonces es una salida
-				tarifa = dG.traerTarifaTren(((Tren)ultimoTransporte).getEstacionOrigen(), ((Tren)(v.getTransporte())).getEstacionOrigen());
+				//tarifa = dG.traerTarifaTren(((Tren)ultimoTransporte).getEstacionOrigen(), ((Tren)(v.getTransporte())).getEstacionOrigen());
+				SeccionABM secABM = new SeccionABM();
+				tarifa = secABM.getMontoEntreEstaciones(((Tren)(v.getTransporte())).getEstacionOrigen(), ((Tren)ultimoTransporte).getEstacionOrigen());
 				INDICADOR_VIAJE_TREN_TARIFA_ESTUDIANTIL_MARCAR_VUELTA = true;
 				//tarifa = (((Tren)(ultimoViaje.getTransporte())).getMontoEntreEstaciones(this.estacion);
 // SI ES SALIDA NO TENGO Q SUMAR AL BOLETO,SINO RESTAR LO Q CORRESPONDA, QUEDA NGATIVO

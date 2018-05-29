@@ -13,9 +13,9 @@ public class TestTraerMontoEntreEstaciones {
 		double precio=0;
 		
 //		precio = sec.getMontoEntreEstaciones("Lanus", "Llavallol");
-		precio = sec.getMontoEntreEstaciones("Constitucion", "Lanus");
+		//precio = sec.getMontoEntreEstaciones("Constitucion", "Lanus");
 		
-//		precio = sec.getMontoEntreEstaciones("Temperley", "Lavallol");
+		precio = sec.getMontoEntreEstaciones("Temperley", "Llavallol");
 //		precio = sec.getMontoEntreEstaciones("Lavallol", "Temperley");
 		
 //		precio = secDao.traerPrecioEntreEstaciones(estDao.traerEstacion("Lavallol"), estDao.traerEstacion("Temperley")).getPrecio();
