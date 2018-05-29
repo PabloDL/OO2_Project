@@ -56,6 +56,8 @@ public class SubeDao {
 		return objeto;
 	}
 	
+
+	
 	public void actualizar(Sube objeto) throws HibernateException {
 		try {
 			iniciaOperacion();

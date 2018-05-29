@@ -19,7 +19,7 @@
 			<th>DNI</th>
 		</tr>
 		<%List<Persona> personas=(List)request.getAttribute("personas");
-for (Persona persona:personas){%>
+		for (Persona persona:personas){%>
 		<tr>
 			<td><%=persona.getApellido()+ ", " +persona.getNombre()%></td>
 			<td><%=persona.usaBoletoEstudiantil()%></td>

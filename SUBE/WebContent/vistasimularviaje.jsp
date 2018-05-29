@@ -43,8 +43,10 @@
 </head>
 <body>
 	<%@ include file="/cabecera.jsp"%>
+	
 	<div class="container">
-		<form action="/SUBE/agregarViaje" method="post" role="form" data-toggle="validator">
+	
+		<form method="POST" action="/SUBE/agregarViaje"  role="form" data-toggle="validator">
 			<c:if test="${empty action}">
 				<c:set var="action" value="viajar!" />
 			</c:if>

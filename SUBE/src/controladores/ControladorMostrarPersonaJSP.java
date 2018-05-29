@@ -25,8 +25,7 @@ public class ControladorMostrarPersonaJSP extends HttpServlet {
 			PersonaABM personaabm = new PersonaABM();
 			Persona persona = personaabm.traerPersona( dni );
 			request.setAttribute( "persona" , persona );
-			request.getRequestDispatcher( "/vistapersona.jsp" ).forward( request ,
-			response );
+			request.getRequestDispatcher( "/vistapersona.jsp" ).forward( request,response );
 		}
 		catch (Exception e ) {
 			response .sendError(500, "El DNI Ingresado no existe en la base de datos." );

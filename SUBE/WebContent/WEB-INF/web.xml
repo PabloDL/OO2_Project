@@ -44,13 +44,41 @@
 	<servlet>
 		<servlet-name>ControladorAgregarPersonaJSP</servlet-name>
 		<servlet-class>controladores.ControladorAgregarPersonaJSP</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ControladorSimularViaje</servlet-name>
-		<url-pattern>/agregarViaje</url-pattern>
-	</servlet-mapping>
+	</servlet>	
 	<servlet>
 		<servlet-name>ControladorSimularViaje</servlet-name>
 		<servlet-class>controladores.ControladorSimularViaje</servlet-class>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorSimularViaje</servlet-name>
+		<url-pattern>/agregarViaje</url-pattern>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ControladorTerminalesSubte</servlet-name>
+		<servlet-class>controladores.ControladorTerminalesSubte</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorTerminalesSubte</servlet-name>
+		<url-pattern>/terminalesSubte</url-pattern>		
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ControladorTerminalesTren</servlet-name>
+		<servlet-class>controladores.ControladorTerminalesTren</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorTerminalesTren</servlet-name>
+		<url-pattern>/terminalesTren</url-pattern>		
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>ControladorTerminalesColectivo</servlet-name>
+		<servlet-class>controladores.ControladorTerminalesColectivo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorTerminalesColectivo</servlet-name>
+		<url-pattern>/terminalesColectivo</url-pattern>		
+	</servlet-mapping>	
+	
 </web-app>

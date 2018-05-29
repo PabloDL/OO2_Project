@@ -12,8 +12,7 @@ public class Persona {
 
 	public Persona(){} //siempre hay que implementar el contructor vacio
 	
-	public Persona(String apellido, String nombre, int dni,
-		boolean esTarifaSocial, boolean esTarifaEstudiantil, Sube s) { //nunca va el id en el constructor por ser autoincrementable
+	public Persona(String apellido, String nombre, int dni,boolean esTarifaSocial, boolean esTarifaEstudiantil, Sube s) { //nunca va el id en el constructor por ser autoincrementable
 		super ();
 		this . apellido = apellido;
 		this . nombre = nombre;
@@ -87,6 +86,13 @@ public class Persona {
 
 	public void setSube(Sube sube) {
 		this.sube = sube;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", dni=" + dni + ", esTarifaSocial=" + esTarifaSocial + ", esTarifaEstudiantil=" + esTarifaEstudiantil
+				+ ", usuario=" + usuario + "]";
 	}
 	
 }

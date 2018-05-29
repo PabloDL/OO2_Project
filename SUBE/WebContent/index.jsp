@@ -59,14 +59,9 @@
 			<TD><INPUT type="submit" value="Agregar Personas"></TD>
 		</TR>
 	</TABLE>
-</FORM>
-<FORM method="POST" action="/SUBE/vistasimularviaje.jsp">
-<input type="hidden" name="jstl" value="1" />
-	<TABLE border="0">
-		<TR>
-			<TD><INPUT type="submit" value="simular viaje"></TD>
-		</TR>
-	</TABLE>
-</FORM><BR>
+</FORM><BR><BR>
+
+<input type="submit" value="simular viaje" onclick = "location='/SUBE/agregarViaje.jsp'"/>
+
 <BR>
 </HTML>
