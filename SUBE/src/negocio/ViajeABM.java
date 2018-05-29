@@ -1,6 +1,5 @@
 package negocio;
 
-import java.awt.print.Printable;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
@@ -131,8 +130,7 @@ public class ViajeABM {
 						long hora1 = tiempoFinalAnteUltimoViaje.getTimeInMillis();
 						long hora2 = tiempoInicial.getTimeInMillis();
 						
-						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis() && 
-								tiempoFinalAnteUltimoViaje.get(GregorianCalendar.DATE) == tiempoInicial.get(GregorianCalendar.DATE) ) {							
+						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()) {							
 							descuentoRedSube = dG.getPorcentajeDescuentoEtapa2();
 						}
 					}
@@ -197,8 +195,7 @@ public class ViajeABM {
 						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 					
-						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis() && 
-								tiempoFinalAnteUltimoViaje.get(GregorianCalendar.DATE) == tiempoInicial.get(GregorianCalendar.DATE) ){							
+						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()  ){							
 							descuentoRedSube = dG.getPorcentajeDescuentoEtapa2();
 						}
 					}
@@ -240,8 +237,7 @@ public class ViajeABM {
 								GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 								tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 	
-								if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis() && 
-										tiempoFinalAnteUltimoViaje.get(GregorianCalendar.DATE) == tiempoInicial.get(GregorianCalendar.DATE) ) {
+								if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()) {
 									descuentoRedSube = dG.getPorcentajeDescuentoEtapa2();
 								}
 							}
@@ -299,8 +295,7 @@ public class ViajeABM {
 						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
 						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
-						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis() && 
-								tiempoFinalAnteUltimoViaje.get(GregorianCalendar.DATE) == tiempoInicial.get(GregorianCalendar.DATE) ) {							
+						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()) {							
 							descuentoRedSube = dG.getPorcentajeDescuentoEtapa2();
 						}
 					}
