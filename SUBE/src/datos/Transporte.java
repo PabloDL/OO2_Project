@@ -18,6 +18,16 @@ public class Transporte {
 	
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idTransporte + "]";
-	}		
+		return "";
+	}
+	
+	public String mostrarTranporte() {
+		if (this instanceof Tren)
+			return ((Tren)this).toString();
+		else if (this instanceof Colectivo)
+			return ((Colectivo)this).toString();
+		else 
+			return ((Subte)this).toString();
+	}
+	
 }

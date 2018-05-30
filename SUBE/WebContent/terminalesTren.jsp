@@ -19,16 +19,9 @@
 		
 		<select name="terminal">
    			 <option value="5">Terminal linea Roca - Ramal Ezeiza - Estacion Constitucion</option> 
-  			 <option value="6">Terminal linea Roca - Ramal Ezeiza - Estacion Irigoyen</option> 	
-  			 <option value="7">Terminal linea Roca - Ramal Ezeiza - Estacion Avellaneda</option> 
-  			 <option value="8">Terminal linea Roca - Ramal Ezeiza - Estacion Gerli</option> 
   			 <option value="9">Terminal linea Roca - Ramal Ezeiza - Estacion Lanus</option> 
-  			 <option value="10">Terminal linea Roca - Ramal Ezeiza - Estacion Escalada</option> 
-  			 <option value="11">Terminal linea Roca - Ramal Ezeiza - Estacion Banfield</option> 
-  			 <option value="12">Terminal linea Roca - Ramal Ezeiza - Estacion Lomas de Zamora</option> 
   			 <option value="13">Terminal linea Roca - Ramal Ezeiza - Estacion Temperley</option> 
   			 <option value="14">Terminal linea Roca - Ramal Ezeiza - Estacion Llavallol</option> 
-  			 <option value="15">Terminal linea Roca - Ramal Ezeiza - Estacion Turdera</option> 		 
 		</select><BR> <BR>	
 		
 		<% Sube sube=(Sube) request.getAttribute("sube"); %>	

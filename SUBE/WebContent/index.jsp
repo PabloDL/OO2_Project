@@ -9,13 +9,13 @@
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
-	<FORM method="POST" action=" /SUBE/MostrarPersonaJSP ">
-		Búsqueda de personas <BR>
+	<FORM method="POST" action=" /SUBE/MostrarViaje ">
+		Búsqueda de viajes <BR>
 		<BR>
 		<TABLE border="0">
 			<TR>
-				<TD>DNI:</TD>
-				<TD><INPUT name="dni"></TD>
+				<TD>Numero Sube:</TD>
+				<TD><INPUT name="numeroSube"></TD>
 			</TR>
 			<TR>
 				<TD><INPUT type="submit" value="Consultar"></TD>

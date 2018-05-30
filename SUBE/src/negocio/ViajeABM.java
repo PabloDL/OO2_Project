@@ -60,8 +60,9 @@ public class ViajeABM {
 			Iterator<Viaje> it = ultimosNviajes.iterator();
 			if (it.hasNext()) {
 				Viaje ultimoViaje = it.next();
+				double precioAux = ultimoViaje.getTarifa();
 				ultimoViaje = this.agregarDestinoAViaje(ultimoViaje, v);
-				s.setSaldo(s.getSaldo() + ultimoViaje.getTarifa() - v.getTarifa());
+				s.setSaldo(s.getSaldo() - ultimoViaje.getTarifa() + precioAux);
 				dao.actualizar(ultimoViaje);
 				INDICADOR_VIAJE_TREN_TARIFA_ESTUDIANTIL_MARCAR_VUELTA = false;
 			}
@@ -324,5 +325,9 @@ public class ViajeABM {
 		viajeOrigen.setTarifa(tarifaFinal);
 		
 		return viajeOrigen;
+	}
+
+	public List<Viaje> traerViaje(Sube s) {
+		return dao.traerViaje(s);
 	}
 }
