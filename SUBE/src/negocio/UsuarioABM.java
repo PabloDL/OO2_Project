@@ -35,7 +35,7 @@ public class UsuarioABM {
 		
 		Usuario buscarUsuario = dao.traerUsuario(nombreUsuario);
 		if (buscarUsuario != null) {
-			throw new Exception("ERROR: YA EXIST EL USUARIO");
+			throw new Exception("ERROR: YA EXISTE EL USUARIO");
 		}
 		
 		Usuario usuario= new Usuario(nombreUsuario, password, buscarPersona);

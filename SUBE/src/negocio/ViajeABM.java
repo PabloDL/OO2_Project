@@ -180,12 +180,9 @@ public class ViajeABM {
 					(ultimoTransporte.getClass().getSimpleName().equals("Tren")) && 
 							((Tren)ultimoTransporte).getLinea().compareTo(((Tren)v.getTransporte()).getLinea()) != 0 || ( 
 									((ultimoTransporte.getClass().getSimpleName().equals("Tren")) && 
-											(((Tren)ultimoTransporte).getLinea() == ((Tren)v.getTransporte()).getLinea())
-											&& ((Tren)ultimoTransporte).getEstacionDestino() != "-"))){ // VEO Q NO SEA UNA NUEVA ENTRADA
-				if (ultimoTransporte.getClass().getSimpleName().equals("Tren")) {  
-					String test = ((Tren)ultimoTransporte).getEstacionDestino();
-					System.out.println(test);
-				}
+											((Tren)ultimoTransporte).getLinea().compareTo(((Tren)v.getTransporte()).getLinea()) == 0
+											&& ((Tren)ultimoTransporte).getEstacionDestino().compareTo("-") != 0))){ // VEO Q NO SEA UNA NUEVA ENTRADA
+				
 				if ((new GregorianCalendar()).getTimeInMillis() <= tiempoFinal.getTimeInMillis()){
 					descuentoRedSube = dG.getPorcentajeDescuentoEtapa1();
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS

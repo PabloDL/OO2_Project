@@ -15,7 +15,7 @@
 					
 			<TR>		
 				<TD>Numero Sube:</TD>
-				<TD><INPUT name="numeroSube"></TD>		
+				<TD><INPUT name="numeroSube" required></TD>		
 			</TR>			
 		</TABLE>		
 		

@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Persona;
+import datos.Sube;
 import datos.Usuario;
 
 public class UsuarioDao {
@@ -38,8 +39,9 @@ public class UsuarioDao {
 		Usuario obj = null;
 		try {
 			iniciaOperacion();
-			String hQL = "from usuario u where u.nombreUsuario=" + nombreUsuario;
-			obj = (Usuario) session.createQuery(hQL).uniqueResult();
+			obj = (Usuario) session .createQuery( "from Usuario u where u.nombreUsuario='" +nombreUsuario+"'").uniqueResult();
+			//String hQL = "from Usuario u where u.nombreUsuario=" + nombreUsuario;											
+			//obj = (Usuario) session.createQuery(hQL).uniqueResult();
 		} finally {
 			session.close();
 		}
