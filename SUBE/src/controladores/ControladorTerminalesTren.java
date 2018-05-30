@@ -31,7 +31,7 @@ public class ControladorTerminalesTren extends HttpServlet {
 			
 		} catch (Exception e) {
 			
-			response.sendError(500, "Error en ControladorTerminalesTren.");
+			response.sendError(500, "Error en ControladorTerminalesTren." + e.getMessage());
 			
 		}
 	}

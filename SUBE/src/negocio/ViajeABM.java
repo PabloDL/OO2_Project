@@ -52,7 +52,7 @@ public class ViajeABM {
 		double precioBoleto = this.calcularPrecio(v); // si el precio es (-) quiere decir que es ua salida de tren
 		v.setTarifa(precioBoleto);
 		if (!(subeABM.verificarSaldoSuficiente(v.getSube().getIdSube(), precioBoleto))) {
-			throw new Exception("ERROR: SALDO INSUFIECIENTE");
+			throw new Exception("ERROR: SALDO INSUFICIENTE");
 		}
 		 // Si el precio es (-) era un tren tengo que pisar el ultimo valor, o si es 0, puede que sea tarifa estudiantil
 		if (precioBoleto < 0 || INDICADOR_VIAJE_TREN_TARIFA_ESTUDIANTIL_MARCAR_VUELTA == true) {

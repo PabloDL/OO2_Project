@@ -34,7 +34,7 @@ public class ControladorTerminalesColectivo extends HttpServlet {
 			
 		} catch (Exception e) {
 			
-			response.sendError(500, "Error en ControladorTerminalesColectivo.");
+			response.sendError(500, "Error en ControladorTerminalesColectivo." + e.getMessage());
 			
 		}
 	}

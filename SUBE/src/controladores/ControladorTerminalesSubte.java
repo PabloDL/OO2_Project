@@ -34,7 +34,7 @@ public class ControladorTerminalesSubte extends HttpServlet {
 			
 		} catch (Exception e) {
 			
-			response.sendError(500, "Error en ControladorTerminalesSubte.");
+			response.sendError(500, "Error en ControladorTerminalesSubte." + e.getMessage());
 			
 		}
 	}

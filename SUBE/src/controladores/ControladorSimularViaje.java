@@ -39,7 +39,7 @@ public class ControladorSimularViaje extends HttpServlet {
 			
 		} catch (Exception e) {
 			
-			response.sendError(500, "Error en ControladorSimularViaje.");
+			response.sendError(500, "Error en ControladorSimularViaje" + e.getMessage());
 			
 		}
 	}
