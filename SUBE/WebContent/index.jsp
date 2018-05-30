@@ -9,13 +9,27 @@
 </HEAD>
 <BODY>
 	<%@ include file="/cabecera.jsp"%>
+	
+	<BR><input type="submit" value="Simular viaje" onclick = "location='/SUBE/agregarViaje.jsp'"/><BR><BR><BR>
+	
 	<FORM method="POST" action=" /SUBE/MostrarViaje ">
-		Búsqueda de viajes <BR>
-		<BR>
-		<TABLE border="0">
+		<h3>Búsqueda de viajes </h3>
+		<TABLE border="1">
 			<TR>
 				<TD>Numero Sube:</TD>
-				<TD><INPUT name="numeroSube"></TD>
+				<TD><INPUT name="numeroSube" required></TD>
+			</TR>
+			<TR>
+				<TD><INPUT type="submit" value="Consultar"></TD>
+			</TR>
+		</TABLE>
+	</FORM>
+	<FORM method="POST" action=" /SUBE/MostrarPersonaJSP ">
+		<BR><h3>Búsqueda de personas</h3>
+		<TABLE border="1">
+			<TR>
+				<TD>DNI:</TD>
+				<TD><INPUT name="dni" required></TD>
 			</TR>
 			<TR>
 				<TD><INPUT type="submit" value="Consultar"></TD>
@@ -23,6 +37,9 @@
 		</TABLE>
 	</FORM>
 </BODY>
+<BR>
+<BR>
+<BR>
 <BR>
 <FORM method="POST" action="/SUBE/ListarPersonas">
 	<input type="hidden" name="jstl" value="0" />
@@ -32,6 +49,9 @@
 		</TR>
 	</TABLE>
 </FORM>
+<BR>
+<BR>
+<BR>
 <BR>
 <FORM method="POST" action="/SUBE/ListarPersonas">
 	<input type="hidden" name="jstl" value="1" />
@@ -43,15 +63,8 @@
 	</TABLE>
 </FORM>
 <BR>
-<FORM method="POST" action="/SUBE/vistaagregarpersona.jsp">
-<input type="hidden" name="jstl" value="1" />
-	<TABLE border="0">
-		<TR>
-			<TD><INPUT type="submit" value="Agregar Personas"></TD>
-		</TR>
-	</TABLE>
-</FORM>
 <BR>
-<input type="submit" value="simular viaje" onclick = "location='/SUBE/agregarViaje.jsp'"/>
+<BR>
+<BR>
 <BR>
 </HTML>

@@ -11,8 +11,8 @@
 <body>
 	<%@ include file="/cabecera.jsp"%>
 	<BR>
-	<BR> Listado utilizando JSTL
-	<table border="1">
+	<BR>
+	<table border="1" align="center">
 		<tr>
 			<th>Persona</th>
 			<th>DNI</th>
@@ -31,6 +31,8 @@
 		</c:forEach>
 	</table>
 	<BR>
-	<A href="/SUBE/index.jsp"> Volver... </A>
+	<center> 
+	<a href="/SUBE/index.jsp"><button>Volver</button></a> 
+	</center>
 </body>
 </html>

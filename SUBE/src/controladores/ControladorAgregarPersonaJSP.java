@@ -38,7 +38,6 @@ public class ControladorAgregarPersonaJSP extends HttpServlet {
 			
 			//if (usuarioabm.traerUsuario(nombreUsuario) == null && personaabm.traerPersona(dni) == null) {
 					Sube s = new Sube();
-					System.out.print("nada");
 					long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil, s);
 					long ultimoIdUsuario = usuarioabm.agregar(nombreUsuario, password, ultimoIdCliente);				
 					//SI LA AGREGUE OK, LO MUESTRO POR PANTALLA
@@ -52,7 +51,7 @@ public class ControladorAgregarPersonaJSP extends HttpServlet {
 		//	}
 			
 		} catch (Exception e) {
-			response.sendError(500, "Hubo un problema al agregar al clientes." + e.getMessage());
+			response.sendError(500, "Hubo un problema al agregar al clientes.");
 		}
 	}
 }

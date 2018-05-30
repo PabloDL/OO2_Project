@@ -111,8 +111,8 @@ public class ViajeABM {
 		Iterator<Viaje> it = ultimosNviajes.iterator();
 		if (it.hasNext()) {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
-			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+			GregorianCalendar tiempoInicial = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
 			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
 			
 			if (!(ultimoViaje.getTransporte().getClass().getSimpleName().equals("Colectivo")) || 
@@ -125,12 +125,10 @@ public class ViajeABM {
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
 						Viaje anteUltimoViaje = it.next();
-						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
-						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+						GregorianCalendar tiempoAnteUltimo = (GregorianCalendar)anteUltimoViaje.getFechaHoraInicio().clone();
+						GregorianCalendar tiempoFinalAnteUltimoViaje = (GregorianCalendar)tiempoAnteUltimo.clone();
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
-						long hora1 = tiempoFinalAnteUltimoViaje.getTimeInMillis();
-						long hora2 = tiempoInicial.getTimeInMillis();
-						
+												
 						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()) {							
 							descuentoRedSube = dG.getPorcentajeDescuentoEtapa2();
 						}
@@ -168,8 +166,8 @@ public class ViajeABM {
 		Iterator<Viaje> it = ultimosNviajes.iterator();
 		if (it.hasNext()) {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
-			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+			GregorianCalendar tiempoInicial = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
 			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2);			
 			
 			Transporte ultimoTransporte = transporteABM.traer(ultimoViaje.getTransporte().getIdTransporte());
@@ -189,8 +187,8 @@ public class ViajeABM {
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
 						Viaje anteUltimoViaje = it.next();
-						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
-						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+						GregorianCalendar tiempoAnteUltimo = (GregorianCalendar)anteUltimoViaje.getFechaHoraInicio().clone();
+						GregorianCalendar tiempoFinalAnteUltimoViaje = (GregorianCalendar)tiempoAnteUltimo.clone();
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 					
 						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()  ){							
@@ -211,8 +209,8 @@ public class ViajeABM {
 //TENGO QUE RECALCULAR A PARTIR DE LOS ULTIMOS 3 VIAJES, EN LUGAR D LOS ULTIMOS 2, TENGO Q AGARRAR Y VER PARA EL PRIMER VIAJE DE TREN QUE DESCUENTOS
 				if (it.hasNext()) { //POR LO MENOS TIENE Q TENER UN VIAJE ANTES DEL TREN(EL TREN seria en posicion 1, en 0 otro)
 					ultimoViaje = it.next();
-					tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-					tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+					tiempoInicial = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); // RECUPERA HORA INICIO VIAJE
+					tiempoFinal = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
 					tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
 					
 					ultimoTransporte = transporteABM.traer(ultimoViaje.getTransporte().getIdTransporte());
@@ -230,9 +228,8 @@ public class ViajeABM {
 							// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 							if (it.hasNext()) {
 								Viaje anteUltimoViaje = it.next();
-								GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio(); // SE SUPONE Q SUMA DOS HORAS
-																										// A TIEMPO INICIAL
-								GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+								GregorianCalendar tiempoAnteUltimo = (GregorianCalendar)anteUltimoViaje.getFechaHoraInicio().clone();
+								GregorianCalendar tiempoFinalAnteUltimoViaje = (GregorianCalendar)tiempoAnteUltimo.clone();
 								tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
 	
 								if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()) {
@@ -273,8 +270,9 @@ public class ViajeABM {
 		Iterator<Viaje> it = ultimosNviajes.iterator();
 		if (it.hasNext()) {
 			Viaje ultimoViaje = it.next(); // obtengo el primer valor que por orden es el ultimo viaje
-			GregorianCalendar tiempoInicial = ultimoViaje.getFechaHoraInicio(); // RECUPERA HORA INICIO VIAJE
-			GregorianCalendar tiempoFinal = ultimoViaje.getFechaHoraInicio(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+			GregorianCalendar tiempoInicial = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); // RECUPERA HORA INICIO VIAJE
+			GregorianCalendar tiempoFinal = (GregorianCalendar)ultimoViaje.getFechaHoraInicio().clone(); //TIEMPO FINAL ES TIEMPO INICIAL + 2 HS
+
 			tiempoFinal.add((GregorianCalendar.HOUR_OF_DAY),2); //
 			
 			Transporte ultimoTransporte = transporteABM.traer(ultimoViaje.getTransporte().getIdTransporte());
@@ -290,9 +288,10 @@ public class ViajeABM {
 					// VEO SI ENTRe EL ULTIMO Y EL ANTERIOR HAY MENOS DE 2 HS
 					if (it.hasNext()) {
 						Viaje anteUltimoViaje = it.next();
-						GregorianCalendar tiempoAnteUltimo = anteUltimoViaje.getFechaHoraInicio();
-						GregorianCalendar tiempoFinalAnteUltimoViaje = tiempoAnteUltimo;
+						GregorianCalendar tiempoAnteUltimo = (GregorianCalendar)anteUltimoViaje.getFechaHoraInicio().clone();
+						GregorianCalendar tiempoFinalAnteUltimoViaje = (GregorianCalendar)tiempoAnteUltimo.clone();
 						tiempoFinalAnteUltimoViaje.add((GregorianCalendar.HOUR_OF_DAY), 2);
+
 						if (tiempoFinalAnteUltimoViaje.getTimeInMillis() >= tiempoInicial.getTimeInMillis()) {							
 							descuentoRedSube = dG.getPorcentajeDescuentoEtapa2();
 						}

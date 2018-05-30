@@ -10,8 +10,8 @@
 </head>
 <body>
 	<%@ include file="/cabecera.jsp"%>
-	<BR> Listado Sin utilizar JSTL
-	<table border="1">
+	<BR> 
+	<table border="1" align="center">
 		<tr>
 			<th>Persona</th>
 			<th>tarifa social</th>
@@ -29,6 +29,8 @@
 		<%}%>
 	</table>
 	<BR>
-	<A href="/SUBE/index.jsp"> Volver... </A>
+	<center> 
+	<a href="/SUBE/index.jsp"><button>Volver</button></a> 
+	</center>
 </body>
 </html>

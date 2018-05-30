@@ -80,14 +80,12 @@
 		<servlet-name>ControladorTerminalesColectivo</servlet-name>
 		<url-pattern>/terminalesColectivo</url-pattern>		
 	</servlet-mapping>	
-	
-	<servlet>
-		<servlet-name>ControladorVistaViajes</servlet-name>
-		<servlet-class>controladores.ControladorVistaViajes</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ControladorVistaViajes</servlet-name>
-		<url-pattern>/MostrarViaje</url-pattern>		
-	</servlet-mapping>
-	
+  <servlet>
+    <servlet-name>ControladorVistaViajes</servlet-name>
+    <servlet-class>controladores.ControladorVistaViajes</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControladorVistaViajes</servlet-name>
+    <url-pattern>/MostrarViaje</url-pattern>
+  </servlet-mapping>	
 </web-app>

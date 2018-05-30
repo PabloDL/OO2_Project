@@ -7,6 +7,8 @@
 <BODY>
 	<BR> <BR> <BR> <BR>
 	<h1 align="center"> Viaje exitoso! </h1>
-	<a href= "/SUBE/index.jsp"> Volver ... </a>	
+	<center> 
+	<a href="/SUBE/index.jsp"><button>Volver</button></a> 
+	</center>
 </BODY>
 </HTML>

@@ -9,12 +9,16 @@
 <BODY>
 <%@ include file = "/cabecera.jsp" %>
 <% Persona persona=(Persona)request.getAttribute("persona"); %>
+<div align="center">
 <BR>
 Apellido: <%= persona.getApellido() %> <BR>
 Nombre : <%= persona.getNombre() %> <BR>
 DNI : <%= persona.getDni() %> <BR>
 ID : <%= persona.getIdPersona() %> <BR>
+</div>
 <BR>
-<A href = "/SUBE/index.jsp" > Volver... </A>
+<center> 
+<a href="/SUBE/index.jsp"><button>Volver</button></a> 
+</center>
 </BODY>
 </html>

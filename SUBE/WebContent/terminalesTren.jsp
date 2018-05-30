@@ -13,23 +13,23 @@
 	
 	<FORM method="POST" action=" /SUBE/terminalesTren"><BR> <BR>
 		
-		<div align="left">
+		<div align="center">
 			<h1> Terminales de Tren</h1><BR>
-		</div>
+		
 		
 		<select name="terminal">
-   			 <option value="5">Terminal linea Roca - Ramal Ezeiza - Estacion Constitucion</option> 
-  			 <option value="9">Terminal linea Roca - Ramal Ezeiza - Estacion Lanus</option> 
+   			 <option value="5">Terminal linea Roca - Ramal Ezeiza - Estacion Constitucion</option>
+  			 <option value="9">Terminal linea Roca - Ramal Ezeiza - Estacion Lanus</option>  
   			 <option value="13">Terminal linea Roca - Ramal Ezeiza - Estacion Temperley</option> 
-  			 <option value="14">Terminal linea Roca - Ramal Ezeiza - Estacion Llavallol</option> 
+  			 <option value="14">Terminal linea Roca - Ramal Ezeiza - Estacion Llavallol</option> 	 
 		</select><BR> <BR>	
 		
 		<% Sube sube=(Sube) request.getAttribute("sube"); %>	
 		
 		<input type="hidden" name="numeroSube" value=<%= sube.getNumero() %>>
 		
-		<INPUT type="submit" value="Siguiente">
-		
+		<INPUT type="submit" value="Finalizar">
+		</div>
 	</FORM>
 
 </body>

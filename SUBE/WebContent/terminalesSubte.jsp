@@ -14,11 +14,11 @@
 	
 	<FORM method="POST" action=" /SUBE/terminalesSubte"><BR> <BR>
 		
-		<div align="left">			
+		<div align="center">			
 			
 			<h1> Terminales de Subte </h1><BR>				
 			
-		</div>
+		
 		
 		<select name="terminal">
    			 <option value="16">Terminal Subte - Linea "A"</option> 
@@ -34,7 +34,7 @@
 		<input type="hidden" name="numeroSube" value=<%= sube.getNumero() %>>
 		
 		<INPUT type="submit" value="Finalizar">
-		
+		</div>
 	</FORM>
 
 </body>

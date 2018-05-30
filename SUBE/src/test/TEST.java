@@ -1,29 +1,22 @@
 package test;
 import datos.*;
 import negocio.TerminalTrenABM;
-import negocio.ViajeABM;
 import dao.*;
 public class TEST {
 
 	public static void main(String[] args) {
 		
-		Subte s = new Subte("A");
-		ViajeABM vabm = new ViajeABM();
-		try {
-			Viaje v = vabm.traerViaje(40);
-			
-			System.out.println(v.getTransporte().mostrarTranporte());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		/*SubeDao subeDao = new SubeDao();
+		Sube sube = subeDao.traerSube(1234);
+		System.out.println(sube.getNumero());*/
 		
-		
-		
-		System.out.println(((Transporte)s).mostrarTranporte());
+		TerminalTrenABM ttAbm = new TerminalTrenABM();
 		try {
 			
+		ttAbm.agregarViaje(1234, 13); //tmperley
+		
+		ttAbm.agregarViaje(1234, 14); //LLAVALLOL
+		
 		}catch(Exception x) {
 			System.out.println(x.getMessage());
 		}
