@@ -3,6 +3,7 @@ package datos;
 import datos.DatosFuncionales;
 
 public class Subte extends Transporte{
+
 	private long idSubte;
 	private String linea;
 	
@@ -34,4 +35,8 @@ public class Subte extends Transporte{
 		this.idSubte = idSubte;
 	}
 
+	@Override
+	public String toString() {
+		return "Subte: " +"<BR>"+ "\nLinea= " + linea;
+	}
 }

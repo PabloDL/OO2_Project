@@ -1,3 +1,4 @@
+<%@page import="funciones.Funciones"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="datos.Viaje"%>
@@ -18,8 +19,11 @@
 		<%List<Viaje> viajes=(List)request.getAttribute("viajes");
 		for (Viaje viaje:viajes){%>
 		<tr>
-			<td><%=viaje.getTransporte().mostrarTranporte()%></td>			
-		</tr>
+			<td>ID: <%=viaje.getIdViaje()%><BR>
+			Tarifa: <%=viaje.getTarifa()%><BR>
+			Fecha de Inicio: <%=Funciones.traerFechaCorta(viaje.getFechaHoraInicio())%><BR>
+			<%=viaje.getTransporte().mostrarTranporte()%></td>	
+			
 		<%}%>
 	</table>
 	<BR>

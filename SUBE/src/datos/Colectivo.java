@@ -1,6 +1,7 @@
 package datos;
 
 public class Colectivo extends Transporte {
+	
 	private long idColectivo;
 	private String linea;
 	private int numero;
@@ -40,5 +41,10 @@ public class Colectivo extends Transporte {
 	}
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
+	}
+	
+	@Override
+	public String toString() {
+		return "Colectivo: " +"<BR>"+ "\nLinea= " + linea +"<BR>"+ "\nNumero= " + numero + ", Ramal= " + ramal;
 	}
 }

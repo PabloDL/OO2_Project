@@ -2,6 +2,7 @@ package datos;
 
 import java.util.GregorianCalendar;
 import datos.DatosFuncionales;
+import funciones.Funciones;
 
 public class Tren extends Transporte {
 	private long idTren;
@@ -83,8 +84,8 @@ public class Tren extends Transporte {
 
 	@Override
 	public String toString() {
-		return "Tren [idTren=" + idTren + ", linea=" + linea + ", ramal=" + ramal + ", estacionOrigen=" + estacionOrigen
-				+ ", estacionDestino=" + estacionDestino + ", fechaHoraSalida=" + fechaHoraSalida + "]";
+		return "Tren: " +"<BR>"+ "\nLinea= " + linea + ", \nRamal= " + ramal +"<BR>"+ "\nEstacion de origen= " + estacionOrigen
+				+"<BR>"+ "\nEstacion de destino= " + estacionDestino +"<BR>"+ "\nFecha y Hora de Salida= " + Funciones.traerFechaCorta(fechaHoraSalida);
 	}
 	
 	
