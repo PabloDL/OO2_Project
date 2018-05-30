@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.SubeDao;
 import negocio.SubeABM;
 import negocio.ViajeABM;
 import datos.Sube;
@@ -33,6 +34,10 @@ public class ControladorVistaViajes extends HttpServlet {
 			Sube s = subeabm.traerSube(numeroSube);
 			List<Viaje> Viajes = Viajeabm.traerViaje(s);
 			request.setAttribute("viajes", Viajes);
+			
+			SubeDao subeDao = new SubeDao();
+			Sube sube = subeDao.traerSube(numeroSube);			
+			request.setAttribute("sube", sube);
 			
 			request.getRequestDispatcher("/vistaviajes.jsp").forward(request, response);
 	
