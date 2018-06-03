@@ -78,11 +78,11 @@ public class DatosGenerales {
 	public void setMontoColectivo5(float montoColectivo5) {
 		this.montoColectivo5 = montoColectivo5;
 	}
-	
-	public void getTarifaSocialSubte() {
-		// TODO Auto-generated method stub
-		
-	}
+//	
+//	public void getTarifaSocialSubte() {
+//		// TODO subte no tiene tarifa social
+//		
+//	}
 	public double getTarifaEstudiantilSubte() {
 		return tarifaEstudiantilSubte;
 		

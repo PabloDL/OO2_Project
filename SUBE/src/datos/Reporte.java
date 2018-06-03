@@ -7,12 +7,18 @@ import dao.ViajeDao;
 
 public class Reporte {
 	private ReporteCompuesto reporteCompuesto;
-
 	
- 	public String generar(){
-		return this.reporteCompuesto.generar();
+ 	public ReporteCompuesto getReporteCompuesto() {
+		return reporteCompuesto;
 	}
-		
+
+	public void setReporteCompuesto(ReporteCompuesto reporteCompuesto) {
+		this.reporteCompuesto = reporteCompuesto;
+	}
+
+	public String generar(){
+		return this.reporteCompuesto.generar();
+	}		
 		
  	public List<Viaje> retornarReporte(String hql){
  		ViajeDao dao = new ViajeDao (); 	

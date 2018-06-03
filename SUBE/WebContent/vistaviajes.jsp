@@ -28,7 +28,6 @@
 			<%=viaje.getTransporte().mostrarTranporte()%></td>	
 			
 		<%}%>
-		<BR>
 	</table>
 	<BR>
 	<center> 

@@ -137,7 +137,7 @@ CREATE TABLE `estacionseccion` (
 
 LOCK TABLES `estacionseccion` WRITE;
 /*!40000 ALTER TABLE `estacionseccion` DISABLE KEYS */;
-INSERT INTO `estacionseccion` VALUES (1,2,1),(1,3,2),(1,4,3),(2,3,1),(2,4,2),(3,4,1);
+INSERT INTO `estacionseccion` VALUES (1,2,1),(1,3,2),(1,4,3);
 /*!40000 ALTER TABLE `estacionseccion` ENABLE KEYS */;
 UNLOCK TABLES;
 

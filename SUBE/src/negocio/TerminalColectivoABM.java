@@ -1,15 +1,11 @@
 package negocio;
 
-import java.util.List;
-
 import dao.SubeDao;
 import dao.TerminalColectivoDao;
 import datos.Colectivo;
 import datos.DatosFuncionales;
 import datos.Sube;
-import datos.Subte;
 import datos.TerminalColectivo;
-import datos.TerminalSubte;
 import datos.Viaje;
 
 public class TerminalColectivoABM {

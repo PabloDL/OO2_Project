@@ -19,7 +19,7 @@ public class ReporteXTransporte extends Reporte {
 	}
 
 	public String generar() {
-		return null;
+		return "v.transporte =" + this.tipoTransporte;
 	}
 
 }
