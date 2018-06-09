@@ -1,6 +1,8 @@
 package dao;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -101,12 +103,20 @@ public class ViajeDao {
 	@SuppressWarnings("unchecked")
 	public List<Viaje> traerNUltimosViajes(Sube sube) {
 		List<Viaje> lista = null;
+		GregorianCalendar diferenciaDosHoras = new GregorianCalendar();
+		diferenciaDosHoras.add(GregorianCalendar.HOUR_OF_DAY, -2);  
 		try {
 			iniciaOperacion();
 			//String hQL = "from Viaje v inner join fetch v.sube s order by idViaje desc where s.idSube=" + sube.getIdSube();
 			String hQL = "from Viaje v inner join fetch v.sube s  where s.idSube=" + sube.getIdSube() 
 								+ " order by v.idViaje desc";
 			lista = session.createQuery(hQL).setFirstResult(0).setMaxResults(6).list();
+			//AHORA TNDRIA Q PONER
+			//String hQL = "from Viaje v inner join fetch v.sube s  where s.idSube=" + sube.getIdSube() 
+			//+ "where s.primerViajeRedSube<="+ sube.primerViajeRedSube +
+			 // "and v.fechaYHora<"+ diferenciaDosHoras +" order by v.idViaje desc";
+			//lista = session.createQuery(hQL).setFirstResult(0).list();
+			
 
 		}catch(HibernateException he) {
 			manejaExcepcion(he);
@@ -116,6 +126,31 @@ public class ViajeDao {
 		}
 		return lista;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Viaje> traerViajesRedSube(Sube sube) {
+		List<Viaje> lista = null;
+ 
+		try {
+			iniciaOperacion();
+//solo si la sube nunca se utilizo no tiene primerViaje
+			if (sube.getPrimerViajeRedSube() != null) {
+				//Traigo los ultimos a partir del primero de la red sube, que esta indicado en la sube
+				String hQL = "from Viaje v inner join fetch v.sube s  where s.idSube=" + sube.getIdSube() 
+						+ " and v.idViaje >= "+ sube.getPrimerViajeRedSube().getIdViaje() 
+						+ " order by v.idViaje desc";
+				lista = session.createQuery(hQL).setFirstResult(0).list();
+			}
+		}catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}finally {
+			session.close();
+		}
+		return lista;
+	}
+
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Viaje> traerReporte(String hql) throws HibernateException {

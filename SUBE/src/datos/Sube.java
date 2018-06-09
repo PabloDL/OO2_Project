@@ -10,6 +10,8 @@ public class Sube {
 	private Persona persona;
 	private Set<Viaje> ultimosViajes; //el ultimo viaje es el primero
 	private double saldo;
+	
+	private Viaje primerViajeRedSube; 
 
 	public Sube() {}
 	
@@ -99,7 +101,15 @@ public class Sube {
 	@Override
 	public String toString() {
 		return "Sube \nidSube= " + idSube + ", numero= " + numero + ", persona= " + persona + ", ultimosViajes= "
-				+ ultimosViajes + ", saldo= " + saldo;
+				+ ultimosViajes + ", saldo= " + saldo + primerViajeRedSube;
+	}
+
+	public Viaje getPrimerViajeRedSube() {
+		return primerViajeRedSube;
+	}
+
+	public void setPrimerViajeRedSube(Viaje primerViajeRedSube) {
+		this.primerViajeRedSube = primerViajeRedSube;
 	}
 		
 }
