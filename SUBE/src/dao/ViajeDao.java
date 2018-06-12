@@ -1,6 +1,5 @@
 package dao;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -157,7 +156,9 @@ public class ViajeDao {
 		ArrayList<Viaje> viajes = null ;
 		try {
 			iniciaOperacion();
+
 			viajes = (ArrayList<Viaje>) session.createQuery(hql).list();
+
 		} catch(HibernateException he){
 			manejaExcepcion(he);
 			throw he;

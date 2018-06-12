@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import dao.SubeDao;
 import dao.ViajeDao;
 import datos.DatosFuncionales;
@@ -19,12 +21,8 @@ public class SubeABM {
 			return c;
 		}
 
-		public Sube traerSube(int numero) throws Exception {
-			Sube c = dao.traerSube(numero);
-			// implementar si c es null lanzar Exception
-			if (c == null) {
-				throw new Exception("ERROR: NO EXISTE CLIENTE");
-			}
+		public Sube traerSube(int numero){
+			Sube c = dao.traerSube(numero);			
 			return c;
 		}
 
@@ -33,6 +31,21 @@ public class SubeABM {
 			Sube c = new Sube(idSube, numero, persona,saldo);
 			
 			return dao.agregar(c);
+		}
+		
+		public int agregar(int numero, Persona persona, int saldo) throws Exception {
+
+			Sube s = new Sube();
+			s.setNumero(numero);
+			s.setPersona(persona);
+			s.setSaldo(saldo);
+			
+			return dao.agregar(s);
+		}
+		
+		public int agregar(Sube sube) {			
+			
+			return dao.agregar(sube);
 		}
 
 		public void eliminar(long idSube) throws Exception {
@@ -45,6 +58,11 @@ public class SubeABM {
 				throw new Exception("ERROR: NO EXITE TERMINAL SUBTE");
 			}
 			dao.eliminar(c);
+		}
+		
+		public void eliminar(Sube sube) throws Exception {		
+									
+			dao.eliminar(sube);
 		}
 		
 		//ACA VAN METODOS 
@@ -87,5 +105,11 @@ public class SubeABM {
 			return false;
 		}
 		
+		public void actualizar(Sube sube) {
+			dao.actualizar(sube);						
+		}
 		
+		public List<Sube> traerListaSube(){
+			return dao.traerListaSube();
+		}
 	}

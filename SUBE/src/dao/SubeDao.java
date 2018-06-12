@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -85,9 +87,36 @@ public class SubeDao {
 		
 	}
 
-	public void eliminar(Sube c) {
-		// TODO Auto-generated method stub
-		
+	public void	eliminar(Sube objeto) throws HibernateException {
+		try {
+			iniciaOperacion();
+			session.delete(objeto);
+			tx.commit();
+		}
+		catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally
+		{
+			session.close();
+		}
+	}
+	
+	public List<Sube> traerListaSube(){
+		List<Sube> lista = null ;
+		try {
+			iniciaOperacion();
+			String hql = "from Sube s";
+			lista = session.createQuery(hql).list();
+		} 
+		catch(HibernateException he){
+			manejaExcepcion(he);
+			throw he;
+		}
+		finally {
+			session .close();
+		}
+		return lista;
 	}
 }
 

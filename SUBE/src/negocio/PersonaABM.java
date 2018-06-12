@@ -8,21 +8,33 @@ import datos.Sube;
 public class PersonaABM {
 	PersonaDao dao = new PersonaDao();
 	
+	public int agregar(String apellido, String nombre, int dni,
+			boolean esTarifaSocial, boolean esTarifaEstudiantil) throws Exception{
+		
+		Persona c= new Persona(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil);
+		// consultar si existe un cliente con el mismo dni , si existe arrojar la Excepcion		
+		Persona buscarPersona = dao.traerPersona(dni);
+		if (buscarPersona != null) {
+			throw new Exception ("ERROR: CLIENTE EXISTE");
+		}
+		return dao.agregar(c);
+	}
+	
 	public Persona traerPersona( long idPersona) throws Exception{
 		Persona c= dao.traerPersona(idPersona);
 		// implementar si c es null lanzar Exception ->!
-		if (c == null) {
-			throw new Exception ("ERROR: NO EXISTE CLIENTE");
-		}
+//		if (c == null) {
+//			throw new Exception ("ERROR: NO EXISTE CLIENTE");
+//		}
 		return c;
 	}
 	
 	public Persona traerPersona( int dni) throws Exception{
 		Persona c= dao .traerPersona(dni);
 		// implementar si c es null lanzar Exception
-		if (c == null) {
-			throw new Exception ("ERROR: NO EXISTE CLIENTE");
-		}
+		//if (c == null) {
+			//throw new Exception ("ERROR: NO EXISTE CLIENTE");
+		//}
 		return c;
 	}
 
@@ -57,7 +69,7 @@ public class PersonaABM {
 		dependencias*/
 		Persona c = dao.traerPersona(idPersona);
 		if (c == null) {
-			throw new Exception ("ERROR: NO EXISTE CLIENTE");
+			throw new Exception ("ERROR: NO EXISTE PERSONA");
 		}
 		dao .eliminar(c);
 	}
@@ -65,4 +77,12 @@ public class PersonaABM {
 	public List<Persona> traerPersona(){ 
 		return dao .traerPersona();
 		}
+	
+	public void actualizar(Persona persona) {
+		dao.actualizar(persona);
+	}
+	
+	public Persona traerPersona(Sube sube) {
+		return dao.traerPersona(sube);
+	}
 	}

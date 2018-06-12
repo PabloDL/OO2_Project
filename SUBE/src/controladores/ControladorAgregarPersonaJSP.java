@@ -10,6 +10,7 @@ import negocio.PersonaABM;
 import negocio.UsuarioABM;
 import datos.Persona;
 import datos.Sube;
+import datos.Usuario;
 
 public class ControladorAgregarPersonaJSP extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,34 +25,43 @@ public class ControladorAgregarPersonaJSP extends HttpServlet {
 
 	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String text = "correcto";
 		try {
 			PersonaABM personaabm = new PersonaABM();
 			UsuarioABM usuarioabm = new UsuarioABM();
-			
+
 			String nombre = request.getParameter("nombre");
 			String apellido = request.getParameter("apellido");
 			int dni = Integer.parseInt(request.getParameter("dni"));
-			boolean esTarifaSocial = request.getParameter("esTarifaSocial") != null;
-			boolean esTarifaEstudiantil = request.getParameter("esTarifaEstudiantil") != null;
-			String nombreUsuario = request.getParameter("nombreUsuario");
-			String password = request.getParameter("password");
+
+			boolean esTarifaSocial = request.getParameter("social").compareTo("false") != 0;
+			boolean esTarifaEstudiantil = request.getParameter("estudiantil").compareTo("false") != 0;
+			String nombreUsuario = request.getParameter("usr");
+			String password = request.getParameter("psw");
+
+			Sube s = new Sube();
+			Persona persona = personaabm.traerPersona(dni);
+			Usuario usuario = usuarioabm.traerUsuario(nombreUsuario);
 			
-			//if (usuarioabm.traerUsuario(nombreUsuario) == null && personaabm.traerPersona(dni) == null) {
-					Sube s = new Sube();
-					long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil, s);
-					long ultimoIdUsuario = usuarioabm.agregar(nombreUsuario, password, ultimoIdCliente);				
-					//SI LA AGREGUE OK, LO MUESTRO POR PANTALLA
-					Persona persona = personaabm.traerPersona(dni );
-					request.setAttribute( "persona" , persona );
-					request.getRequestDispatcher( "/vistapersona.jsp" ).forward( request ,
-					response );
-//			}
-	//		else {
-			//	request.setAttribute("msjError", "ERROR");
-		//	}
+			if (persona != null )
+				throw new Exception("ERROR DNI YA INGRESADO");
+			if (usuario != null )
+				throw new Exception("ERROR USUARIO EXISTENTE");
+				
+			long ultimoIdCliente = personaabm.agregar(apellido, nombre, dni, esTarifaSocial, esTarifaEstudiantil);
+			long ultimoIdUsuario = usuarioabm.agregar(nombreUsuario, password, ultimoIdCliente);
+			// SI LA AGREGUE OK, LO MUESTRO POR PANTALLA
+			//persona = personaabm.traerPersona(dni);
+			//			request.setAttribute("persona", persona);
+			//request.getRequestDispatcher("/vistapersona.jsp").forward(request, response);
 			
 		} catch (Exception e) {
-			response.sendError(500, "Hubo un problema al agregar al clientes.");
+			text = e.getMessage().toString();
+		}
+		finally {
+			response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		    response.getWriter().write(text);       // Write response body.
 		}
 	}
 }

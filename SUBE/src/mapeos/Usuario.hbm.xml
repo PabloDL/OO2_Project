@@ -8,6 +8,7 @@
 			</generator>
 		</id>
 		<property column="nombreUsuario" name="nombreUsuario" type="string" />
+		<property column="administrador" name="administrador" type="boolean" />
 		<property column="password" name="password" type="string" />
 		<one-to-one name="persona" class="datos.Persona"></one-to-one>
 	</class>

@@ -21,6 +21,15 @@ public class Persona {
 		this.esTarifaEstudiantil  = esTarifaEstudiantil;
 		this.sube = s;
 	}
+	public Persona(String apellido, String nombre, int dni,boolean esTarifaSocial, boolean esTarifaEstudiantil) {
+		super ();
+		this . apellido = apellido;
+		this . nombre = nombre;
+		this . dni = dni;
+		this. esTarifaSocial  = esTarifaSocial;
+		this.esTarifaEstudiantil  = esTarifaEstudiantil;
+		
+	}
 
 	public long getIdPersona(){
 		return idPersona;

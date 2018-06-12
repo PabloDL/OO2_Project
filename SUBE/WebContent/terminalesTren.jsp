@@ -28,7 +28,7 @@
 		
 		<input type="hidden" name="numeroSube" value=<%= sube.getNumero() %>>
 		
-		<INPUT type="submit" value="Finalizar">
+		<INPUT type="submit" value="Finalizar" class="btn btn-lg btn-primary">
 		</div>
 	</FORM>
 

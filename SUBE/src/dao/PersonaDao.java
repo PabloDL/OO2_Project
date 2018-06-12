@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import datos.Persona;
+import datos.Sube;
 
 public class PersonaDao {
 	
@@ -73,7 +74,7 @@ public class PersonaDao {
 			manejaExcepcion(he);
 			throw he;
 		}finally {
-			session .close();
+			session.close();
 		}
 		return objeto;
 	}
@@ -123,4 +124,20 @@ public class PersonaDao {
 		return objeto;
 		}
 
+	public Persona traerPersona(Sube sube) throws HibernateException{
+		
+		Persona persona=null;
+		try {
+			iniciaOperacion();
+			String hql= "from Persona p inner join fetch p.sube s where s.idSube =" +sube.getIdSube();
+			persona=(Persona) session .createQuery(hql).uniqueResult();
+		}catch(HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		}finally {
+			session .close();
+		}
+		return persona;	
+		
+	}
 }

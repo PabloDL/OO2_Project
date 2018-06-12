@@ -1,25 +1,7 @@
 package datos;
 
 public class TerminalRecarga extends Terminal {
-
-	@Override
-	public boolean registrarPago(long idSube) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean informarViajes() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Viaje cobrar(Sube sube, int tramo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	public boolean registrarRecarga(long idSube) {
 		return false;
 	}
@@ -52,4 +34,23 @@ public class TerminalRecarga extends Terminal {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean registrarPago(long idSube) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean informarViajes() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Viaje cobrar(Sube sube, int tramo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

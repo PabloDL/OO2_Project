@@ -8,7 +8,7 @@
 	<BR> <BR> <BR> <BR>
 	<h1 align="center"> Viaje exitoso! </h1>
 	<center> 
-	<a href="/SUBE/index.jsp"><button>Volver</button></a> 
+	<a href="/SUBE/vistaAdministrador.jsp"><button>Volver</button></a> 
 	</center>
 </BODY>
 </HTML>

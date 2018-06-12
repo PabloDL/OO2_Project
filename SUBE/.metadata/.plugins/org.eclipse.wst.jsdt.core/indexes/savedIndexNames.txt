@@ -1,7 +1,0 @@
-INDEX VERSION 1.3+C:\Users\Ruso-Note\Google Drive\UNLa\3°er Año\OO2\Proyectos\Cuatrimestral grupal\OO2_Project\SUBE\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3911424539.index
-3549230563.index
-2562039930.index
-2066243419.index
-4165140776.index
-1291256152.index

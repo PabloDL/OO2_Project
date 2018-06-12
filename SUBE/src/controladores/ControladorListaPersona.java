@@ -6,8 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import negocio.PersonaABM;
 import datos.Persona;
+import datos.Usuario;
 
 public class ControladorListaPersona extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,6 +26,11 @@ public class ControladorListaPersona extends HttpServlet {
 			throws ServletException, IOException {
 		int jstl = Integer.parseInt(request.getParameter("jstl"));
 		try {
+			HttpSession session = request.getSession();
+			Usuario usuario = (Usuario)session.getAttribute("usr");
+			if (!usuario.isAdministrador())
+				request.getRequestDispatcher("/errorPermisos.jsp").forward(request, response);
+			
 			PersonaABM personaabm = new PersonaABM();
 			List<Persona> personas = personaabm.traerPersona();
 			request.setAttribute("personas", personas);

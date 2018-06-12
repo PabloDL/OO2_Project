@@ -5,13 +5,7 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>SUBE</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-		<welcome-file>cliente.html</welcome-file>
+		<welcome-file>VistaIniciarSesion.jsp</welcome-file>
 	</welcome-file-list>
 		<servlet>
 		<servlet-name>ControladorMostrarPersona</servlet-name>
@@ -87,5 +81,73 @@
   <servlet-mapping>
     <servlet-name>ControladorVistaViajes</servlet-name>
     <url-pattern>/MostrarViaje</url-pattern>
-  </servlet-mapping>	
-</web-app>
+  </servlet-mapping>
+
+	<servlet>
+		<servlet-name>ControladorAltaSube</servlet-name>
+		<servlet-class>controladores.ControladorAltaSube</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorAltaSube</servlet-name>
+		<url-pattern>/altaSube</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ControladorBajaSube</servlet-name>
+		<servlet-class>controladores.ControladorBajaSube</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorBajaSube</servlet-name>
+		<url-pattern>/bajaSube</url-pattern>
+	</servlet-mapping> 
+	
+	<servlet>
+		<servlet-name>ControladorVincularSube</servlet-name>
+		<servlet-class>controladores.ControladorVincularSube</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorVincularSube</servlet-name>
+		<url-pattern>/vincularSube</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorPaginaPrincipal</servlet-name>
+		<servlet-class>controladores.ControladorPaginaPrincipal</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorPaginaPrincipal</servlet-name>
+		<url-pattern>/StartPage</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorIniciarSesion</servlet-name>
+		<servlet-class>controladores.ControladorIniciarSesion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorIniciarSesion</servlet-name>
+		<url-pattern>/IniciarSesionJSP</url-pattern>
+	</servlet-mapping> 	
+		<servlet>
+		<servlet-name>ControladorValidarLogin</servlet-name>
+		<servlet-class>controladores.ControladorValidarLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorValidarLogin</servlet-name>
+		<url-pattern>/ValidarLogin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorCargarSaldo</servlet-name>
+		<servlet-class>controladores.ControladorCargarSaldo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorCargarSaldo</servlet-name>
+		<url-pattern>/recargarSaldo</url-pattern>
+	</servlet-mapping> 	
+		<servlet>
+		<servlet-name>ControladorConsultarSaldo</servlet-name>
+		<servlet-class>controladores.ControladorConsultarSaldo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorConsultarSaldo</servlet-name>
+		<url-pattern>/consultarSaldo</url-pattern>
+	</servlet-mapping> 	
+	 	
+</web-app>	

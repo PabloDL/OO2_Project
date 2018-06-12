@@ -14,6 +14,7 @@
 		</set>
 		<many-to-one name="primerViajeRedSube" class="datos.Viaje"
 			column="primerViajeRedSube" not-null="true" />
-		<one-to-one name = "persona" class = "datos.Persona" ></one-to-one>
+		<many-to-one name="persona" class="datos.Persona"
+			column="idPersona" not-null="true" />
 	</class>
-</hibernate-mapping>
+	</hibernate-mapping>

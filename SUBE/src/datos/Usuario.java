@@ -5,6 +5,8 @@ public class Usuario {
 	private String nombreUsuario;
 	private String password;
 	private Persona persona;
+	
+	private boolean administrador;
 		
 	public Usuario() {}
 
@@ -43,5 +45,13 @@ public class Usuario {
 	}
 	public String toString() {
 		return nombreUsuario + " " + password;
+	}
+
+	public boolean isAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(boolean administrador) {
+		this.administrador = administrador;
 	}
 }

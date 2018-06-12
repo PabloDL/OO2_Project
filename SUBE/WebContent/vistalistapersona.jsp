@@ -30,7 +30,7 @@
 	</table>
 	<BR>
 	<center> 
-	<a href="/SUBE/index.jsp"><button>Volver</button></a> 
+	<a href="javascript:window.history.back();"><button>Volver</button></a> 
 	</center>
 </body>
 </html>

@@ -11,6 +11,7 @@
 		<property column="esTarifaSocial" name="esTarifaSocial" type="boolean" />
 		<property column="esTarifaEstudiantil" name="esTarifaEstudiantil" type="boolean" />
 		<one-to-one name="usuario" class="datos.Usuario"></one-to-one>
-		<one-to-one name="sube" class="datos.Sube"></one-to-one>
+		<many-to-one name="sube" class="datos.Sube"
+			column="idSube" not-null="true" />
 	</class>
 </hibernate-mapping>

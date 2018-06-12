@@ -82,10 +82,19 @@ public class Tren extends Transporte {
 		return datosGenerales.getPrecioMaximoTren();
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Tren: " +"<BR>"+ "\nLinea= " + linea + ", \nRamal= " + ramal +"<BR>"+ "\nEstacion de origen= " + estacionOrigen
+//				+"<BR>"+ "\nEstacion de destino= " + estacionDestino +"<BR>"+ "\nFecha y Hora de Salida= " + Funciones.traerFechaCorta(fechaHoraSalida);
+//	}
 	@Override
 	public String toString() {
-		return "Tren: " +"<BR>"+ "\nLinea= " + linea + ", \nRamal= " + ramal +"<BR>"+ "\nEstacion de origen= " + estacionOrigen
-				+"<BR>"+ "\nEstacion de destino= " + estacionDestino +"<BR>"+ "\nFecha y Hora de Salida= " + Funciones.traerFechaCorta(fechaHoraSalida);
+		String mensaje = "Tren: " +"<BR>"+ "\nLinea= " + linea + ", \nRamal= " + ramal +"<BR>"+
+				"\nEstacion de origen= " + estacionOrigen +"<BR>";
+		if(this.fechaHoraSalida != null) 
+			mensaje = mensaje + "\nEstacion de destino= " + estacionDestino 
+					+"<BR>"+ "\nFecha y Hora de Salida= " + Funciones.traerFechaCorta(fechaHoraSalida); 
+		return mensaje;
 	}
 	
 	

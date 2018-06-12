@@ -12,6 +12,8 @@
 	
 	<BR><input type="submit" value="Simular viaje" onclick = "location='/SUBE/agregarViaje.jsp'"/><BR><BR><BR>
 	
+	<BR><input type="submit" value="Alta y baja de sube" onclick = "location='/SUBE/subeABM.jsp'"/><BR><BR><BR>
+	
 	<FORM method="POST" action=" /SUBE/MostrarViaje ">
 		<h3>Búsqueda de viajes </h3>
 		<TABLE border="1">

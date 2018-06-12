@@ -11,6 +11,7 @@
 	<%@ include file="/cabecera.jsp"%>
 	
 	<FORM method="POST" action=" /SUBE/agregarViaje"><BR> <BR>
+		<div align="center">	
 		<TABLE border="0">
 					
 			<TR>		
@@ -18,13 +19,15 @@
 				<TD><INPUT name="numeroSube" required></TD>		
 			</TR>			
 		</TABLE>		
+		<br>
+		<input type="radio" name="transporte" value="1" /> Subte 
+		<input type="radio" name="transporte" value="2" /> Tren 
+		<input type="radio" name="transporte" value="3" /> Colectivo 
 		
-		<input type="radio" name="transporte" value="1" /> Subte <br/>
-		<input type="radio" name="transporte" value="2" /> Tren <br/>
-		<input type="radio" name="transporte" value="3" /> Colectivo <br/>
-		
-		<INPUT type="submit" value="Siguiente">
-		
+		<br>
+		<br>
+		<INPUT type="submit" value="Siguiente" class="btn btn-lg btn-primary">
+		</div>
 	</FORM>
 
 </body>

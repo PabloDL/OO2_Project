@@ -60,7 +60,7 @@ public class UsuarioABM {
 		 */
 		Usuario c = dao.traerUsuario(idUsuario);
 		if (c == null) {
-			throw new Exception("ERROR: NO EXISTE CLIENTE");
+			throw new Exception("ERROR: NO EXISTE USUARIO");
 		}
 		dao.eliminar(c);
 	}

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="SUBE">
-        <wb-resource deploy-path="/" source-path="/WebContent"/>
-        <property name="context-root" value="SUBE"/>
-        <property name="java-output-path" value="/SUBE/build/classes"/>
-    </wb-module>
-</project-modules>
