@@ -24,11 +24,11 @@ public class Sube {
 		this.saldo = saldo;
 	}
 	
-	public Sube(long idSube, int numero, double saldo) {
+	public Sube(long idSube , int numero, double saldo) {
 		super();
 		this.idSube = idSube;
 		this.numero = numero;
-		this.ultimosViajes = new HashSet<Viaje>();
+		this.ultimosViajes = new HashSet<Viaje>(); //s
 		this.saldo = saldo;
 	}
 	
